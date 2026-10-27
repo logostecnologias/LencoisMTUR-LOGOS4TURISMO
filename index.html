@@ -1,0 +1,934 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lençóis MTur – Passeios nos Lençóis Maranhenses saindo de Santo Amaro</title>
+<meta name="description" content="Passeios em 4x4, barco e quadriciclo pelos Lençóis Maranhenses saindo de Santo Amaro do Maranhão: Betânia, Emendadas, Andorinhas, Ponta Verde, América, Rancharia, Revoada dos Guarás e Contemplação das Estrelas. Reserve pelo WhatsApp.">
+<meta name="theme-color" content="#0FA3A3">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Lençóis MTur – Viva sua melhor experiência nos Lençóis">
+<meta property="og:description" content="Passeios saindo de Santo Amaro do Maranhão: lagoas, pôr do sol, revoada dos guarás e o céu estrelado dos Lençóis. Reserve pelo WhatsApp.">
+<meta property="og:image" content="img/aerea-lagoas-dunas-1920.webp">
+<meta property="og:locale" content="pt_BR">
+<link rel="icon" href="img/lencois-mtur-simbolo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Caveat:wght@500;700&family=DM+Sans:opsz,wght@9..40,400..700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/aerea-lagoas-dunas-1920.webp" imagesrcset="img/aerea-lagoas-dunas-960.webp 960w, img/aerea-lagoas-dunas-1920.webp 1920w" imagesizes="100vw">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TravelAgency",
+  "name": "Lençóis MTur",
+  "description": "Passeios pelos Lençóis Maranhenses saindo de Santo Amaro do Maranhão.",
+  "telephone": "+55 98 99241-7329",
+  "address": { "@type": "PostalAddress", "addressLocality": "Santo Amaro do Maranhão", "addressRegion": "MA", "addressCountry": "BR" },
+  "sameAs": ["https://instagram.com/lencoismtur"]
+}
+</script>
+<style>
+  /*
+   * Lençóis MTur — "carta de navegação"
+   * A marca é uma bússola sobre as dunas: o site usa a água das lagoas
+   * (turquesa) e o pôr do sol / os guarás (coral) como cores de ação, e o
+   * azul da logo só como tinta de texto e fundo de destaque.
+   * Tipos: Bricolage Grotesque (títulos), DM Sans (texto), Caveat (anotações).
+   */
+  :root{
+    --deep:#03314B;
+    --deep-2:#0A4566;
+    --lagoon:#0FA3A3;
+    --lagoon-ink:#087A7D;
+    --aqua:#E5F4F2;
+    --aqua-2:#CDEBE7;
+    --sun:#F26B3A;
+    --sun-ink:#C94A1E;
+    --sun-soft:#FDE6DA;
+    --white:#FFFFFF;
+    --bg:#FBFDFC;
+    --text:#0E2A3A;
+    --muted:#557080;
+    --line:#D9E9E6;
+    --wa:#25D366;
+    --title:"Bricolage Grotesque", system-ui, sans-serif;
+    --body:"DM Sans", system-ui, sans-serif;
+    --hand:"Caveat", cursive;
+    --ease:cubic-bezier(.22,1,.36,1);
+    --r-lg:28px;
+    --r-md:18px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:96px}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:var(--body);font-size:16.5px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;padding:0}
+  h1,h2,h3,h4{font-family:var(--title);margin:0;line-height:1;letter-spacing:-.035em;font-weight:700}
+  p{margin:0}
+  ::selection{background:var(--lagoon);color:#fff}
+  :focus-visible{outline:3px solid var(--sun);outline-offset:3px;border-radius:8px}
+  .wrap{width:100%;max-width:1680px;margin:0 auto;padding:0 20px}
+  /* recuo do conteudo nas faixas que vao de ponta a ponta, alinhado com .wrap */
+  :root{--gutter:max(20px,calc((100vw - 1680px) / 2 + 20px))}
+  @media (min-width:768px){:root{--gutter:max(36px,calc((100vw - 1680px) / 2 + 36px))}}
+  @media (min-width:768px){.wrap{padding:0 36px}}
+  .hand{font-family:var(--hand);font-weight:700;letter-spacing:0}
+
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;border-radius:14px;padding:1rem 1.35rem;font-weight:700;font-size:.95rem;transition:transform .2s var(--ease),background-color .2s,box-shadow .2s}
+  .btn svg{width:1.15rem;height:1.15rem;flex-shrink:0}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-sun{background:var(--sun);color:#fff;box-shadow:0 10px 24px -10px rgb(242 107 58 / 70%)}
+  .btn-sun:hover{background:#e65a28}
+  .btn-wa{background:var(--wa);color:#fff;box-shadow:0 10px 24px -10px rgb(37 211 102 / 70%)}
+  .btn-wa:hover{background:#1ec95d}
+  .btn-outline{border:2px solid var(--deep);color:var(--deep)}
+  .btn-outline:hover{background:var(--deep);color:#fff}
+
+  /* ---------------------------------------------------------- Menu em pílula */
+  .topbar{position:fixed;top:14px;left:0;right:0;z-index:50;pointer-events:none}
+  .pill{pointer-events:auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;margin:0 auto;padding:.55rem .6rem .55rem 1.1rem;border-radius:999px;background:rgb(255 255 255 / 92%);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 8px 30px -12px rgb(3 49 75 / 35%);transition:box-shadow .3s}
+  .topbar .wrap{max-width:none;padding:0 12px}
+  @media (min-width:768px){.topbar .wrap{padding:0 calc(var(--gutter) - 16px)}}
+  .pill .logo img{height:32px;width:auto}
+  @media (min-width:768px){.pill .logo img{height:38px}}
+  .pill nav{display:none;gap:.25rem}
+  .pill nav a{padding:.5rem .9rem;border-radius:999px;font-size:.92rem;font-weight:600;color:var(--deep);transition:background-color .2s}
+  .pill nav a:hover{background:var(--aqua)}
+  @media (min-width:1000px){.pill nav{display:flex}}
+  .pill-actions{display:flex;align-items:center;gap:.4rem}
+  .pill .btn{padding:.7rem 1.05rem;border-radius:999px;font-size:.88rem}
+  .pill .btn span{display:none}
+  @media (min-width:520px){.pill .btn span{display:inline}}
+  .menu-btn{width:2.75rem;height:2.75rem;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;background:var(--aqua);color:var(--deep)}
+  .menu-btn svg{width:1.3rem;height:1.3rem}
+  @media (min-width:1000px){.menu-btn{display:none}}
+
+  /* Menu mobile: cai de cima como um cartão */
+  .sheet{position:fixed;inset:0;z-index:60;visibility:hidden}
+  .sheet.open{visibility:visible}
+  .sheet-bg{position:absolute;inset:0;background:rgb(3 49 75 / 45%);opacity:0;transition:opacity .3s}
+  .sheet.open .sheet-bg{opacity:1}
+  .sheet-card{position:absolute;top:12px;left:12px;right:12px;border-radius:var(--r-lg);background:#fff;padding:1.25rem;transform:translateY(-110%);transition:transform .45s var(--ease);box-shadow:0 30px 60px -20px rgb(3 49 75 / 40%)}
+  .sheet.open .sheet-card{transform:none}
+  .sheet-head{display:flex;align-items:center;justify-content:space-between}
+  .sheet-head img{height:32px;width:auto}
+  .sheet nav{margin:1rem 0;display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+  .sheet nav a{padding:1rem;border-radius:var(--r-md);background:var(--aqua);font-family:var(--title);font-weight:700;font-size:1.1rem;color:var(--deep)}
+  .sheet .btn{width:100%}
+
+  /* ---------------------------------------------------------- Hero cartão-postal */
+  .hero .wrap{max-width:none;padding:0}
+  .postcard{position:relative;overflow:hidden;min-height:max(680px,100svh);display:flex;align-items:flex-end;color:#fff;isolation:isolate}
+  
+  .postcard>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+  .postcard::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgb(3 49 75 / 10%) 0%,rgb(3 49 75 / 0%) 30%,rgb(3 49 75 / 72%) 72%,rgb(3 49 75 / 92%) 100%)}
+  .post-inner{width:100%;padding:110px var(--gutter) 40px;display:grid;gap:28px}
+  @media (min-width:900px){.post-inner{padding-bottom:64px;grid-template-columns:1.35fr .65fr;align-items:end}}
+  @media (min-width:1300px){.post-inner{grid-template-columns:1.6fr .5fr}}
+  .hero h1{font-size:clamp(2.9rem,7.4vw,6.4rem);font-weight:800;line-height:.92;letter-spacing:-.045em;text-wrap:balance}
+  .hero h1 .sun{color:#FFB08F}
+  .hero-sub{margin-top:1.25rem;max-width:34rem;font-size:1.08rem;color:rgb(255 255 255 / 90%);text-wrap:pretty}
+  .hero-ctas{margin-top:1.75rem;display:flex;flex-wrap:wrap;gap:.7rem}
+  .hero .btn-ghost{background:rgb(255 255 255 / 14%);color:#fff;border:1.5px solid rgb(255 255 255 / 40%);backdrop-filter:blur(6px)}
+  .hero .btn-ghost:hover{background:rgb(255 255 255 / 24%)}
+  /* bilhete de embarque */
+  .ticket{display:none;background:#fff;color:var(--deep);border-radius:var(--r-md);overflow:hidden;box-shadow:0 30px 60px -25px rgb(0 0 0 / 60%);transform:rotate(2deg)}
+  @media (min-width:900px){.ticket{display:block}}
+  .ticket-top{display:flex;align-items:center;gap:.75rem;padding:1rem 1.1rem;background:var(--lagoon);color:#fff}
+  .ticket-top img{width:42px;height:42px}
+  .ticket-top b{font-family:var(--title);font-size:1.05rem;letter-spacing:-.01em}
+  .ticket-top small{display:block;font-size:.72rem;opacity:.85;letter-spacing:.08em;text-transform:uppercase}
+  .ticket-body{padding:1rem 1.1rem;display:grid;grid-template-columns:1fr 1fr;gap:.85rem 1rem;border-bottom:2px dashed var(--line);position:relative}
+  .ticket-body::before,.ticket-body::after{content:"";position:absolute;bottom:-11px;width:20px;height:20px;border-radius:50%;background:var(--deep)}
+  .ticket-body::before{left:-11px}.ticket-body::after{right:-11px}
+  .ticket dt{font-size:.66rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:700}
+  .ticket dd{margin:.1rem 0 0;font-weight:700;font-size:.95rem}
+  .ticket-foot{padding:.9rem 1.1rem;display:flex;align-items:center;justify-content:space-between;gap:.5rem}
+  .ticket-foot .hand{font-size:1.45rem;color:var(--sun-ink);line-height:1}
+  .ticket-foot svg{width:1.6rem;height:1.6rem;color:var(--lagoon)}
+
+
+  /* ---------------------------------------------------------- Seções */
+  .sec{padding:72px 0}
+  @media (min-width:768px){.sec{padding:110px 0}}
+  .tint{background:var(--aqua)}
+  .on-deep{background:var(--deep);color:#fff}
+  .head{display:grid;justify-items:start;gap:1.1rem;margin-bottom:40px}
+  @media (min-width:900px){.head.split{grid-template-columns:1.1fr .9fr;align-items:end;gap:3rem;margin-bottom:56px}}
+  .head h2{font-size:clamp(2.2rem,5vw,3.9rem);font-weight:800;color:var(--deep);text-wrap:balance}
+  .head h2 .lag{color:var(--lagoon)}
+  .head h2 .sun{color:var(--sun)}
+  .on-deep .head h2{color:#fff}
+  .on-deep .head h2 .lag{color:#5FD3CE}
+  .head p{color:var(--muted);font-size:1.05rem;max-width:34rem;text-wrap:pretty}
+  .on-deep .head p{color:rgb(255 255 255 / 72%)}
+
+  [data-in]{opacity:0;transform:translateY(22px) scale(.985);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:var(--d,0ms)}
+  [data-in="1"]{opacity:1;transform:none}
+
+  /* Sobre: mosaico + texto */
+  .about{display:grid;gap:40px;align-items:center}
+  @media (min-width:900px){.about{grid-template-columns:.95fr 1.05fr;gap:64px}}
+  .mosaic{display:grid;grid-template-columns:1.2fr 1fr;grid-template-rows:170px 170px;gap:12px}
+  @media (min-width:768px){.mosaic{grid-template-rows:220px 220px}}
+  .mosaic div{border-radius:var(--r-md);overflow:hidden;position:relative}
+  .mosaic div:first-child{grid-row:span 2}
+  .mosaic img{width:100%;height:100%;object-fit:cover}
+  .mosaic .note{position:absolute;left:12px;bottom:10px;font-family:var(--hand);font-weight:700;font-size:1.4rem;color:#fff;text-shadow:0 2px 10px rgb(0 0 0 / 45%);line-height:1}
+  .about-copy h2{font-size:clamp(2.1rem,4.6vw,3.5rem);font-weight:800;color:var(--deep);text-wrap:balance}
+  .about-copy h2 .lag{color:var(--lagoon)}
+  .about-copy>p{margin-top:1.1rem;color:var(--muted);font-size:1.05rem;text-wrap:pretty}
+  .chips{margin-top:1.75rem;display:flex;flex-wrap:wrap;gap:.6rem}
+  .chip{display:inline-flex;align-items:center;gap:.55rem;padding:.7rem 1rem;border-radius:14px;background:#fff;border:1.5px solid var(--line);font-weight:600;font-size:.92rem;color:var(--deep)}
+  .chip svg{width:1.2rem;height:1.2rem;color:var(--lagoon)}
+
+  /* ---------------------------------------------------------- Passeios */
+  .filters{display:flex;gap:.5rem;overflow-x:auto;scrollbar-width:none;margin:0 -20px 28px;padding:0 20px}
+  .filters::-webkit-scrollbar{display:none}
+  @media (min-width:768px){.filters{margin:0 0 32px;padding:0}}
+  .filters button{flex-shrink:0;padding:.7rem 1.15rem;border-radius:999px;border:1.5px solid var(--aqua-2);background:#fff;font-weight:700;font-size:.9rem;color:var(--deep);transition:background-color .2s,color .2s,border-color .2s}
+  .filters button[aria-pressed="true"]{background:var(--deep);border-color:var(--deep);color:#fff}
+  .filters button small{opacity:.6;margin-left:.25rem;font-weight:600}
+  .tours{display:grid;gap:16px}
+  @media (min-width:640px){.tours{grid-template-columns:repeat(2,1fr)}}
+  @media (min-width:1024px){.tours{grid-template-columns:repeat(4,1fr);gap:18px}}
+  .tour{position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-height:430px;border-radius:var(--r-lg);overflow:hidden;color:#fff;text-align:left;isolation:isolate;box-shadow:0 18px 40px -26px rgb(3 49 75 / 70%)}
+  .tour[hidden]{display:none}
+  .tour img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform 1s var(--ease)}
+  .tour::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgb(3 49 75 / 0%) 35%,rgb(3 49 75 / 88%) 85%)}
+  .tour:hover img{transform:scale(1.06)}
+  .tour .when{position:absolute;top:14px;left:14px;display:inline-flex;align-items:center;gap:.4rem;padding:.4rem .75rem;border-radius:999px;background:#fff;color:var(--deep);font-size:.78rem;font-weight:700}
+  .tour .when svg{width:.95rem;height:.95rem;color:var(--sun)}
+  .tour-txt{padding:20px}
+  .tour .cat{font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#9FE3DF}
+  .tour h3{margin-top:.45rem;font-size:1.55rem;line-height:1.02}
+  .tour p{margin-top:.55rem;font-size:.9rem;color:rgb(255 255 255 / 85%);line-height:1.5}
+  .tour .more{margin-top:1rem;display:inline-flex;align-items:center;gap:.45rem;font-weight:700;font-size:.9rem;color:#fff}
+  .tour .more i{display:inline-flex;width:2rem;height:2rem;border-radius:50%;background:var(--sun);align-items:center;justify-content:center;transition:transform .3s var(--ease)}
+  .tour:hover .more i{transform:rotate(-45deg)}
+  .tour .more svg{width:1rem;height:1rem}
+
+  /* Painel lateral do passeio (bottom sheet no celular) */
+  dialog.panel{position:fixed;margin:0;padding:0;border:0;max-width:none;max-height:none;background:#fff;color:var(--text);inset:auto 0 0 0;width:100%;height:92dvh;border-radius:var(--r-lg) var(--r-lg) 0 0;overflow:hidden}
+  @media (min-width:900px){dialog.panel{inset:0 0 0 auto;width:min(560px,100%);height:100dvh;border-radius:var(--r-lg) 0 0 var(--r-lg)}}
+  dialog.panel::backdrop{background:rgb(3 49 75 / 55%)}
+  dialog.panel[open]{animation:up .45s var(--ease)}
+  @media (min-width:900px){dialog.panel[open]{animation:slide .45s var(--ease)}}
+  @keyframes up{from{transform:translateY(100%)}to{transform:none}}
+  @keyframes slide{from{transform:translateX(100%)}to{transform:none}}
+  .panel-scroll{height:100%;overflow-y:auto;overscroll-behavior:contain}
+  .panel-hero{position:relative;height:260px}
+  .panel-hero img{width:100%;height:100%;object-fit:cover}
+  .panel-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgb(3 49 75 / 70%))}
+  .panel-hero h3{position:absolute;left:22px;right:22px;bottom:18px;z-index:1;color:#fff;font-size:2rem;font-weight:800}
+  .panel-close{position:absolute;top:14px;right:14px;z-index:2;width:2.6rem;height:2.6rem;border-radius:50%;background:#fff;color:var(--deep);display:inline-flex;align-items:center;justify-content:center;box-shadow:0 6px 18px -6px rgb(0 0 0 / 40%)}
+  .panel-close svg{width:1.2rem;height:1.2rem}
+  .panel-grab{position:absolute;top:8px;left:50%;transform:translateX(-50%);z-index:2;width:44px;height:5px;border-radius:9px;background:rgb(255 255 255 / 80%)}
+  @media (min-width:900px){.panel-grab{display:none}}
+  .panel-body{padding:22px 22px 120px}
+  .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .fact{background:var(--aqua);border-radius:14px;padding:.8rem .85rem}
+  .fact small{display:block;font-size:.66rem;text-transform:uppercase;letter-spacing:.1em;font-weight:700;color:var(--lagoon-ink)}
+  .fact b{display:block;margin-top:.2rem;font-size:.88rem;line-height:1.3;color:var(--deep)}
+  .panel-body h4{margin-top:1.75rem;font-size:1.25rem;color:var(--deep);letter-spacing:-.02em}
+  .panel-body .story p{margin-top:.75rem;font-size:.97rem;color:#34505F;line-height:1.7}
+  .ticks{list-style:none;margin:.8rem 0 0;padding:0;display:grid;gap:.5rem}
+  .ticks li{display:flex;gap:.6rem;font-size:.95rem;line-height:1.45}
+  .ticks li svg{width:1.2rem;height:1.2rem;flex-shrink:0;color:var(--lagoon)}
+  .ticks.out li svg{color:var(--sun)}
+  .callout{margin-top:1.25rem;padding:1rem 1.1rem;border-radius:14px;background:var(--sun-soft);color:var(--sun-ink);font-weight:600;font-size:.92rem}
+  .panel-pic{margin-top:1.5rem;border-radius:var(--r-md);overflow:hidden;aspect-ratio:16/10}
+  .panel-pic img{width:100%;height:100%;object-fit:cover}
+  .panel-cta{position:absolute;left:0;right:0;bottom:0;padding:14px 22px calc(14px + env(safe-area-inset-bottom));background:linear-gradient(180deg,rgb(255 255 255 / 0%),#fff 30%)}
+  .panel-cta .btn{width:100%;padding:1.1rem}
+  body.locked{overflow:hidden}
+
+  /* ---------------------------------------------------------- Linha do tempo */
+  .day{border-radius:var(--r-lg);background:rgb(255 255 255 / 5%);border:1px solid rgb(255 255 255 / 10%);padding:18px;overflow-x:auto}
+  @media (min-width:768px){.day{padding:28px}}
+  .day-inner{min-width:720px}
+  .hours{display:grid;grid-template-columns:190px 1fr;margin-bottom:10px}
+  .hours ol{list-style:none;margin:0;padding:0;position:relative;height:1.2rem}
+  .hours li{position:absolute;transform:translateX(-50%);font-size:.75rem;font-weight:700;color:rgb(255 255 255 / 55%)}
+  .row{display:grid;grid-template-columns:190px 1fr;align-items:center;padding:7px 0;border-top:1px solid rgb(255 255 255 / 8%)}
+  .row button{text-align:left;font-family:var(--title);font-weight:700;font-size:1rem;letter-spacing:-.01em;color:#fff;padding-right:12px}
+  .row button:hover{color:#5FD3CE}
+  .track{position:relative;height:34px;background:repeating-linear-gradient(90deg,rgb(255 255 255 / 6%) 0 1px,transparent 1px calc(100% / 14))}
+  .bar{position:absolute;top:5px;height:24px;border-radius:8px;display:flex;align-items:center;padding:0 .6rem;font-size:.75rem;font-weight:700;white-space:nowrap;overflow:hidden;color:#05302f;background:#5FD3CE}
+  .bar.eve{background:#FFB08F;color:#5a1e07}
+  .bar.night{background:#9DB4FF;color:#14215a}
+  .bar.open{-webkit-mask-image:linear-gradient(90deg,#000 65%,transparent);mask-image:linear-gradient(90deg,#000 65%,transparent)}
+  .legend{margin-top:18px;display:flex;flex-wrap:wrap;gap:.6rem 1.4rem;font-size:.85rem;color:rgb(255 255 255 / 72%)}
+  .legend i{display:inline-block;width:.9rem;height:.9rem;border-radius:4px;margin-right:.45rem;vertical-align:-2px}
+  .day-tip{margin-top:22px;display:flex;align-items:center;gap:.75rem;font-size:1rem;color:#fff}
+  .day-tip .hand{font-size:1.6rem;color:#FFB08F;line-height:1}
+  .scroll-hint{margin-top:10px;font-size:.8rem;color:rgb(255 255 255 / 55%)}
+  @media (min-width:860px){.scroll-hint{display:none}}
+
+  /* ---------------------------------------------------------- Como reservar: trilha */
+  .trail{position:relative;display:grid;gap:18px}
+  @media (min-width:900px){.trail{grid-template-columns:repeat(3,1fr);gap:28px}}
+  .trail-line{display:none}
+  @media (min-width:900px){.trail-line{display:block;position:absolute;top:34px;left:8%;right:8%;height:2px;background:repeating-linear-gradient(90deg,var(--lagoon) 0 10px,transparent 10px 20px)}}
+  .stop{position:relative;background:#fff;border-radius:var(--r-lg);padding:26px;border:1.5px solid var(--line)}
+  .stop .pin{width:68px;height:68px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--lagoon);color:#fff;font-family:var(--title);font-weight:800;font-size:1.6rem;box-shadow:0 0 0 8px var(--aqua)}
+  .stop:nth-child(3) .pin{background:var(--sun);box-shadow:0 0 0 8px var(--sun-soft)}
+  .stop:nth-child(4) .pin{background:var(--deep);box-shadow:0 0 0 8px var(--aqua-2)}
+  .stop h3{margin-top:1.4rem;font-size:1.5rem;color:var(--deep)}
+  .stop p{margin-top:.6rem;color:var(--muted);font-size:.97rem}
+
+  /* ---------------------------------------------------------- Dúvidas */
+  .faq-wrap{display:grid;gap:32px}
+  @media (min-width:900px){.faq-wrap{grid-template-columns:.8fr 1.2fr;gap:64px;align-items:start}}
+  .faq-side{position:relative}
+  @media (min-width:900px){.faq-side{position:sticky;top:120px}}
+  .faq-side .head{margin-bottom:24px}
+  .ask{padding:22px;border-radius:var(--r-lg);background:var(--deep);color:#fff}
+  .ask b{font-family:var(--title);font-size:1.3rem;letter-spacing:-.02em;display:block}
+  .ask p{margin:.4rem 0 1rem;color:rgb(255 255 255 / 75%);font-size:.95rem}
+  .qa{border-bottom:1.5px solid var(--aqua-2)}
+  .qa:first-child{border-top:1.5px solid var(--aqua-2)}
+  .qa summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.3rem 0;font-family:var(--title);font-weight:700;font-size:1.2rem;letter-spacing:-.02em;color:var(--deep)}
+  .qa summary::-webkit-details-marker{display:none}
+  .qa summary i{flex-shrink:0;width:2.2rem;height:2.2rem;border-radius:50%;background:var(--aqua);display:inline-flex;align-items:center;justify-content:center;color:var(--lagoon-ink);transition:transform .3s var(--ease),background-color .2s}
+  .qa summary i svg{width:1rem;height:1rem}
+  .qa[open] summary i{transform:rotate(45deg);background:var(--sun);color:#fff}
+  .qa p{padding:0 3rem 1.4rem 0;color:#34505F;line-height:1.7}
+
+  /* ---------------------------------------------------------- Galeria bento */
+  .bento{display:grid;grid-template-columns:repeat(2,1fr);grid-auto-rows:150px;grid-auto-flow:dense;gap:10px}
+  @media (min-width:768px){.bento{grid-template-columns:repeat(4,1fr);grid-auto-rows:190px;gap:14px}}
+  .bento figure{margin:0;border-radius:var(--r-md);overflow:hidden;position:relative}
+  .bento img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+  .bento figure:hover img{transform:scale(1.05)}
+  .bento .t{grid-row:span 2}
+  .bento .w{grid-column:span 2}
+  .bento figcaption{position:absolute;left:10px;bottom:8px;font-family:var(--hand);font-weight:700;font-size:1.3rem;color:#fff;text-shadow:0 2px 10px rgb(0 0 0 / 55%);line-height:1}
+
+  /* ---------------------------------------------------------- CTA: conversa no WhatsApp */
+  #contato .wrap{max-width:none;padding:0}
+  .chat-cta{overflow:hidden;display:grid;background:linear-gradient(135deg,var(--lagoon) 0%,#0B8C93 45%,var(--deep) 100%);color:#fff}
+  @media (min-width:900px){.chat-cta{grid-template-columns:1.1fr .9fr}}
+  .chat-copy{padding:56px var(--gutter)}
+  @media (min-width:768px){.chat-copy{padding:88px 56px 88px var(--gutter)}}
+  .chat-copy h2{margin:0;font-size:clamp(2.3rem,5.2vw,4.2rem);font-weight:800;line-height:.95;text-wrap:balance}
+  .chat-copy h2 .sun{color:#FFB08F}
+  .chat-copy p{margin-top:1.1rem;font-size:1.06rem;color:rgb(255 255 255 / 85%);max-width:30rem}
+  .chat-copy .ctas{margin-top:1.75rem;display:flex;flex-wrap:wrap;gap:.7rem}
+  .chat-copy .btn-ig{background:rgb(255 255 255 / 14%);color:#fff;border:1.5px solid rgb(255 255 255 / 35%)}
+  .phone{padding:0 22px 34px;display:flex;justify-content:center;align-items:flex-end}
+  @media (min-width:900px){.phone{padding:56px var(--gutter) 0 44px}}
+  .screen{width:100%;max-width:340px;background:#ECE5DD;border-radius:30px 30px 0 0;overflow:hidden;box-shadow:0 -10px 50px -10px rgb(0 0 0 / 45%)}
+  @media (max-width:899px){.screen{border-radius:24px}}
+  .screen-top{display:flex;align-items:center;gap:.7rem;padding:1rem 1rem .9rem;background:#075E54;color:#fff}
+  .screen-top img{width:38px;height:38px;border-radius:50%;object-fit:cover}
+  .screen-top b{display:block;font-size:.95rem}
+  .screen-top small{font-size:.75rem;opacity:.8}
+  .msgs{padding:16px 12px 18px;display:grid;gap:8px;font-size:.88rem;color:#111}
+  .msg{max-width:84%;padding:.55rem .75rem .45rem;border-radius:10px;background:#fff;box-shadow:0 1px 1px rgb(0 0 0 / 12%);line-height:1.4}
+  .msg.me{margin-left:auto;background:#DCF8C6}
+  .msg time{display:block;text-align:right;font-size:.66rem;color:#667;margin-top:.15rem}
+  .msg.typing{width:58px;display:flex;gap:4px;padding:.75rem}
+  .msg.typing span{width:7px;height:7px;border-radius:50%;background:#9aa;animation:blink 1.2s infinite}
+  .msg.typing span:nth-child(2){animation-delay:.2s}.msg.typing span:nth-child(3){animation-delay:.4s}
+  @keyframes blink{0%,80%,100%{opacity:.3}40%{opacity:1}}
+
+  /* ---------------------------------------------------------- Rodapé claro */
+  footer{padding:64px 0 28px;background:#fff;border-top:1.5px solid var(--line)}
+  .foot{display:grid;gap:36px}
+  @media (min-width:900px){.foot{grid-template-columns:1.4fr 1fr 1fr 1fr}}
+  .foot img{height:86px;width:auto}
+  .foot p{margin-top:1rem;color:var(--muted);font-size:.95rem;max-width:22rem}
+  .foot h4{font-family:var(--body);font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--lagoon-ink)}
+  .foot ul{list-style:none;margin:.9rem 0 0;padding:0;display:grid;gap:.45rem;font-size:.95rem;color:var(--deep)}
+  .foot a:hover,.foot button:hover{color:var(--sun-ink)}
+  .foot button{text-align:left;color:var(--deep);font-size:.95rem}
+  .legal{margin-top:48px;padding-top:22px;border-top:1.5px solid var(--line);display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem;font-size:.82rem;color:var(--muted)}
+  .legal a{color:var(--deep);font-weight:600}
+
+  /* Botão flutuante: pílula com rótulo */
+  .wa-fab{position:fixed;right:14px;bottom:14px;z-index:40;display:inline-flex;align-items:center;gap:.55rem;padding:.8rem 1.1rem .8rem .85rem;border-radius:999px;background:var(--wa);color:#fff;font-weight:700;font-size:.95rem;box-shadow:0 14px 30px -10px rgb(4 80 40 / 55%);transform:translateY(140%);transition:transform .5s var(--ease)}
+  .wa-fab.show{transform:none}
+  .wa-fab svg{width:1.6rem;height:1.6rem}
+  @media (min-width:768px){.wa-fab{right:24px;bottom:24px}}
+
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{animation:none!important;transition:none!important}
+    [data-in]{opacity:1;transform:none}
+    .wa-fab{transform:none}
+  }
+</style>
+<noscript><style>[data-in]{opacity:1;transform:none}.wa-fab{transform:none}</style></noscript>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.79-1.47-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.5h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35M12.05 21.5h-.01a9.4 9.4 0 0 1-4.8-1.31l-.34-.2-3.57.93.95-3.48-.22-.36a9.4 9.4 0 0 1-1.44-5.02c0-5.2 4.23-9.43 9.44-9.43 2.52 0 4.89.98 6.67 2.77a9.37 9.37 0 0 1 2.76 6.67c0 5.2-4.23 9.43-9.44 9.43m8.03-17.46A11.27 11.27 0 0 0 12.05.72C5.79.72.7 5.81.7 12.07c0 2 .52 3.95 1.52 5.67L.6 23.62l6.02-1.58a11.33 11.33 0 0 0 5.42 1.38h.01c6.25 0 11.35-5.09 11.35-11.35 0-3.03-1.18-5.88-3.32-8.03"/></symbol>
+  <symbol id="i-rose" viewBox="0 0 24 24"><path fill="currentColor" d="M12 1l1.9 8.1L22 12l-8.1 1.9L12 23l-1.9-9.1L2 12l8.1-2.9z"/><circle cx="12" cy="12" r="1.6" fill="#fff"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M6 18L18 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 8h16M4 16h10" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></g></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.6 2.5L16 9.5"/></g></symbol>
+  <symbol id="i-minus" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M8 12h8"/></g></symbol>
+  <symbol id="i-car" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16V11l2-5h14l2 5v5"/><path d="M3 16h18"/><circle cx="7" cy="17.5" r="2"/><circle cx="17" cy="17.5" r="2"/></g></symbol>
+  <symbol id="i-boat" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15h18l-3 4H6z"/><path d="M12 4v11M12 5l6 8h-6"/><path d="M2 21c2 0 2-1 4-1s2 1 4 1 2-1 4-1 2 1 4 1 2-1 4-1"/></g></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></g></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></g></symbol>
+</svg>
+
+<!-- ============================================================ Menu -->
+<div class="topbar">
+  <div class="wrap">
+    <div class="pill">
+      <a href="#top" class="logo" aria-label="Lençóis MTur, início"><img src="img/lencois-mtur-logo-horizontal.svg" alt="Lençóis MTur" width="151" height="38"></a>
+      <nav aria-label="Seções">
+        <a href="#passeios">Passeios</a>
+        <a href="#seu-dia">Monte seu dia</a>
+        <a href="#reservar">Como reservar</a>
+        <a href="#duvidas">Dúvidas</a>
+      </nav>
+      <div class="pill-actions">
+        <a class="btn btn-wa" data-wa href="#" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg><span>Reservar</span></a>
+        <button class="menu-btn" id="openMenu" aria-label="Abrir menu" aria-controls="sheet" aria-expanded="false"><svg><use href="#i-menu"/></svg></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sheet" id="sheet" aria-hidden="true">
+  <div class="sheet-bg" data-close-menu></div>
+  <div class="sheet-card" role="dialog" aria-modal="true" aria-label="Menu">
+    <div class="sheet-head">
+      <img src="img/lencois-mtur-logo-horizontal.svg" alt="Lençóis MTur" width="127" height="32">
+      <button class="menu-btn" data-close-menu aria-label="Fechar menu" style="display:inline-flex"><svg><use href="#i-x"/></svg></button>
+    </div>
+    <nav aria-label="Seções">
+      <a href="#passeios" data-close-menu>Passeios</a>
+      <a href="#seu-dia" data-close-menu>Monte seu dia</a>
+      <a href="#reservar" data-close-menu>Como reservar</a>
+      <a href="#duvidas" data-close-menu>Dúvidas</a>
+      <a href="#galeria" data-close-menu>Galeria</a>
+      <a href="#contato" data-close-menu>Contato</a>
+    </nav>
+    <a class="btn btn-wa" data-wa href="#" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Chamar no WhatsApp</a>
+  </div>
+</div>
+
+<main>
+<!-- ============================================================ Hero -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="postcard">
+      <img src="img/aerea-lagoas-dunas-1920.webp" srcset="img/aerea-lagoas-dunas-960.webp 960w, img/aerea-lagoas-dunas-1920.webp 1920w" sizes="100vw" alt="" fetchpriority="high">
+      <div class="post-inner">
+        <div>
+          <h1>Viva sua melhor experiência <span class="sun">nos Lençóis.</span></h1>
+          <p class="hero-sub">Lagoas cristalinas, pôr do sol nas dunas, a revoada dos guarás e o céu estrelado. Passeios em 4x4, barco e quadriciclo saindo de Santo Amaro.</p>
+          <div class="hero-ctas">
+            <a href="#" data-wa class="btn btn-wa" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Reservar pelo WhatsApp</a>
+            <a href="#passeios" class="btn btn-ghost">Ver os 8 passeios <svg><use href="#i-arrow"/></svg></a>
+          </div>
+        </div>
+        <aside class="ticket" aria-label="Resumo">
+          <div class="ticket-top">
+            <img src="img/lencois-mtur-simbolo-branco.svg" alt="">
+            <div><small>Embarque</small><b>Lençóis Maranhenses</b></div>
+          </div>
+          <dl class="ticket-body">
+            <div><dt>Saída</dt><dd>Santo Amaro</dd></div>
+            <div><dt>Roteiros</dt><dd>8 opções</dd></div>
+            <div><dt>Transporte</dt><dd>4x4 · barco · quadriciclo</dd></div>
+            <div><dt>Horários</dt><dd>Das 9h às estrelas</dd></div>
+          </dl>
+          <div class="ticket-foot"><span class="hand">bora pras dunas!</span><svg><use href="#i-rose"/></svg></div>
+        </aside>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ Sobre -->
+<section class="sec" id="sobre">
+  <div class="wrap about">
+    <div class="mosaic" data-in>
+      <div><img src="img/guia-selfie-trilha-960.webp" alt="Guia da Lençóis MTur fazendo selfie com o grupo na trilha pelas dunas" loading="lazy"><span class="note">na trilha</span></div>
+      <div><img src="img/guia-fotografando-grupo-480.webp" alt="Guia fotografando o grupo nas dunas" loading="lazy"><span class="note">nas dunas</span></div>
+      <div><img src="img/jantar-velas-dunas-480.webp" alt="Casal jantando à luz de velas nas dunas à noite" loading="lazy"><span class="note">à noite</span></div>
+    </div>
+    <div class="about-copy" data-in style="--d:100ms">
+      <h2>Santo Amaro é o nosso <span class="lag">ponto de partida.</span></h2>
+      <p>De Santo Amaro do Maranhão saem alguns dos roteiros mais bonitos do Parque Nacional dos Lençóis Maranhenses: lagoas que quase ninguém visita, dunas a perder de vista e povoados onde o almoço vem com rede para descansar.</p>
+      <p>A Lençóis MTur monta passeios para todos os ritmos, do dia inteiro nas lagoas às experiências do fim da tarde e da noite. Você escolhe, chama no WhatsApp e a gente organiza o resto.</p>
+      <div class="chips">
+        <span class="chip"><svg><use href="#i-car"/></svg>4x4 e quadriciclo</span>
+        <span class="chip"><svg><use href="#i-boat"/></svg>Voadeira e embarcação</span>
+        <span class="chip"><svg><use href="#i-sun"/></svg>Lagoas e pôr do sol</span>
+        <span class="chip"><svg><use href="#i-moon"/></svg>Passeio noturno</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ Passeios -->
+<section class="sec tint" id="passeios">
+  <div class="wrap">
+    <div class="head split" data-in>
+      <div>
+        <h2>Escolha <span class="lag">o seu</span> passeio.</h2>
+      </div>
+      <p>Filtre pelo tempo que você tem. Toque em um passeio para ver o roteiro completo, o que não está incluso e reservar direto pelo WhatsApp.</p>
+    </div>
+    <div class="filters" role="group" aria-label="Filtrar passeios" id="filters"></div>
+    <div class="tours" id="tours"></div>
+  </div>
+</section>
+
+<!-- ============================================================ Linha do tempo -->
+<section class="sec on-deep" id="seu-dia">
+  <div class="wrap">
+    <div class="head split" data-in>
+      <div>
+        <h2>Do café da manhã <span class="lag">às estrelas.</span></h2>
+      </div>
+      <p>Veja em que horário cada passeio acontece e combine mais de um no mesmo dia, por exemplo um passeio de manhã com a revoada ou as estrelas à noite.</p>
+    </div>
+    <div class="day" data-in>
+      <div class="day-inner">
+        <div class="hours"><span></span><ol id="hours"></ol></div>
+        <div id="rows"></div>
+      </div>
+    </div>
+    <p class="scroll-hint">Arraste para o lado para ver o dia inteiro.</p>
+    <div class="legend">
+      <span><i style="background:#5FD3CE"></i>Durante o dia</span>
+      <span><i style="background:#FFB08F"></i>Pôr do sol</span>
+      <span><i style="background:#9DB4FF"></i>Noite</span>
+    </div>
+    <p class="day-tip"><span class="hand">dica:</span> a taxa municipal de R$ 10,00 vale por 3 dias, então dá para fazer vários passeios com a mesma taxa.</p>
+  </div>
+</section>
+
+<!-- ============================================================ Como reservar -->
+<section class="sec" id="reservar">
+  <div class="wrap">
+    <div class="head" data-in>
+      <h2>Três paradas <span class="sun">até a duna.</span></h2>
+    </div>
+    <div class="trail">
+      <span class="trail-line" aria-hidden="true"></span>
+      <div class="stop" data-in><div class="pin">1</div><h3>Escolha o roteiro</h3><p>Veja os passeios e o horário de cada um. Na dúvida, a gente ajuda a montar a programação dos seus dias em Santo Amaro.</p></div>
+      <div class="stop" data-in style="--d:90ms"><div class="pin">2</div><h3>Chame no WhatsApp</h3><p>Mande o passeio, a data e quantas pessoas vão. Você recebe o valor, o horário e o ponto de encontro.</p></div>
+      <div class="stop" data-in style="--d:180ms"><div class="pin">3</div><h3>Aproveite</h3><p>Com tudo confirmado, é chegar no horário com protetor solar, roupa de banho e câmera carregada.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ Dúvidas -->
+<section class="sec tint" id="duvidas">
+  <div class="wrap faq-wrap">
+    <div class="faq-side" data-in>
+      <div class="head">
+        <h2>Antes de <span class="lag">arrumar a mala.</span></h2>
+      </div>
+      <div class="ask">
+        <b>Não achou sua pergunta?</b>
+        <p>Pergunte direto pra gente. A resposta vem pelo WhatsApp.</p>
+        <a class="btn btn-wa" data-wa href="#" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Perguntar no WhatsApp</a>
+      </div>
+    </div>
+    <div data-in style="--d:100ms">
+      <details class="qa">
+        <summary>Existe alguma taxa além do passeio?<i><svg><use href="#i-plus"/></svg></i></summary>
+        <p>Sim. Santo Amaro cobra uma taxa municipal de R$ 10,00, válida por 3 dias, que não está inclusa nos passeios. No Circuito Betânia, dependendo da época, também há uma taxa de travessia de R$ 10,00.</p>
+      </details>
+      <details class="qa">
+        <summary>O almoço está incluso?<i><svg><use href="#i-plus"/></svg></i></summary>
+        <p>Os circuitos de dia inteiro (Betânia, Ponta Verde e Rancharia) têm parada para almoço na comunidade, com descanso em redes. No Betânia o almoço é pago à parte. Confirme os detalhes do seu roteiro pelo WhatsApp.</p>
+      </details>
+      <details class="qa">
+        <summary>Tenho pouco tempo. Qual passeio escolher?<i><svg><use href="#i-plus"/></svg></i></summary>
+        <p>Os de meio período cabem em uma manhã ou uma tarde: Andorinhas e Gaivota (09h às 12h ou 14h às 18h, com pôr do sol) e América (09h às 12h ou 14h às 17h). No fim do dia, dá para incluir a Revoada dos Guarás, a partir das 16h, ou a Contemplação das Estrelas, às 19h.</p>
+      </details>
+      <details class="qa">
+        <summary>Vocês buscam na hospedagem?<i><svg><use href="#i-plus"/></svg></i></summary>
+        <p>Nos circuitos Betânia e Ponta Verde, o 4x4 busca você na hospedagem no início do passeio. Nos outros roteiros, o ponto de encontro é combinado na reserva.</p>
+      </details>
+      <details class="qa">
+        <summary>Dá para fazer passeio de quadriciclo?<i><svg><use href="#i-plus"/></svg></i></summary>
+        <p>Sim. O Circuito Andorinhas e Gaivota, ideal para quem busca aventura, também pode ser feito de quadriciclo.</p>
+      </details>
+      <details class="qa">
+        <summary>Qual é o passeio mais tranquilo?<i><svg><use href="#i-plus"/></svg></i></summary>
+        <p>O Circuito América. O trajeto é de voadeira (barco) pelo encontro do Rio Alegre com o Lago Jangada e termina na Lagoa do América, com muita sombra e pouco movimento.</p>
+      </details>
+      <details class="qa">
+        <summary>Quanto custam os passeios?<i><svg><use href="#i-plus"/></svg></i></summary>
+        <p>O valor depende do roteiro, da data e do número de pessoas. Chame no WhatsApp com essas informações e receba o valor certinho para o seu grupo.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ Galeria -->
+<section class="sec" id="galeria">
+  <div class="wrap">
+    <div class="head split" data-in>
+      <div>
+        <h2>Fotos que <span class="lag">não precisam</span> de filtro.</h2>
+      </div>
+      <p>Mais fotos e vídeos dos passeios no Instagram <a href="https://instagram.com/lencoismtur" target="_blank" rel="noopener" style="color:var(--lagoon-ink);font-weight:700">@lencoismtur</a>.</p>
+    </div>
+    <div class="bento" id="bento"></div>
+  </div>
+</section>
+
+<!-- ============================================================ CTA final -->
+<section id="contato">
+  <div class="wrap">
+    <div class="chat-cta" data-in>
+      <div class="chat-copy">
+        <h2>Sua vaga começa com <span class="sun">um “oi”.</span></h2>
+        <p>Diga qual passeio você quer, a data e quantas pessoas vão. A gente responde com valor, horário e tudo o que você precisa levar.</p>
+        <div class="ctas">
+          <a href="#" data-wa class="btn btn-wa" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Chamar no WhatsApp</a>
+          <a href="https://instagram.com/lencoismtur" class="btn btn-ig" target="_blank" rel="noopener"><svg><use href="#i-ig"/></svg>@lencoismtur</a>
+        </div>
+      </div>
+      <div class="phone" aria-hidden="true">
+        <div class="screen">
+          <div class="screen-top"><img src="img/lencois-mtur-logo-fundo-azul.svg" alt=""><div><b>Lençóis MTur</b><small>98 99241-7329</small></div></div>
+          <div class="msgs">
+            <div class="msg me">Oi! Quero fazer o Circuito Emendadas. Somos 2 pessoas 🙂<time>14:02</time></div>
+            <div class="msg">Oi! Que bom ter você com a gente. Qual a data?<time>14:03</time></div>
+            <div class="msg me">Sábado que vem!<time>14:03</time></div>
+            <div class="msg typing"><span></span><span></span><span></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <img src="img/lencois-mtur-logo.svg" alt="Lençóis MTur" width="204" height="86">
+        <p>Passeios pelos Lençóis Maranhenses saindo de Santo Amaro do Maranhão.</p>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="#" data-wa target="_blank" rel="noopener">WhatsApp 98 99241-7329</a></li>
+          <li><a href="https://instagram.com/lencoismtur" target="_blank" rel="noopener">Instagram @lencoismtur</a></li>
+          <li>Santo Amaro do Maranhão, MA</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Passeios</h4>
+        <ul id="footA"></ul>
+      </div>
+      <div>
+        <h4>&nbsp;</h4>
+        <ul id="footB"></ul>
+      </div>
+    </div>
+    <div class="legal">
+      <p>© <span id="year">2026</span> Lençóis MTur</p>
+      <p>Site por <a href="https://logostecnologias.com" target="_blank" rel="noopener">Logos Tecnologias</a></p>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-fab" id="fab" data-wa href="#" target="_blank" rel="noopener" aria-label="Reservar pelo WhatsApp"><svg><use href="#i-wa"/></svg>Reservar</a>
+
+<dialog class="panel" id="panel" aria-labelledby="panelTitle">
+  <div class="panel-scroll" id="panelBody"></div>
+</dialog>
+
+<script>
+// -------------------------------------------------------------
+// Dados — tudo vem do portfólio da Lençóis MTur
+// -------------------------------------------------------------
+const WHATSAPP = "5598992417329";
+const MSG_PADRAO = "Olá! Vim pelo site e gostaria de informações sobre os passeios da Lençóis MTur.";
+const waHref = (msg) => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg || MSG_PADRAO)}`;
+
+// periodo: filtro | janelas: [inicio, fim, tipo, aberta?] em horas, para a linha do tempo
+const PASSEIOS = [
+  {
+    id: "betania", nome: "Circuito Betânia", periodo: "dia", categoria: "Dia inteiro",
+    horario: "09h às 18h", transporte: "4x4 + trilha de 10 min", ideal: "Um dia completo de lagoas",
+    janelas: [[9, 18, "day"]],
+    curta: "Trilha pelas dunas, banho em lagoas, almoço no Povoado de Betânia e redes sobre o Rio Alegre.",
+    fotos: [["grupo-lagoa", "Grupo na beira de uma lagoa entre as dunas"], ["aerea-lagoa-grupo", "Vista aérea de uma lagoa com o grupo na areia"]],
+    sobre: [
+      "O passeio começa com o veículo 4x4 buscando você na hospedagem a partir das 09h. Para chegar às lagoas de Betânia, fazemos uma trilha de 10 minutos pelas dunas, com muita aventura, paisagens paradisíacas de várias lagoas e uma imensidão de areia.",
+      "Pela manhã, paramos para fotos e banho em duas lagoas. Depois seguimos para o almoço no charmoso Povoado de Betânia e, após a refeição, uma pausa para descanso em redes sobre as águas do Rio Alegre, um momento relaxante e único.",
+      "Retornamos à tarde com mais uma parada em outra lagoa, fechando o dia com um pôr do sol inesquecível.",
+    ],
+    destaques: ["Busca na hospedagem em 4x4", "Banho em três lagoas", "Redes sobre o Rio Alegre", "Pôr do sol nas dunas"],
+    naoIncluso: ["Almoço", "Taxa municipal: R$ 10,00 (válida por 3 dias)", "Taxa da travessia: R$ 10,00 (dependendo da época)"],
+  },
+  {
+    id: "emendadas", nome: "Circuito Emendadas", periodo: "tarde", categoria: "Tarde e noite",
+    horario: "14h às 19h", transporte: "4x4 (jardineira) + caminhada", ideal: "Pôr do sol e caminhada noturna",
+    janelas: [[14, 17.5, "day"], [17.5, 19, "eve"]],
+    curta: "Caminhada pela área de preservação, vista do alto da duna e volta sob a Via Láctea.",
+    fotos: [["grupo-por-do-sol", "Família no alto das dunas ao pôr do sol"], ["casal-noite-dunas", "Casal nas dunas à noite"]],
+    sobre: [
+      "Realizado exclusivamente à tarde, este circuito é considerado um dos melhores passeios da região. As Emendadas ficam em uma área de preservação próxima ao coração do Parque Nacional.",
+      "O passeio começa com um trajeto de 30 minutos em veículo 4x4 (jardineira) até o limite da área de preservação, onde a entrada de veículos é proibida. A partir dali, seguimos em uma caminhada de 30 minutos com paradas para banho. Depois subimos uma duna com uma vista panorâmica espetacular, uma das mais belas paisagens dos Lençóis Maranhenses.",
+      "Depois de um lindo pôr do sol, começa a caminhada noturna de volta, quando dá para apreciar a Via Láctea, as estrelas e a lua (dependendo da época). Uma experiência única para quem quer embarcar em uma aventura deslumbrante.",
+    ],
+    destaques: ["Área de preservação sem veículos", "Vista panorâmica do alto da duna", "Pôr do sol", "Caminhada noturna sob as estrelas"],
+    naoIncluso: ["Taxa municipal: R$ 10,00 (válida por 3 dias)"],
+  },
+  {
+    id: "andorinhas", nome: "Andorinhas e Gaivota", periodo: "meio", categoria: "Meio período",
+    horario: "Manhã ou tarde", horarios: "Manhã: 09h às 12h · Tarde: 14h às 18h (com pôr do sol)",
+    transporte: "4x4 ou quadriciclo", ideal: "Aventura em poucas horas",
+    janelas: [[9, 12, "day"], [14, 17.3, "day"], [17.3, 18, "eve"]],
+    curta: "Um dos circuitos mais famosos de Santo Amaro, cenário de “Da Cor do Pecado” e “Casa de Areia”.",
+    fotos: [["placa-andorinhas-gaivota", "Placa indicando as lagoas da Andorinha, da Gaivota e do Recanto"], ["guia-fotografando-casal", "Guia fotografando um casal na beira da lagoa"]],
+    sobre: [
+      "Este é um dos circuitos mais antigos e famosos de Santo Amaro! O lugar serviu de cenário para cenas da novela “Da Cor do Pecado” e do filme “Casa de Areia”.",
+      "O roteiro inclui paradas para banhos relaxantes em 2 ou 3 lagoas e muito tempo para fotos. Durante o rali em veículo 4x4, passamos por diversas outras lagoas. É um passeio mais curto, porém muito proveitoso para conhecer a beleza da região.",
+    ],
+    destaques: ["Banho em 2 ou 3 lagoas", "Rali de 4x4 pelas dunas", "Turno da tarde com pôr do sol", "Opção de quadriciclo"],
+    naoIncluso: ["Taxa municipal: R$ 10,00 (válida por 3 dias)"],
+    obs: "Ideal para quem busca aventura: este circuito também pode ser feito de quadriciclo!",
+  },
+  {
+    id: "ponta-verde", nome: "Circuito Ponta Verde", periodo: "dia", categoria: "Dia inteiro",
+    horario: "09h às 18h", transporte: "4x4 (jardineira)", ideal: "Tranquilidade e privacidade",
+    janelas: [[9, 17.3, "day"], [17.3, 18, "eve"]],
+    curta: "Lagoas quase sempre vazias numa área reservada do Parque e pôr do sol sobre o Lago Jangada.",
+    fotos: [["aerea-duna-grupo", "Vista aérea de uma duna com o grupo caminhando ao lado da lagoa"], ["lagoa-caminhante", "Lagoa vazia com uma pessoa caminhando na duna"]],
+    sobre: [
+      "O passeio começa com o 4x4 (jardineira) buscando você na hospedagem. Seguimos por uma trilha em área de vegetação até entrar nas dunas, com paisagens exuberantes de areia e lagoas. No caminho, é comum avistar aves e animais nativos da região.",
+      "A Ponta Verde fica em uma área mais reservada do Parque Nacional, ideal para quem busca tranquilidade e exclusividade. Suas lagoas são pouco frequentadas, o que garante um visual incrível e muito mais privacidade: quase sempre estão vazias ou com pouco movimento.",
+      "O roteiro inclui uma parada para almoço e descanso na comunidade. Depois visitamos mais uma lagoa e fechamos o dia com um pôr do sol espetacular com vista para o Lago Jangada.",
+    ],
+    destaques: ["Busca na hospedagem", "Lagoas pouco frequentadas", "Aves e animais nativos", "Pôr do sol no Lago Jangada"],
+    naoIncluso: [],
+  },
+  {
+    id: "america", nome: "Circuito América", periodo: "meio", categoria: "Meio período · barco",
+    horario: "Manhã ou tarde", horarios: "Manhã: 09h às 12h · Tarde: 14h às 17h",
+    transporte: "Voadeira (barco)", ideal: "Relaxar depois das aventuras",
+    janelas: [[9, 12, "day"], [14, 17, "day"]],
+    curta: "Voadeira pelo encontro do Rio Alegre com o Lago Jangada até a Lagoa do América, cheia de sombra.",
+    fotos: [["aerea-guarda-sol", "Vista aérea de um guarda-sol na beira da lagoa"], ["aerea-lagoa-verde", "Vista aérea de uma lagoa verde entre as dunas"]],
+    sobre: [
+      "O roteiro do América é ótimo para quem quer relaxar depois de tantas aventuras e busca um diferencial, já que o trajeto é feito de voadeira (barco). É um passeio super tranquilo e relaxante!",
+      "O circuito começa com um trajeto de voadeira pelo encontro do Rio Alegre com o Lago Jangada de Santo Amaro. O percurso dura apenas 30 minutos e mostra paisagens deslumbrantes e diferentes das dunas. Ao final, paramos na Lagoa do América, um lugar com muita sombra e sossego.",
+      "Perfeito para quem quer curtir uma vibe de tranquilidade, já que a lagoa não é tão movimentada.",
+    ],
+    destaques: ["Trajeto de 30 min de voadeira", "Encontro do Rio Alegre com o Lago Jangada", "Lagoa com sombra", "Pouco movimento"],
+    naoIncluso: ["Taxa municipal: R$ 10,00"],
+  },
+  {
+    id: "rancharia", nome: "Circuito Rancharia", periodo: "dia", categoria: "Dia inteiro",
+    horario: "09h às 18h", transporte: "4x4", ideal: "Experiência mais privativa",
+    janelas: [[9, 17.3, "day"], [17.3, 18, "eve"]],
+    curta: "A Lagoa da Rancharia, uma das maiores do Parque, almoço regional com redes e uma lagoa exclusiva.",
+    fotos: [["aerea-faixa-areia", "Vista aérea de uma faixa de areia entre lagoas"], ["casal-dunas-lagoa", "Casal caminhando nas dunas perto da lagoa"]],
+    sobre: [
+      "Este é um dos circuitos mais encantadores dos Lençóis. Por ser mais distante e pouco frequentado, oferece uma experiência privativa: o roteiro perfeito para quem quer fugir do fluxo turístico principal.",
+      "Pela manhã, visitamos a Lagoa da Rancharia, uma das maiores e melhores do Parque Nacional, com águas cristalinas e o cenário ideal para fotos e vídeos. Depois do banho, paramos na comunidade para um excelente almoço regional com descanso em redes.",
+      "À tarde, seguimos para mais uma lagoa exclusiva do circuito e terminamos com um pôr do sol inesquecível.",
+    ],
+    destaques: ["Lagoa da Rancharia", "Pouco movimento", "Almoço regional com redes", "Lagoa exclusiva do circuito"],
+    naoIncluso: [],
+  },
+  {
+    id: "guaras", nome: "Revoada dos Guarás", periodo: "noite", categoria: "Fim de tarde",
+    horario: "A partir das 16h", transporte: "Embarcação em Primeira Cruz", ideal: "Um espetáculo fora das dunas",
+    janelas: [[16, 18.5, "eve", true]],
+    curta: "Em Primeira Cruz, a 15 minutos de Santo Amaro, o céu fica vermelho com a revoada dos guarás.",
+    fotos: [["por-do-sol-cadeiras", "Pessoas assistindo ao pôr do sol nas dunas"], ["grupo-sol-poente", "Grupo nas dunas com o sol se pondo"]],
+    sobre: [
+      "O passeio começa a partir das 16h, um pouco antes do pôr do sol. Fugindo dos roteiros tradicionais de dunas e lagoas, ele acontece em Primeira Cruz, cidade vizinha a apenas 15 minutos de Santo Amaro.",
+      "Embarcamos para contemplar uma das melhores revoadas da região. A grande quantidade de guarás colore o cenário de um vermelho intenso: um espetáculo inesquecível, com o céu avermelhado e um lindo pôr do sol para completar.",
+    ],
+    destaques: ["Uma das melhores revoadas da região", "Pôr do sol", "Passeio de barco", "Fora do roteiro das dunas"],
+    naoIncluso: [],
+  },
+  {
+    id: "estrelas", nome: "Contemplação das Estrelas", periodo: "noite", categoria: "Noturno",
+    horario: "19h · 3 horas", transporte: "4x4 (jardineira)", ideal: "Ver os Lençóis à noite",
+    janelas: [[19, 22, "night"]],
+    curta: "A Via Láctea sobre as dunas. Nas noites de luar, os Lençóis ficam iluminados.",
+    fotos: [["lua-coqueiros", "Lua cheia nascendo atrás dos coqueiros"], ["lua-cheia", "Lua cheia no céu escuro"]],
+    sobre: [
+      "O foco principal do passeio é a observação do céu estrelado e da Via Láctea. Nas noites de luar, as dunas ficam iluminadas, revelando uma paisagem surpreendente e bem diferente da visita durante o dia.",
+      "Viva uma experiência única e inesquecível nos Lençóis Maranhenses à noite.",
+    ],
+    destaques: ["Via Láctea a olho nu", "Dunas iluminadas pelo luar", "3 horas de passeio"],
+    naoIncluso: [],
+  },
+];
+
+const FILTROS = [["todos", "Todos"], ["dia", "Dia inteiro"], ["meio", "Meio período"], ["tarde", "Tarde"], ["noite", "Fim de tarde e noite"]];
+
+// [foto, legenda, formato: t = alta, w = larga]
+const BENTO = [
+  ["aerea-faixa-areia", "vista do drone", "t"],
+  ["dunas-entardecer", "fim de tarde", "w"],
+  ["grupo-alto-duna", "no alto da duna", "t"],
+  ["pulo-por-do-sol", "pôr do sol", ""],
+  ["guia-selfie-grupo", "a turma", ""],
+  ["casal-alto-duna", "a dois", "t"],
+  ["casal-caminhando-dunas", "nas dunas", ""],
+  ["aerea-lagoas-dunas", "lagoas", "w"],
+  ["grupo-por-do-sol", "fim do dia", ""],
+  ["aerea-lagoa-verde", "água verde", "w"],
+];
+
+// -------------------------------------------------------------
+// Render
+// -------------------------------------------------------------
+const $ = (s, el = document) => el.querySelector(s);
+const esc = (s) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+const pic = (base, alt, sizes) =>
+  `<img src="img/${base}-480.webp" srcset="img/${base}-480.webp 480w, img/${base}-960.webp 960w, img/${base}-1920.webp 1920w" sizes="${sizes}" alt="${esc(alt)}" loading="lazy" decoding="async">`;
+
+document.querySelectorAll("[data-wa]").forEach((a) => (a.href = waHref()));
+$("#year").textContent = new Date().getFullYear();
+
+
+$("#filters").innerHTML = FILTROS.map(([k, l]) => {
+  const n = k === "todos" ? PASSEIOS.length : PASSEIOS.filter((p) => p.periodo === k).length;
+  return `<button data-f="${k}" aria-pressed="${k === "todos"}">${l}<small>${n}</small></button>`;
+}).join("");
+
+$("#tours").innerHTML = PASSEIOS.map((p, i) => `
+  <button class="tour" data-open="${p.id}" data-p="${p.periodo}" data-in style="--d:${(i % 4) * 60}ms">
+    ${pic(p.fotos[0][0], p.fotos[0][1], "(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw")}
+    <span class="when"><svg><use href="#i-clock"/></svg>${p.horario}</span>
+    <span class="tour-txt">
+      <span class="cat">${p.categoria}</span>
+      <h3>${p.nome}</h3>
+      <p>${p.curta}</p>
+      <span class="more"><i><svg><use href="#i-arrow"/></svg></i>Ver roteiro</span>
+    </span>
+  </button>`).join("");
+
+$("#filters").addEventListener("click", (e) => {
+  const b = e.target.closest("[data-f]");
+  if (!b) return;
+  document.querySelectorAll("#filters button").forEach((x) => x.setAttribute("aria-pressed", x === b));
+  document.querySelectorAll(".tour").forEach((t) => (t.hidden = b.dataset.f !== "todos" && t.dataset.p !== b.dataset.f));
+});
+
+// Linha do tempo: 8h às 22h
+const hora = (h) => `${Math.floor(h)}h${h % 1 ? String(Math.round((h % 1) * 60)).padStart(2, "0") : ""}`;
+const H0 = 8, H1 = 22, pct = (h) => ((h - H0) / (H1 - H0)) * 100;
+$("#hours").innerHTML = Array.from({ length: (H1 - H0) / 2 + 1 }, (_, i) => H0 + i * 2)
+  .map((h) => `<li style="left:${pct(h)}%">${h}h</li>`).join("");
+$("#rows").innerHTML = PASSEIOS.map((p) => `
+  <div class="row">
+    <button data-open="${p.id}">${p.nome.replace("Circuito ", "")}</button>
+    <div class="track">${p.janelas.map(([a, b, t, aberta], i) => `
+      <span class="bar ${t === "day" ? "" : t} ${aberta ? "open" : ""}" style="left:${pct(a)}%;width:${pct(b) - pct(a)}%"
+        title="${p.horarios || p.horario}">${t === "day" || i === 0 ? (aberta ? `a partir das ${hora(a)}` : hora(a)) : ""}</span>`).join("")}
+    </div>
+  </div>`).join("");
+
+const bentoSizes = { t: "(min-width:768px) 25vw, 50vw", w: "(min-width:768px) 50vw, 100vw", "": "(min-width:768px) 25vw, 50vw" };
+$("#bento").innerHTML = BENTO.map(([b, cap, f], i) =>
+  `<figure class="${f}" data-in style="--d:${(i % 4) * 50}ms">${pic(b, cap, bentoSizes[f])}<figcaption>${cap}</figcaption></figure>`).join("");
+
+const meio = Math.ceil(PASSEIOS.length / 2);
+const fl = (p) => `<li><button data-open="${p.id}">${p.nome.replace("Circuito ", "")}</button></li>`;
+$("#footA").innerHTML = PASSEIOS.slice(0, meio).map(fl).join("");
+$("#footB").innerHTML = PASSEIOS.slice(meio).map(fl).join("");
+
+// -------------------------------------------------------------
+// Painel do passeio
+// -------------------------------------------------------------
+const panel = $("#panel");
+const ticks = (items, icon, cls = "") =>
+  `<ul class="ticks ${cls}">${items.map((x) => `<li><svg><use href="#${icon}"/></svg>${x}</li>`).join("")}</ul>`;
+
+function openTour(id) {
+  const p = PASSEIOS.find((x) => x.id === id);
+  if (!p) return;
+  $("#panelBody").innerHTML = `
+    <div class="panel-hero">
+      <span class="panel-grab"></span>
+      <img src="img/${p.fotos[0][0]}-960.webp" alt="${esc(p.fotos[0][1])}">
+      <h3 id="panelTitle">${p.nome}</h3>
+      <button class="panel-close" data-close-panel aria-label="Fechar"><svg><use href="#i-x"/></svg></button>
+    </div>
+    <div class="panel-body">
+      <div class="facts">
+        <div class="fact"><small>Horário</small><b>${p.horarios || p.horario}</b></div>
+        <div class="fact"><small>Transporte</small><b>${p.transporte}</b></div>
+        <div class="fact"><small>Ideal para</small><b>${p.ideal}</b></div>
+      </div>
+      ${p.obs ? `<p class="callout">${p.obs}</p>` : ""}
+      <h4>O roteiro</h4>
+      <div class="story">${p.sobre.map((t) => `<p>${t}</p>`).join("")}</div>
+      <div class="panel-pic"><img src="img/${p.fotos[1][0]}-960.webp" alt="${esc(p.fotos[1][1])}" loading="lazy"></div>
+      <h4>Destaques</h4>
+      ${ticks(p.destaques, "i-check")}
+      ${p.naoIncluso.length ? `<h4>Não incluso</h4>${ticks(p.naoIncluso, "i-minus", "out")}` : ""}
+    </div>
+    <div class="panel-cta">
+      <a class="btn btn-wa" target="_blank" rel="noopener" href="${waHref(`Olá! Vim pelo site e quero reservar o ${p.nome} com a Lençóis MTur. Data: ___ · Pessoas: ___`)}"><svg><use href="#i-wa"/></svg>Reservar ${p.nome.replace("Circuito ", "")}</a>
+    </div>`;
+  panel.showModal();
+  document.body.classList.add("locked");
+  $(".panel-scroll", panel).scrollTop = 0;
+  history.replaceState(null, "", `#${p.id}`);
+}
+panel.addEventListener("close", () => {
+  document.body.classList.remove("locked");
+  history.replaceState(null, "", location.pathname + location.search);
+});
+panel.addEventListener("click", (e) => {
+  if (e.target === panel || e.target.closest("[data-close-panel]")) panel.close();
+});
+document.addEventListener("click", (e) => {
+  const b = e.target.closest("[data-open]");
+  if (b) openTour(b.dataset.open);
+});
+// link direto: site.com/#emendadas abre o painel do passeio
+if (PASSEIOS.some((p) => `#${p.id}` === location.hash)) openTour(location.hash.slice(1));
+
+// -------------------------------------------------------------
+// Menu, botão flutuante e entrada dos blocos
+// -------------------------------------------------------------
+const sheet = $("#sheet"), openBtn = $("#openMenu");
+const setMenu = (open) => {
+  sheet.classList.toggle("open", open);
+  sheet.setAttribute("aria-hidden", !open);
+  openBtn.setAttribute("aria-expanded", open);
+  document.body.classList.toggle("locked", open);
+};
+openBtn.addEventListener("click", () => setMenu(true));
+sheet.addEventListener("click", (e) => { if (e.target.closest("[data-close-menu]")) setMenu(false); });
+addEventListener("keydown", (e) => { if (e.key === "Escape" && sheet.classList.contains("open")) setMenu(false); });
+
+// o botão flutuante aparece depois do hero, que já tem o CTA dele
+const fab = $("#fab");
+const onScroll = () => fab.classList.toggle("show", scrollY > innerHeight * 0.6);
+onScroll();
+addEventListener("scroll", onScroll, { passive: true });
+
+const io = new IntersectionObserver((es) => es.forEach((en) => {
+  if (en.isIntersecting) { en.target.dataset.in = "1"; io.unobserve(en.target); }
+}), { rootMargin: "0px 0px -8% 0px" });
+document.querySelectorAll("[data-in]").forEach((el) => io.observe(el));
+</script>
+</body>
+</html>

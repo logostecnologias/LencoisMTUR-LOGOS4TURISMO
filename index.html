@@ -122,7 +122,8 @@
   .hero .wrap{max-width:none;padding:0}
   .postcard{position:relative;overflow:hidden;min-height:max(680px,100svh);display:flex;align-items:flex-end;color:#fff;isolation:isolate}
   
-  .postcard>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+  .post-photo,.post-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+  .post-note{display:none}
   .postcard::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgb(3 49 75 / 10%) 0%,rgb(3 49 75 / 0%) 30%,rgb(3 49 75 / 72%) 72%,rgb(3 49 75 / 92%) 100%)}
   .post-inner{width:100%;padding:110px var(--gutter) 40px;display:grid;gap:28px}
   @media (min-width:900px){.post-inner{padding-bottom:64px;grid-template-columns:1.35fr .65fr;align-items:end}}
@@ -148,6 +149,26 @@
   .ticket-foot{padding:.9rem 1.1rem;display:flex;align-items:center;justify-content:space-between;gap:.5rem}
   .ticket-foot .hand{font-size:1.45rem;color:var(--sun-ink);line-height:1}
   .ticket-foot svg{width:1.6rem;height:1.6rem;color:var(--lagoon)}
+
+  /* Celular: a foto vertical do drone vira o cartão e a areia se dissolve na página.
+     Texto escuro sobre a areia clara, em vez de branco sobre foto cortada. */
+  @media (max-width:899px){
+    .postcard{display:grid;min-height:0;align-items:start;color:var(--deep);background:var(--bg)}
+    .postcard>*{grid-area:1/1}
+    .post-photo{position:relative;inset:auto;height:auto;aspect-ratio:960/1710;z-index:-2}
+    .post-photo img{filter:brightness(1.2) saturate(1.1)}
+    .postcard::before{background:linear-gradient(180deg,rgb(251 253 252 / 0%) 0,rgb(251 253 252 / 0%) calc(100vw * 1.78 * .5),rgb(251 253 252 / 88%) calc(100vw * 1.78 * .72),var(--bg) calc(100vw * 1.78 * .9))}
+    .post-inner{align-self:start;padding:calc(100vw * 1.78 * .56) var(--gutter) 48px;gap:0}
+    .post-note{display:flex;align-items:flex-start;gap:2px;position:absolute;left:calc(53% - 22px);top:calc(100vw * 1.78 * .385);margin:0;font-size:1.45rem;line-height:.95;color:var(--deep);transform:rotate(-4deg)}
+    .post-note svg{width:46px;height:36px;margin-top:10px;transform:scaleX(-1) rotate(-10deg);order:-1;flex-shrink:0}
+    .hero h1{font-size:clamp(2.6rem,11.5vw,3.6rem);line-height:.95;letter-spacing:-.04em}
+    .hero h1 .sun{color:var(--sun-ink)}
+    .hero-sub{margin-top:1rem;font-size:1.02rem;line-height:1.55;color:var(--muted)}
+    .hero-ctas{display:grid;gap:.6rem;margin-top:1.5rem}
+    .hero-ctas .btn{width:100%;padding:1.05rem 1.2rem;font-size:1rem}
+    .hero .btn-ghost{background:transparent;color:var(--deep);border:2px solid var(--deep);backdrop-filter:none}
+    .hero .btn-ghost:hover{background:var(--deep);color:#fff}
+  }
 
 
   /* ---------------------------------------------------------- Seções */
@@ -425,7 +446,15 @@
 <section class="hero" id="top">
   <div class="wrap">
     <div class="postcard">
-      <img src="img/aerea-lagoas-dunas-1920.webp" srcset="img/aerea-lagoas-dunas-960.webp 960w, img/aerea-lagoas-dunas-1920.webp 1920w" sizes="100vw" alt="" fetchpriority="high">
+      <picture class="post-photo">
+        <source media="(max-width:899px)" srcset="img/aerea-faixa-areia-960.webp 960w, img/aerea-faixa-areia-1920.webp 1920w" sizes="100vw">
+        <img src="img/aerea-lagoas-dunas-1920.webp" srcset="img/aerea-lagoas-dunas-960.webp 960w, img/aerea-lagoas-dunas-1920.webp 1920w" sizes="100vw" alt="" fetchpriority="high">
+      </picture>
+      <!-- só no celular: anotação apontando o grupo na duna -->
+      <p class="post-note hand" aria-hidden="true">
+        <svg viewBox="0 0 80 60"><path d="M74 6C58 4 40 10 30 24S16 46 8 52" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><path d="M6 40l2 13 12-5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>o grupo,<br>lá embaixo</span>
+      </p>
       <div class="post-inner">
         <div>
           <h1>Viva sua melhor experiência <span class="sun">nos Lençóis.</span></h1>

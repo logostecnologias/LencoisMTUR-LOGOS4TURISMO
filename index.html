@@ -217,6 +217,7 @@
   @media (min-width:1024px){.tours{grid-template-columns:repeat(4,1fr);gap:18px}}
   .tour{position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-height:430px;border-radius:var(--r-lg);overflow:hidden;color:#fff;text-align:left;isolation:isolate;box-shadow:0 18px 40px -26px rgb(3 49 75 / 70%)}
   .tour[hidden]{display:none}
+  @media (min-width:640px){.tour.wide{grid-column:1/-1;min-height:380px}.tour.wide img{object-position:50% 70%}.tour.wide .tour-txt{max-width:560px;padding:28px}}
   .tour img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform 1s var(--ease)}
   .tour::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgb(3 49 75 / 0%) 35%,rgb(3 49 75 / 88%) 85%)}
   .tour:hover img{transform:scale(1.06)}
@@ -461,7 +462,7 @@
           <p class="hero-sub">Lagoas cristalinas, pôr do sol nas dunas, a revoada dos guarás e o céu estrelado. Passeios em 4x4, barco e quadriciclo saindo de Santo Amaro.</p>
           <div class="hero-ctas">
             <a href="#" data-wa class="btn btn-wa" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Reservar pelo WhatsApp</a>
-            <a href="#passeios" class="btn btn-ghost">Ver os 8 passeios <svg><use href="#i-arrow"/></svg></a>
+            <a href="#passeios" class="btn btn-ghost">Ver os 9 passeios <svg><use href="#i-arrow"/></svg></a>
           </div>
         </div>
         <aside class="ticket" aria-label="Resumo">
@@ -471,7 +472,7 @@
           </div>
           <dl class="ticket-body">
             <div><dt>Saída</dt><dd>Santo Amaro</dd></div>
-            <div><dt>Roteiros</dt><dd>8 opções</dd></div>
+            <div><dt>Roteiros</dt><dd>9 opções</dd></div>
             <div><dt>Transporte</dt><dd>4x4 · barco · quadriciclo</dd></div>
             <div><dt>Horários</dt><dd>Das 9h às estrelas</dd></div>
           </dl>
@@ -697,7 +698,7 @@ const PASSEIOS = [
     horario: "09h às 18h", transporte: "4x4 + trilha de 10 min", ideal: "Um dia completo de lagoas",
     janelas: [[9, 18, "day"]],
     curta: "Trilha pelas dunas, banho em lagoas, almoço no Povoado de Betânia e redes sobre o Rio Alegre.",
-    fotos: [["grupo-lagoa", "Grupo na beira de uma lagoa entre as dunas"], ["aerea-lagoa-grupo", "Vista aérea de uma lagoa com o grupo na areia"]],
+    fotos: [["betania-1", "Vista aérea do Povoado de Betânia, com o rio e as lagoas entre as dunas"], ["betania-2", "Pessoas tomando banho em uma lagoa azul-turquesa entre as dunas"]],
     sobre: [
       "O passeio começa com o veículo 4x4 buscando você na hospedagem a partir das 09h. Para chegar às lagoas de Betânia, fazemos uma trilha de 10 minutos pelas dunas, com muita aventura, paisagens paradisíacas de várias lagoas e uma imensidão de areia.",
       "Pela manhã, paramos para fotos e banho em duas lagoas. Depois seguimos para o almoço no charmoso Povoado de Betânia e, após a refeição, uma pausa para descanso em redes sobre as águas do Rio Alegre, um momento relaxante e único.",
@@ -711,7 +712,7 @@ const PASSEIOS = [
     horario: "14h às 19h", transporte: "4x4 (jardineira) + caminhada", ideal: "Pôr do sol e caminhada noturna",
     janelas: [[14, 17.5, "day"], [17.5, 19, "eve"]],
     curta: "Caminhada pela área de preservação, vista do alto da duna e volta sob a Via Láctea.",
-    fotos: [["grupo-por-do-sol", "Família no alto das dunas ao pôr do sol"], ["casal-noite-dunas", "Casal nas dunas à noite"]],
+    fotos: [["emendadas-1", "Pôr do sol sobre as lagoas das Emendadas, com duas pessoas na duna"], ["emendadas-2", "Família de mãos dadas nas dunas sob o céu estrelado"]],
     sobre: [
       "Realizado exclusivamente à tarde, este circuito é considerado um dos melhores passeios da região. As Emendadas ficam em uma área de preservação próxima ao coração do Parque Nacional.",
       "O passeio começa com um trajeto de 30 minutos em veículo 4x4 (jardineira) até o limite da área de preservação, onde a entrada de veículos é proibida. A partir dali, seguimos em uma caminhada de 30 minutos com paradas para banho. Depois subimos uma duna com uma vista panorâmica espetacular, uma das mais belas paisagens dos Lençóis Maranhenses.",
@@ -726,7 +727,7 @@ const PASSEIOS = [
     transporte: "4x4 ou quadriciclo", ideal: "Aventura em poucas horas",
     janelas: [[9, 12, "day"], [14, 17.3, "day"], [17.3, 18, "eve"]],
     curta: "Um dos circuitos mais famosos de Santo Amaro, cenário de “Da Cor do Pecado” e “Casa de Areia”.",
-    fotos: [["placa-andorinhas-gaivota", "Placa indicando as lagoas da Andorinha, da Gaivota e do Recanto"], ["guia-fotografando-casal", "Guia fotografando um casal na beira da lagoa"]],
+    fotos: [["placa-andorinhas-gaivota", "Placa indicando as lagoas da Andorinha, da Gaivota e do Recanto"], ["andorinhas-2", "Guia fotografando visitantes no balanço dentro da lagoa"]],
     sobre: [
       "Este é um dos circuitos mais antigos e famosos de Santo Amaro! O lugar serviu de cenário para cenas da novela “Da Cor do Pecado” e do filme “Casa de Areia”.",
       "O roteiro inclui paradas para banhos relaxantes em 2 ou 3 lagoas e muito tempo para fotos. Durante o rali em veículo 4x4, passamos por diversas outras lagoas. É um passeio mais curto, porém muito proveitoso para conhecer a beleza da região.",
@@ -740,7 +741,7 @@ const PASSEIOS = [
     horario: "09h às 18h", transporte: "4x4 (jardineira)", ideal: "Tranquilidade e privacidade",
     janelas: [[9, 17.3, "day"], [17.3, 18, "eve"]],
     curta: "Lagoas quase sempre vazias numa área reservada do Parque e pôr do sol sobre o Lago Jangada.",
-    fotos: [["aerea-duna-grupo", "Vista aérea de uma duna com o grupo caminhando ao lado da lagoa"], ["lagoa-caminhante", "Lagoa vazia com uma pessoa caminhando na duna"]],
+    fotos: [["ponta-verde-1", "Vista aérea de uma faixa de duna entre lagoas verdes na Ponta Verde"], ["ponta-verde-2", "Guia fazendo selfie com o grupo comemorando no alto da duna"]],
     sobre: [
       "O passeio começa com o 4x4 (jardineira) buscando você na hospedagem. Seguimos por uma trilha em área de vegetação até entrar nas dunas, com paisagens exuberantes de areia e lagoas. No caminho, é comum avistar aves e animais nativos da região.",
       "A Ponta Verde fica em uma área mais reservada do Parque Nacional, ideal para quem busca tranquilidade e exclusividade. Suas lagoas são pouco frequentadas, o que garante um visual incrível e muito mais privacidade: quase sempre estão vazias ou com pouco movimento.",
@@ -755,7 +756,7 @@ const PASSEIOS = [
     transporte: "Voadeira (barco)", ideal: "Relaxar depois das aventuras",
     janelas: [[9, 12, "day"], [14, 17, "day"]],
     curta: "Voadeira pelo encontro do Rio Alegre com o Lago Jangada até a Lagoa do América, cheia de sombra.",
-    fotos: [["aerea-guarda-sol", "Vista aérea de um guarda-sol na beira da lagoa"], ["aerea-lagoa-verde", "Vista aérea de uma lagoa verde entre as dunas"]],
+    fotos: [["aerea-guarda-sol", "Vista aérea de um guarda-sol na beira da lagoa"], ["america-2", "Grupo de braços erguidos na beira da Lagoa do América"]],
     sobre: [
       "O roteiro do América é ótimo para quem quer relaxar depois de tantas aventuras e busca um diferencial, já que o trajeto é feito de voadeira (barco). É um passeio super tranquilo e relaxante!",
       "O circuito começa com um trajeto de voadeira pelo encontro do Rio Alegre com o Lago Jangada de Santo Amaro. O percurso dura apenas 30 minutos e mostra paisagens deslumbrantes e diferentes das dunas. Ao final, paramos na Lagoa do América, um lugar com muita sombra e sossego.",
@@ -769,7 +770,7 @@ const PASSEIOS = [
     horario: "09h às 18h", transporte: "4x4", ideal: "Experiência mais privativa",
     janelas: [[9, 17.3, "day"], [17.3, 18, "eve"]],
     curta: "A Lagoa da Rancharia, uma das maiores do Parque, almoço regional com redes e uma lagoa exclusiva.",
-    fotos: [["aerea-faixa-areia", "Vista aérea de uma faixa de areia entre lagoas"], ["casal-dunas-lagoa", "Casal caminhando nas dunas perto da lagoa"]],
+    fotos: [["aerea-faixa-areia", "Vista aérea de uma faixa de areia entre lagoas"], ["rancharia-2", "Guia com prancha na beira da Lagoa da Rancharia"]],
     sobre: [
       "Este é um dos circuitos mais encantadores dos Lençóis. Por ser mais distante e pouco frequentado, oferece uma experiência privativa: o roteiro perfeito para quem quer fugir do fluxo turístico principal.",
       "Pela manhã, visitamos a Lagoa da Rancharia, uma das maiores e melhores do Parque Nacional, com águas cristalinas e o cenário ideal para fotos e vídeos. Depois do banho, paramos na comunidade para um excelente almoço regional com descanso em redes.",
@@ -783,7 +784,7 @@ const PASSEIOS = [
     horario: "A partir das 16h", transporte: "Embarcação em Primeira Cruz", ideal: "Um espetáculo fora das dunas",
     janelas: [[16, 18.5, "eve", true]],
     curta: "Em Primeira Cruz, a 15 minutos de Santo Amaro, o céu fica vermelho com a revoada dos guarás.",
-    fotos: [["por-do-sol-cadeiras", "Pessoas assistindo ao pôr do sol nas dunas"], ["grupo-sol-poente", "Grupo nas dunas com o sol se pondo"]],
+    fotos: [["guaras-1", "Guarás vermelhos pousados no manguezal e em revoada no céu"], ["guaras-2", "Vista aérea do manguezal com guarás vermelhos entre as árvores"]],
     sobre: [
       "O passeio começa a partir das 16h, um pouco antes do pôr do sol. Fugindo dos roteiros tradicionais de dunas e lagoas, ele acontece em Primeira Cruz, cidade vizinha a apenas 15 minutos de Santo Amaro.",
       "Embarcamos para contemplar uma das melhores revoadas da região. A grande quantidade de guarás colore o cenário de um vermelho intenso: um espetáculo inesquecível, com o céu avermelhado e um lindo pôr do sol para completar.",
@@ -796,13 +797,27 @@ const PASSEIOS = [
     horario: "19h · 3 horas", transporte: "4x4 (jardineira)", ideal: "Ver os Lençóis à noite",
     janelas: [[19, 22, "night"]],
     curta: "A Via Láctea sobre as dunas. Nas noites de luar, os Lençóis ficam iluminados.",
-    fotos: [["lua-coqueiros", "Lua cheia nascendo atrás dos coqueiros"], ["lua-cheia", "Lua cheia no céu escuro"]],
+    fotos: [["estrelas-1", "Céu estrelado com a Via Láctea sobre os Lençóis"], ["estrelas-2", "Casal à luz de velas nas dunas, sob o céu da noite"]],
     sobre: [
       "O foco principal do passeio é a observação do céu estrelado e da Via Láctea. Nas noites de luar, as dunas ficam iluminadas, revelando uma paisagem surpreendente e bem diferente da visita durante o dia.",
       "Viva uma experiência única e inesquecível nos Lençóis Maranhenses à noite.",
     ],
     destaques: ["Via Láctea a olho nu", "Dunas iluminadas pelo luar", "3 horas de passeio"],
     naoIncluso: [],
+  },
+  {
+    id: "combo", nome: "Combo Betânia + Emendadas", periodo: "dia", categoria: "Dia inteiro · combo", largo: true,
+    horario: "09h às 19h", transporte: "4x4 + caminhada de ~5 km", ideal: "Pouco tempo, os dois roteiros principais",
+    janelas: [[9, 17.5, "day"], [17.5, 19, "eve"]],
+    curta: "Os dois principais roteiros de Santo Amaro num só dia: lagoas e redes em Betânia, caminhada até as Emendadas e volta sob as estrelas.",
+    fotos: [["combo-1", "Visitantes fazendo fotos na beira de uma grande lagoa entre as dunas"], ["combo-2", "Pessoa contemplando o pôr do sol sobre as lagoas"]],
+    sobre: [
+      "Para quem tem pouco tempo e quer aproveitar ao máximo, conhecendo os dois principais roteiros de Santo Amaro, é totalmente possível fazer o Combo Betânia + Emendadas em um único dia!",
+      "Pela manhã, exploramos o Circuito Betânia, com paradas para banho nas lagoas cristalinas e uma pausa especial para o almoço com aquele merecido descanso nas redes. Na parte da tarde, saindo de Betânia, iniciamos a grande aventura rumo às Emendadas: uma caminhada de aproximadamente 5 km cercada por dunas imponentes, lagoas deslumbrantes e paisagens de tirar o fôlego.",
+      "Para fechar com chave de ouro, contemplamos um pôr do sol inesquecível e retornamos em um emocionante mini trekking noturno sob o céu estrelado dos Lençóis Maranhenses.",
+    ],
+    destaques: ["Betânia e Emendadas no mesmo dia", "Banho em lagoas cristalinas", "Descanso nas redes", "Pôr do sol e mini trekking noturno"],
+    naoIncluso: ["Almoço", "Taxa municipal: R$ 10,00 (válida por 3 dias)"],
   },
 ];
 
@@ -840,8 +855,8 @@ $("#filters").innerHTML = FILTROS.map(([k, l]) => {
 }).join("");
 
 $("#tours").innerHTML = PASSEIOS.map((p, i) => `
-  <button class="tour" data-open="${p.id}" data-p="${p.periodo}" data-in style="--d:${(i % 4) * 60}ms">
-    ${pic(p.fotos[0][0], p.fotos[0][1], "(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw")}
+  <button class="tour${p.largo ? " wide" : ""}" data-open="${p.id}" data-p="${p.periodo}" data-in style="--d:${(i % 4) * 60}ms">
+    ${pic(p.fotos[0][0], p.fotos[0][1], p.largo ? "100vw" : "(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw")}
     <span class="when"><svg><use href="#i-clock"/></svg>${p.horario}</span>
     <span class="tour-txt">
       <span class="cat">${p.categoria}</span>

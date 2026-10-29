@@ -227,6 +227,8 @@
   .tour .cat{font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#9FE3DF}
   .tour h3{margin-top:.45rem;font-size:1.55rem;line-height:1.02}
   .tour p{margin-top:.55rem;font-size:.9rem;color:rgb(255 255 255 / 85%);line-height:1.5}
+  .tour .tag{margin-top:.85rem;display:flex;width:fit-content;align-items:baseline;gap:.35rem;padding:.4rem .75rem;border-radius:10px;background:rgb(255 255 255 / 14%);backdrop-filter:blur(6px);font-family:var(--title);font-weight:700;font-size:1.1rem;letter-spacing:-.01em}
+  .tour .tag small{font-family:var(--body);font-size:.74rem;font-weight:600;color:rgb(255 255 255 / 78%);letter-spacing:0}
   .tour .more{margin-top:1rem;display:inline-flex;align-items:center;gap:.45rem;font-weight:700;font-size:.9rem;color:#fff}
   .tour .more i{display:inline-flex;width:2rem;height:2rem;border-radius:50%;background:var(--sun);align-items:center;justify-content:center;transition:transform .3s var(--ease)}
   .tour:hover .more i{transform:rotate(-45deg)}
@@ -260,6 +262,21 @@
   .ticks li{display:flex;gap:.6rem;font-size:.95rem;line-height:1.45}
   .ticks li svg{width:1.2rem;height:1.2rem;flex-shrink:0;color:var(--lagoon)}
   .ticks.out li svg{color:var(--sun)}
+  .prices{margin-top:.6rem;display:grid;gap:8px}
+  @media (min-width:440px){.prices.two{grid-template-columns:1fr 1fr}}
+  .price{border:1.5px solid var(--line);border-radius:14px;padding:.95rem 1rem}
+  .price.priv{background:var(--deep);border-color:var(--deep);color:#fff}
+  .price small{display:block;font-size:.66rem;text-transform:uppercase;letter-spacing:.1em;font-weight:700;color:var(--lagoon-ink)}
+  .price.priv small{color:#5FD3CE}
+  .price b{display:block;margin-top:.25rem;font-family:var(--title);font-size:1.7rem;line-height:1;letter-spacing:-.03em;color:var(--deep)}
+  .price.priv b{color:#fff}
+  .price em{display:block;margin-top:.3rem;font-style:normal;font-size:.82rem;color:var(--muted)}
+  .price.priv em{color:rgb(255 255 255 / 70%)}
+  .price ul{list-style:none;margin:.75rem 0 0;padding:.7rem 0 0;border-top:1px dashed var(--line);display:grid;gap:.3rem;font-size:.86rem;line-height:1.35}
+  .price.priv ul{border-color:rgb(255 255 255 / 20%)}
+  .price li{display:flex;gap:.45rem}
+  .price li svg{width:1rem;height:1rem;flex-shrink:0;margin-top:.1rem;color:var(--lagoon)}
+  .price.priv li svg{color:#5FD3CE}
   .callout{margin-top:1.25rem;padding:1rem 1.1rem;border-radius:14px;background:var(--sun-soft);color:var(--sun-ink);font-weight:600;font-size:.92rem}
   .panel-pic{margin-top:1.5rem;border-radius:var(--r-md);overflow:hidden;aspect-ratio:16/10}
   .panel-pic img{width:100%;height:100%;object-fit:cover}
@@ -599,7 +616,7 @@
       </details>
       <details class="qa">
         <summary>Quanto custam os passeios?<i><svg><use href="#i-plus"/></svg></i></summary>
-        <p>O valor depende do roteiro, da data e do número de pessoas. Chame no WhatsApp com essas informações e receba o valor certinho para o seu grupo.</p>
+        <p>Por pessoa, os passeios vão de R$ 130 a R$ 220, com água, cadeiras e guarda-sol inclusos na maioria deles. Também dá para fechar o passeio privado só para o seu grupo (de R$ 800 a R$ 2.200), com bebidas e mimos inclusos. O valor de cada roteiro está no card do passeio. A taxa municipal de R$ 10,00 é cobrada à parte.</p>
       </details>
     </div>
   </div>
@@ -691,12 +708,18 @@ const WHATSAPP = "5598992417329";
 const MSG_PADRAO = "Olá! Vim pelo site e gostaria de informações sobre os passeios da Lençóis MTur.";
 const waHref = (msg) => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg || MSG_PADRAO)}`;
 
+// o que vai junto em cada opção de valor
+const KIT_BASE = ["Água", "Cadeiras e guarda-sol"];
+const KIT_COMPLETO = ["Água", "Refrigerante pet", "Água de coco", "Cesta de frutas", "Castanhas", "Raquetes de frescobol"];
+
 // periodo: filtro | janelas: [inicio, fim, tipo, aberta?] em horas, para a linha do tempo
+// preco: pessoa (R$ por pessoa) e/ou privado (R$ do grupo, até "ate" pessoas), com o que está incluso em cada um
 const PASSEIOS = [
   {
     id: "betania", nome: "Circuito Betânia", periodo: "dia", categoria: "Dia inteiro",
     horario: "09h às 18h", transporte: "4x4 + trilha de 10 min", ideal: "Um dia completo de lagoas",
     janelas: [[9, 18, "day"]],
+    preco: { pessoa: 180, pessoaInclui: KIT_BASE, privado: 1400, ate: 5, privadoInclui: KIT_COMPLETO },
     curta: "Trilha pelas dunas, banho em lagoas, almoço no Povoado de Betânia e redes sobre o Rio Alegre.",
     fotos: [["betania-1", "Vista aérea do Povoado de Betânia, com o rio e as lagoas entre as dunas"], ["betania-2", "Pessoas tomando banho em uma lagoa azul-turquesa entre as dunas"]],
     sobre: [
@@ -711,6 +734,7 @@ const PASSEIOS = [
     id: "emendadas", nome: "Circuito Emendadas", periodo: "tarde", categoria: "Tarde e noite",
     horario: "14h às 19h", transporte: "4x4 (jardineira) + caminhada", ideal: "Pôr do sol e caminhada noturna",
     janelas: [[14, 17.5, "day"], [17.5, 19, "eve"]],
+    preco: { pessoa: 180, privado: 1300, ate: 5, privadoInclui: ["Água", "Refrigerante pet", "Água de coco"] },
     curta: "Caminhada pela área de preservação, vista do alto da duna e volta sob a Via Láctea.",
     fotos: [["emendadas-1", "Pôr do sol sobre as lagoas das Emendadas, com duas pessoas na duna"], ["emendadas-2", "Família de mãos dadas nas dunas sob o céu estrelado"]],
     sobre: [
@@ -726,6 +750,7 @@ const PASSEIOS = [
     horario: "Manhã ou tarde", horarios: "Manhã: 09h às 12h · Tarde: 14h às 18h (com pôr do sol)",
     transporte: "4x4 ou quadriciclo", ideal: "Aventura em poucas horas",
     janelas: [[9, 12, "day"], [14, 17.3, "day"], [17.3, 18, "eve"]],
+    preco: { pessoa: 130, pessoaInclui: KIT_BASE, privado: 800, ate: 5, privadoInclui: ["Água", "Refrigerante pet", "Água de coco", "Cadeiras e guarda-sol"] },
     curta: "Um dos circuitos mais famosos de Santo Amaro, cenário de “Da Cor do Pecado” e “Casa de Areia”.",
     fotos: [["placa-andorinhas-gaivota", "Placa indicando as lagoas da Andorinha, da Gaivota e do Recanto"], ["andorinhas-2", "Guia fotografando visitantes no balanço dentro da lagoa"]],
     sobre: [
@@ -740,6 +765,7 @@ const PASSEIOS = [
     id: "ponta-verde", nome: "Circuito Ponta Verde", periodo: "dia", categoria: "Dia inteiro",
     horario: "09h às 18h", transporte: "4x4 (jardineira)", ideal: "Tranquilidade e privacidade",
     janelas: [[9, 17.3, "day"], [17.3, 18, "eve"]],
+    preco: { pessoa: 190, pessoaInclui: KIT_BASE, privado: 1500, ate: 5, privadoInclui: KIT_COMPLETO },
     curta: "Lagoas quase sempre vazias numa área reservada do Parque e pôr do sol sobre o Lago Jangada.",
     fotos: [["ponta-verde-1", "Vista aérea de uma faixa de duna entre lagoas verdes na Ponta Verde"], ["ponta-verde-2", "Guia fazendo selfie com o grupo comemorando no alto da duna"]],
     sobre: [
@@ -755,6 +781,7 @@ const PASSEIOS = [
     horario: "Manhã ou tarde", horarios: "Manhã: 09h às 12h · Tarde: 14h às 17h",
     transporte: "Voadeira (barco)", ideal: "Relaxar depois das aventuras",
     janelas: [[9, 12, "day"], [14, 17, "day"]],
+    preco: { pessoa: 130, pessoaInclui: KIT_BASE, privado: 800, ate: 5, privadoInclui: ["Água", "Água de coco", "Refrigerante pet"] },
     curta: "Voadeira pelo encontro do Rio Alegre com o Lago Jangada até a Lagoa do América, cheia de sombra.",
     fotos: [["aerea-guarda-sol", "Vista aérea de um guarda-sol na beira da lagoa"], ["america-2", "Grupo de braços erguidos na beira da Lagoa do América"]],
     sobre: [
@@ -769,6 +796,7 @@ const PASSEIOS = [
     id: "rancharia", nome: "Circuito Rancharia", periodo: "dia", categoria: "Dia inteiro",
     horario: "09h às 18h", transporte: "4x4", ideal: "Experiência mais privativa",
     janelas: [[9, 17.3, "day"], [17.3, 18, "eve"]],
+    preco: { pessoa: 220, pessoaInclui: KIT_BASE, privado: 1600, ate: 5, privadoInclui: KIT_COMPLETO },
     curta: "A Lagoa da Rancharia, uma das maiores do Parque, almoço regional com redes e uma lagoa exclusiva.",
     fotos: [["aerea-faixa-areia", "Vista aérea de uma faixa de areia entre lagoas"], ["rancharia-2", "Guia com prancha na beira da Lagoa da Rancharia"]],
     sobre: [
@@ -783,6 +811,7 @@ const PASSEIOS = [
     id: "guaras", nome: "Revoada dos Guarás", periodo: "noite", categoria: "Fim de tarde",
     horario: "A partir das 16h", transporte: "Embarcação em Primeira Cruz", ideal: "Um espetáculo fora das dunas",
     janelas: [[16, 18.5, "eve", true]],
+    preco: { privado: 1200 },
     curta: "Em Primeira Cruz, a 15 minutos de Santo Amaro, o céu fica vermelho com a revoada dos guarás.",
     fotos: [["guaras-1", "Guarás vermelhos pousados no manguezal e em revoada no céu"], ["guaras-2", "Vista aérea do manguezal com guarás vermelhos entre as árvores"]],
     sobre: [
@@ -796,6 +825,7 @@ const PASSEIOS = [
     id: "estrelas", nome: "Contemplação das Estrelas", periodo: "noite", categoria: "Noturno",
     horario: "19h · 3 horas", transporte: "4x4 (jardineira)", ideal: "Ver os Lençóis à noite",
     janelas: [[19, 22, "night"]],
+    preco: { pessoa: 140, privado: 800, ate: 4, privadoInclui: ["Água", "Refrigerante pet", "Mimos"] },
     curta: "A Via Láctea sobre as dunas. Nas noites de luar, os Lençóis ficam iluminados.",
     fotos: [["estrelas-1", "Céu estrelado com a Via Láctea sobre os Lençóis"], ["estrelas-2", "Casal à luz de velas nas dunas, sob o céu da noite"]],
     sobre: [
@@ -809,6 +839,7 @@ const PASSEIOS = [
     id: "combo", nome: "Combo Betânia + Emendadas", periodo: "dia", categoria: "Dia inteiro · combo", largo: true,
     horario: "09h às 19h", transporte: "4x4 + caminhada de ~5 km", ideal: "Pouco tempo, os dois roteiros principais",
     janelas: [[9, 17.5, "day"], [17.5, 19, "eve"]],
+    preco: { privado: 2200, ate: 6, privadoInclui: KIT_COMPLETO },
     curta: "Os dois principais roteiros de Santo Amaro num só dia: lagoas e redes em Betânia, caminhada até as Emendadas e volta sob as estrelas.",
     fotos: [["combo-1", "Visitantes fazendo fotos na beira de uma grande lagoa entre as dunas"], ["combo-2", "Pessoa contemplando o pôr do sol sobre as lagoas"]],
     sobre: [
@@ -845,6 +876,12 @@ const esc = (s) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">"
 const pic = (base, alt, sizes) =>
   `<img src="img/${base}-480.webp" srcset="img/${base}-480.webp 480w, img/${base}-960.webp 960w, img/${base}-1920.webp 1920w" sizes="${sizes}" alt="${esc(alt)}" loading="lazy" decoding="async">`;
 
+const brl = (n) => `R$ ${n.toLocaleString("pt-BR")}`;
+// selo do card: o menor valor que a pessoa vai encontrar
+const tag = ({ preco: q }) => q.pessoa
+  ? `<small>a partir de</small>${brl(q.pessoa)}<small>/pessoa</small>`
+  : `<small>privado</small>${brl(q.privado)}<small>${q.ate ? `até ${q.ate} pessoas` : "o grupo"}</small>`;
+
 document.querySelectorAll("[data-wa]").forEach((a) => (a.href = waHref()));
 $("#year").textContent = new Date().getFullYear();
 
@@ -862,6 +899,7 @@ $("#tours").innerHTML = PASSEIOS.map((p, i) => `
       <span class="cat">${p.categoria}</span>
       <h3>${p.nome}</h3>
       <p>${p.curta}</p>
+      <span class="tag">${tag(p)}</span>
       <span class="more"><i><svg><use href="#i-arrow"/></svg></i>Ver roteiro</span>
     </span>
   </button>`).join("");
@@ -903,6 +941,19 @@ const panel = $("#panel");
 const ticks = (items, icon, cls = "") =>
   `<ul class="ticks ${cls}">${items.map((x) => `<li><svg><use href="#${icon}"/></svg>${x}</li>`).join("")}</ul>`;
 
+const priceCard = (rotulo, valor, unidade, inclui, cls = "") => `
+  <div class="price ${cls}">
+    <small>${rotulo}</small><b>${brl(valor)}</b><em>${unidade}</em>
+    ${inclui ? `<ul>${inclui.map((x) => `<li><svg><use href="#i-check"/></svg>${x}</li>`).join("")}</ul>` : ""}
+  </div>`;
+function prices({ preco: q }) {
+  const cards = [];
+  if (q.pessoa) cards.push(priceCard("Por pessoa", q.pessoa, "valor por pessoa", q.pessoaInclui));
+  if (q.privado) cards.push(priceCard(q.pessoa ? "Privado" : "Somente privado", q.privado,
+    q.ate ? `para o grupo, até ${q.ate} pessoas` : "valor do grupo", q.privadoInclui, "priv"));
+  return `<h4>Valores</h4><div class="prices ${cards.length > 1 ? "two" : ""}">${cards.join("")}</div>`;
+}
+
 function openTour(id) {
   const p = PASSEIOS.find((x) => x.id === id);
   if (!p) return;
@@ -920,6 +971,7 @@ function openTour(id) {
         <div class="fact"><small>Ideal para</small><b>${p.ideal}</b></div>
       </div>
       ${p.obs ? `<p class="callout">${p.obs}</p>` : ""}
+      ${prices(p)}
       <h4>O roteiro</h4>
       <div class="story">${p.sobre.map((t) => `<p>${t}</p>`).join("")}</div>
       <div class="panel-pic"><img src="img/${p.fotos[1][0]}-960.webp" alt="${esc(p.fotos[1][1])}" loading="lazy"></div>
@@ -928,7 +980,7 @@ function openTour(id) {
       ${p.naoIncluso.length ? `<h4>Não incluso</h4>${ticks(p.naoIncluso, "i-minus", "out")}` : ""}
     </div>
     <div class="panel-cta">
-      <a class="btn btn-wa" target="_blank" rel="noopener" href="${waHref(`Olá! Vim pelo site e quero reservar o ${p.nome} com a Lençóis MTur. Data: ___ · Pessoas: ___`)}"><svg><use href="#i-wa"/></svg>Reservar ${p.nome.replace("Circuito ", "")}</a>
+      <a class="btn btn-wa" target="_blank" rel="noopener" href="${waHref(`Olá! Vim pelo site e quero reservar o ${p.nome} com a Lençóis MTur. Data: ___ · Pessoas: ___${p.preco.pessoa ? " · Por pessoa ou privado: ___" : " (privado)"}`)}"><svg><use href="#i-wa"/></svg>Reservar ${p.nome.replace("Circuito ", "")}</a>
     </div>`;
   panel.showModal();
   document.body.classList.add("locked");

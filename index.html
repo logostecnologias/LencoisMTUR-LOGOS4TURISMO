@@ -74,6 +74,7 @@
   @media (min-width:768px){:root{--gutter:max(36px,calc((100vw - 1680px) / 2 + 36px))}}
   @media (min-width:768px){.wrap{padding:0 36px}}
   .hand{font-family:var(--hand);font-weight:700;letter-spacing:0}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
 
   .btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;border-radius:14px;padding:1rem 1.35rem;font-weight:700;font-size:.95rem;transition:transform .2s var(--ease),background-color .2s,box-shadow .2s}
@@ -201,9 +202,28 @@
   .about-copy h2{font-size:clamp(2.1rem,4.6vw,3.5rem);font-weight:800;color:var(--deep);text-wrap:balance}
   .about-copy h2 .lag{color:var(--lagoon)}
   .about-copy>p{margin-top:1.1rem;color:var(--muted);font-size:1.05rem;text-wrap:pretty}
+  .about-copy>.about-kicker{margin:0 0 .5rem;font-size:1.75rem;color:var(--sun-ink);line-height:1}
+  .about-copy>.about-sign{margin-top:1.4rem;display:flex;align-items:baseline;gap:.7rem;color:var(--muted);font-size:.92rem;font-weight:600}
+  .about-sign .hand{font-size:2.1rem;color:var(--deep);line-height:1}
+
+  /* Destaque: 9 anos */
+  .since{position:relative;overflow:hidden;background:var(--deep);color:#fff;padding:84px 0}
+  @media (min-width:768px){.since{padding:120px 0}}
+  .since-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.38}
+  .since::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgb(3 49 75 / 92%) 25%,rgb(3 49 75 / 45%))}
+  .since-inner{position:relative;z-index:1;display:grid;gap:20px;align-items:center}
+  @media (min-width:900px){.since-inner{grid-template-columns:auto 1fr;gap:64px}}
+  .since-num{margin:0;display:flex;align-items:flex-end;gap:.4rem;line-height:.8}
+  .since-num b{font-family:var(--title);font-weight:800;font-size:clamp(8rem,22vw,15rem);letter-spacing:-.06em;color:var(--sun)}
+  .since-num .hand{font-size:clamp(2.4rem,6vw,3.6rem);color:#FFB08F;transform:rotate(-6deg);margin-bottom:.5em}
+  .since h2{font-size:clamp(2.1rem,4.8vw,3.8rem);font-weight:800;text-wrap:balance;max-width:20ch}
+  .since h2 .sun{color:#FFB08F}
+  .since-inner p:not(.since-num){margin-top:1.1rem;font-size:1.12rem;color:rgb(255 255 255 / 80%);max-width:34rem;text-wrap:pretty}
+  .since .btn{margin-top:1.75rem}
   .chips{margin-top:1.75rem;display:flex;flex-wrap:wrap;gap:.6rem}
   .chip{display:inline-flex;align-items:center;gap:.55rem;padding:.7rem 1rem;border-radius:14px;background:#fff;border:1.5px solid var(--line);font-weight:600;font-size:.92rem;color:var(--deep)}
   .chip svg{width:1.2rem;height:1.2rem;color:var(--lagoon)}
+  @media (max-width:559px){.chips{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}.chip{padding:.65rem .7rem;gap:.45rem;font-size:.84rem;line-height:1.25;text-wrap:balance}.chip svg{flex-shrink:0}}
 
   /* ---------------------------------------------------------- Passeios */
   .filters{display:flex;gap:.5rem;overflow-x:auto;scrollbar-width:none;margin:0 -20px 28px;padding:0 20px}
@@ -355,6 +375,19 @@
   .chat-copy h2{margin:0;font-size:clamp(2.3rem,5.2vw,4.2rem);font-weight:800;line-height:.95;text-wrap:balance}
   .chat-copy h2 .sun{color:#FFB08F}
   .chat-copy p{margin-top:1.1rem;font-size:1.06rem;color:rgb(255 255 255 / 85%);max-width:30rem}
+
+  /* Textos de apoio fechados no celular, com setinha para abrir */
+  .fold-btn{display:none}
+  @media (max-width:767px){
+    .fold:not(.open){display:none}
+    .fold-btn{display:inline-flex;align-items:center;gap:.35rem;margin-top:.9rem;padding:.35rem 0;font-size:.92rem;font-weight:700;color:var(--lagoon-ink)}
+    .fold-btn svg{width:1.05rem;height:1.05rem;transition:transform .25s var(--ease)}
+    .fold-btn[aria-expanded="true"] svg{transform:rotate(180deg)}
+    .head .fold-btn{margin-top:-.4rem;justify-self:start}
+    .on-deep .fold-btn{color:#5FD3CE}
+    .chat-copy .fold-btn{color:#fff}
+    .chat-copy .fold-btn+.ctas{margin-top:1.1rem}
+  }
   .chat-copy .ctas{margin-top:1.75rem;display:flex;flex-wrap:wrap;gap:.7rem}
   .chat-copy .btn-ig{background:rgb(255 255 255 / 14%);color:#fff;border:1.5px solid rgb(255 255 255 / 35%)}
   .phone{padding:0 22px 34px;display:flex;justify-content:center;align-items:flex-end}
@@ -427,6 +460,7 @@
     <div class="pill">
       <a href="#top" class="logo" aria-label="Lençóis MTur, início"><img src="img/lencois-mtur-logo-horizontal.svg" alt="Lençóis MTur" width="151" height="38"></a>
       <nav aria-label="Seções">
+        <a href="#sobre">Quem somos</a>
         <a href="#passeios">Passeios</a>
         <a href="#seu-dia">Monte seu dia</a>
         <a href="#reservar">Como reservar</a>
@@ -448,6 +482,7 @@
       <button class="menu-btn" data-close-menu aria-label="Fechar menu" style="display:inline-flex"><svg><use href="#i-x"/></svg></button>
     </div>
     <nav aria-label="Seções">
+      <a href="#sobre" data-close-menu>Quem somos</a>
       <a href="#passeios" data-close-menu>Passeios</a>
       <a href="#seu-dia" data-close-menu>Monte seu dia</a>
       <a href="#reservar" data-close-menu>Como reservar</a>
@@ -509,15 +544,32 @@
       <div><img src="img/jantar-velas-dunas-480.webp" alt="Casal jantando à luz de velas nas dunas à noite" loading="lazy"><span class="note">à noite</span></div>
     </div>
     <div class="about-copy" data-in style="--d:100ms">
-      <h2>Santo Amaro é o nosso <span class="lag">ponto de partida.</span></h2>
-      <p>De Santo Amaro do Maranhão saem alguns dos roteiros mais bonitos do Parque Nacional dos Lençóis Maranhenses: lagoas que quase ninguém visita, dunas a perder de vista e povoados onde o almoço vem com rede para descansar.</p>
-      <p>A Lençóis MTur monta passeios para todos os ritmos, do dia inteiro nas lagoas às experiências do fim da tarde e da noite. Você escolhe, chama no WhatsApp e a gente organiza o resto.</p>
+      <p class="about-kicker hand">o paraíso pelos olhos de quem nasceu aqui</p>
+      <h2>Bem-vindo aos Lençóis pelo olhar de <span class="lag">quem é daqui.</span></h2>
+      <p>Olá, eu sou o Maiton, nativo de Santo Amaro do Maranhão e fundador da Lençóis MTur. Há 9 anos transformo o meu “quintal de casa” em cenário de memórias inesquecíveis para viajantes do mundo todo. Desde 2018, atuo profissionalmente como guia e condutor de turismo nas dunas mais bonitas do Brasil.</p>
+      <p>Para mim, os Lençóis não são só um destino fotográfico: são um lugar vivo, cheio de histórias e segredos que só quem cresceu aqui conhece. Por isso o foco da Lençóis MTur não é vender passeio comum, e sim proporcionar experiências autênticas, seguras e profundas.</p>
+      <p class="about-sign"><span class="hand">Maiton</span> fundador e guia nativo</p>
       <div class="chips">
         <span class="chip"><svg><use href="#i-car"/></svg>4x4 e quadriciclo</span>
         <span class="chip"><svg><use href="#i-boat"/></svg>Voadeira e embarcação</span>
         <span class="chip"><svg><use href="#i-sun"/></svg>Lagoas e pôr do sol</span>
         <span class="chip"><svg><use href="#i-moon"/></svg>Passeio noturno</span>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ Destaque: 9 anos -->
+<section class="since">
+  <picture class="since-bg">
+    <img src="img/dunas-entardecer-1920.webp" srcset="img/dunas-entardecer-960.webp 960w, img/dunas-entardecer-1920.webp 1920w" sizes="100vw" alt="" loading="lazy">
+  </picture>
+  <div class="wrap since-inner" data-in>
+    <p class="since-num" aria-hidden="true"><b>9</b><span class="hand">anos</span></p>
+    <div>
+      <h2><span class="sr-only">Há 9 anos </span>transformando os Lençóis Maranhenses em <span class="sun">lembranças eternas.</span></h2>
+      <p>Explore o paraíso de Santo Amaro com quem é daqui e vivencie experiências incríveis.</p>
+      <a href="#" data-wa class="btn btn-wa" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Falar com o Maiton</a>
     </div>
   </div>
 </section>
@@ -1020,6 +1072,24 @@ const fab = $("#fab");
 const onScroll = () => fab.classList.toggle("show", scrollY > innerHeight * 0.6);
 onScroll();
 addEventListener("scroll", onScroll, { passive: true });
+
+// Textos de apoio: no celular ficam fechados atrás de uma setinha (o CSS cuida do breakpoint)
+document.querySelectorAll(".head p, .chat-copy p").forEach((p, i) => {
+  if (p.textContent.trim().length < 90) return;
+  p.id ||= `fold-${i}`;
+  p.classList.add("fold");
+  const b = document.createElement("button");
+  b.className = "fold-btn";
+  b.setAttribute("aria-expanded", "false");
+  b.setAttribute("aria-controls", p.id);
+  b.innerHTML = `<span>Ver mais</span><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+  b.addEventListener("click", () => {
+    const open = p.classList.toggle("open");
+    b.setAttribute("aria-expanded", open);
+    b.querySelector("span").textContent = open ? "Ver menos" : "Ver mais";
+  });
+  p.after(b);
+});
 
 const io = new IntersectionObserver((es) => es.forEach((en) => {
   if (en.isIntersecting) { en.target.dataset.in = "1"; io.unobserve(en.target); }

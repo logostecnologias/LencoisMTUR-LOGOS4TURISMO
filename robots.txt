@@ -1,0 +1,23 @@
+# Lençóis MTur
+# Buscadores e assistentes de IA podem ler e citar o site inteiro.
+
+User-agent: *
+Allow: /
+Disallow: /tools/
+
+# Busca e citação em assistentes de IA
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+# Treino de modelos (liberado: quanto mais as IAs conhecem a marca, melhor)
+User-agent: GPTBot
+User-agent: ClaudeBot
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /tools/
+
+Sitemap: https://lencoismtur.com.br/sitemap.xml

@@ -24,7 +24,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Caveat:wght@500;700&family=DM+Sans:opsz,wght@9..40,400..700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="../../img/combo-1-1920.webp" imagesrcset="../../img/combo-1-960.webp 960w, ../../img/combo-1-1920.webp 1920w" imagesizes="100vw">
+<link rel="preload" as="image" href="../../img/combo-1-1280.webp" imagesrcset="../../img/combo-1-480.webp 480w, ../../img/combo-1-960.webp 960w, ../../img/combo-1-1280.webp 1280w, ../../img/combo-1-1920.webp 1920w" imagesizes="100vw" fetchpriority="high">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -42,10 +42,16 @@
       "about": {
         "@id": "https://lencoismtur.com.br/passeios/combo-betania-emendadas/#passeio"
       },
-      "primaryImageOfPage": "https://lencoismtur.com.br/img/og/combo-betania-emendadas.jpg",
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://lencoismtur.com.br/img/og/combo-betania-emendadas.jpg",
+        "width": 1200,
+        "height": 630
+      },
       "author": {
         "@id": "https://lencoismtur.com.br/#maiton"
       },
+      "datePublished": "2026-11-04",
       "dateModified": "2026-11-04",
       "breadcrumb": {
         "@id": "https://lencoismtur.com.br/passeios/combo-betania-emendadas/#trilha"
@@ -85,7 +91,6 @@
         "https://lencoismtur.com.br/img/combo-1-1920.webp",
         "https://lencoismtur.com.br/img/combo-2-1920.webp"
       ],
-      "touristType": "Pouco tempo, os dois roteiros principais",
       "provider": {
         "@id": "https://lencoismtur.com.br/#agencia"
       },
@@ -96,6 +101,16 @@
           "price": 2200,
           "priceCurrency": "BRL",
           "url": "https://lencoismtur.com.br/passeios/combo-betania-emendadas/",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": 2200,
+            "priceCurrency": "BRL",
+            "referenceQuantity": {
+              "@type": "QuantitativeValue",
+              "value": 1,
+              "unitText": "grupo"
+            }
+          },
           "eligibleQuantity": {
             "@type": "QuantitativeValue",
             "maxValue": 6,
@@ -137,13 +152,14 @@
     },
     {
       "@type": "FAQPage",
+      "@id": "https://lencoismtur.com.br/passeios/combo-betania-emendadas/#faq",
       "mainEntity": [
         {
           "@type": "Question",
           "name": "Quanto custa o Combo Betânia + Emendadas?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "R$ 2.200 no passeio privado para até 6 pessoas. A taxa municipal de Santo Amaro, de R$ 10,00 por pessoa e válida por 3 dias, é cobrada à parte."
+            "text": "O Combo Betânia + Emendadas custa R$ 2.200 no passeio privado para até 6 pessoas. A taxa municipal de Santo Amaro, de R$ 10,00 por pessoa e válida por 3 dias, é cobrada à parte."
           }
         },
         {
@@ -151,7 +167,7 @@
           "name": "Qual o horário do Combo Betânia + Emendadas?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "09h às 19h. O ponto de encontro é combinado na reserva pelo WhatsApp."
+            "text": "O Combo Betânia + Emendadas acontece das 09h às 19h, com transporte em 4x4 + caminhada de ~5 km. O ponto de encontro é combinado na reserva pelo WhatsApp."
           }
         },
         {
@@ -159,15 +175,15 @@
           "name": "O que está incluso no Combo Betânia + Emendadas?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No privado: água, refrigerante pet, água de coco, cesta de frutas, castanhas e raquetes de frescobol."
+            "text": "Combo Betânia + Emendadas: no passeio privado estão inclusos água, refrigerante pet, água de coco, cesta de frutas, castanhas e raquetes de frescobol."
           }
         },
         {
           "@type": "Question",
-          "name": "O que não está incluso?",
+          "name": "O que não está incluso no Combo Betânia + Emendadas?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Almoço e taxa municipal: R$ 10,00 (válida por 3 dias)."
+            "text": "Não estão inclusos no Combo Betânia + Emendadas: almoço e taxa municipal de R$ 10,00 (válida por 3 dias)."
           }
         },
         {
@@ -175,7 +191,7 @@
           "name": "Para quem o Combo Betânia + Emendadas é indicado?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Pouco tempo, os dois roteiros principais. Os destaques são betânia e Emendadas no mesmo dia, banho em lagoas cristalinas, descanso nas redes e pôr do sol e mini trekking noturno."
+            "text": "Para quem tem pouco tempo em Santo Amaro e quer fazer os dois roteiros principais, Betânia e Emendadas, no mesmo dia."
           }
         },
         {
@@ -622,6 +638,7 @@
   .tp-byline{margin-top:1.4rem;display:flex;flex-wrap:wrap;align-items:baseline;gap:.4rem .7rem;color:var(--muted);font-size:.9rem;font-weight:600}
   .tp-byline .hand{font-size:1.9rem;color:var(--deep);line-height:1}
   .tp-body .story p{margin-top:1rem;font-size:1.04rem;color:#34505F;line-height:1.75;text-wrap:pretty}
+  .tp-answer{margin-top:1rem;font-size:1.08rem;color:var(--text);line-height:1.7;text-wrap:pretty}
   .tp-note{margin-top:.9rem;font-size:.92rem;color:var(--muted)}
   .tp-pic{margin:1.75rem 0 0;border-radius:var(--r-lg);overflow:hidden;aspect-ratio:16/10}
   .tp-pic img{width:100%;height:100%;object-fit:cover}
@@ -698,14 +715,14 @@
 
 <main>
 <section class="tp-hero">
-  <img src="../../img/combo-1-1920.webp" srcset="../../img/combo-1-960.webp 960w, ../../img/combo-1-1920.webp 1920w" sizes="100vw" alt="Visitantes fazendo fotos na beira de uma grande lagoa entre as dunas" fetchpriority="high">
+  <img src="../../img/combo-1-1280.webp" srcset="../../img/combo-1-480.webp 480w, ../../img/combo-1-960.webp 960w, ../../img/combo-1-1280.webp 1280w, ../../img/combo-1-1920.webp 1920w" sizes="100vw" width="960" height="1280" alt="Visitantes fazendo fotos na beira de uma grande lagoa entre as dunas" fetchpriority="high">
   <div class="tp-hero-in">
     <nav class="crumbs" aria-label="Você está em">
       <ol><li><a href="../../">Início</a></li><li><a href="../../#passeios">Passeios</a></li><li aria-current="page">Combo Betânia + Emendadas</li></ol>
     </nav>
     <span class="tp-cat">Dia inteiro · combo · Santo Amaro do Maranhão</span>
     <h1>Combo Betânia + Emendadas</h1>
-    <p class="tp-lead">O Combo Betânia + Emendadas é um passeio de dia inteiro que junta os dois principais roteiros de Santo Amaro pelos Lençóis Maranhenses, saindo de Santo Amaro do Maranhão. Horário: 09h às 19h. Transporte: 4x4 + caminhada de ~5 km. Valor: R$ 2.200 no passeio privado para até 6 pessoas. Os dois principais roteiros de Santo Amaro num só dia: lagoas e redes em Betânia, caminhada até as Emendadas e volta sob as estrelas.</p>
+    <p class="tp-lead">Os dois principais roteiros de Santo Amaro num só dia: lagoas e redes em Betânia, caminhada até as Emendadas e volta sob as estrelas.</p>
     <div class="hero-ctas">
       <a href="https://wa.me/5598992417329?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20reservar%20o%20Combo%20Bet%C3%A2nia%20%2B%20Emendadas%20com%20a%20Len%C3%A7%C3%B3is%20MTur.%20Data%3A%20___%20%C2%B7%20Pessoas%3A%20___%20(privado)" class="btn btn-wa" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Reservar pelo WhatsApp</a>
       <a href="#valores" class="btn btn-ghost">Ver valores <svg><use href="#i-arrow"/></svg></a>
@@ -717,6 +734,7 @@
   <div class="wrap tp-main">
     <article class="tp-body">
       <h2>Resumo do passeio</h2>
+      <p class="tp-answer">O Combo Betânia + Emendadas é um passeio de dia inteiro que junta os dois principais roteiros de Santo Amaro pelos Lençóis Maranhenses, saindo de Santo Amaro do Maranhão. Horário: 09h às 19h. Transporte: 4x4 + caminhada de ~5 km. Valor: R$ 2.200 no passeio privado para até 6 pessoas. Os dois principais roteiros de Santo Amaro num só dia: lagoas e redes em Betânia, caminhada até as Emendadas e volta sob as estrelas.</p>
       <div class="facts">
         <div class="fact"><small>Horário</small><b>09h às 19h</b></div>
         <div class="fact"><small>Transporte</small><b>4x4 + caminhada de ~5 km</b></div>
@@ -732,11 +750,11 @@
           <ul><li><svg><use href="#i-check"/></svg>Água</li><li><svg><use href="#i-check"/></svg>Refrigerante pet</li><li><svg><use href="#i-check"/></svg>Água de coco</li><li><svg><use href="#i-check"/></svg>Cesta de frutas</li><li><svg><use href="#i-check"/></svg>Castanhas</li><li><svg><use href="#i-check"/></svg>Raquetes de frescobol</li></ul>
         </div>
       </div>
-      <p class="tp-note">R$ 2.200 no passeio privado para até 6 pessoas. A taxa municipal de Santo Amaro, de R$ 10,00 por pessoa e válida por 3 dias, é cobrada à parte.</p>
+      <p class="tp-note">O Combo Betânia + Emendadas custa R$ 2.200 no passeio privado para até 6 pessoas. A taxa municipal de Santo Amaro, de R$ 10,00 por pessoa e válida por 3 dias, é cobrada à parte.</p>
 
       <h2>Como é o roteiro do Combo Betânia + Emendadas?</h2>
       <div class="story"><p>Para quem tem pouco tempo e quer aproveitar ao máximo, conhecendo os dois principais roteiros de Santo Amaro, é totalmente possível fazer o Combo Betânia + Emendadas em um único dia!</p><p>Pela manhã, exploramos o Circuito Betânia, com paradas para banho nas lagoas cristalinas e uma pausa especial para o almoço com aquele merecido descanso nas redes. Na parte da tarde, saindo de Betânia, iniciamos a grande aventura rumo às Emendadas: uma caminhada de aproximadamente 5 km cercada por dunas imponentes, lagoas deslumbrantes e paisagens de tirar o fôlego.</p><p>Para fechar com chave de ouro, contemplamos um pôr do sol inesquecível e retornamos em um emocionante mini trekking noturno sob o céu estrelado dos Lençóis Maranhenses.</p></div>
-      <figure class="tp-pic"><img src="../../img/combo-2-480.webp" srcset="../../img/combo-2-480.webp 480w, ../../img/combo-2-960.webp 960w, ../../img/combo-2-1920.webp 1920w" sizes="(min-width:1000px) 780px, 100vw" alt="Pessoa contemplando o pôr do sol sobre as lagoas" loading="lazy" decoding="async"></figure>
+      <figure class="tp-pic"><img src="../../img/combo-2-480.webp" srcset="../../img/combo-2-480.webp 480w, ../../img/combo-2-960.webp 960w, ../../img/combo-2-1280.webp 1280w, ../../img/combo-2-1920.webp 1920w" sizes="(min-width:1000px) 780px, 100vw" width="960" height="1280" alt="Pessoa contemplando o pôr do sol sobre as lagoas" loading="lazy" decoding="async"></figure>
 
       <h2>Destaques</h2>
       <ul class="ticks "><li><svg><use href="#i-check"/></svg>Betânia e Emendadas no mesmo dia</li><li><svg><use href="#i-check"/></svg>Banho em lagoas cristalinas</li><li><svg><use href="#i-check"/></svg>Descanso nas redes</li><li><svg><use href="#i-check"/></svg>Pôr do sol e mini trekking noturno</li></ul>
@@ -747,19 +765,19 @@
       <div class="tp-faq">
         <details class="qa">
           <summary>Qual o horário do Combo Betânia + Emendadas?<i><svg><use href="#i-plus"/></svg></i></summary>
-          <p>09h às 19h. O ponto de encontro é combinado na reserva pelo WhatsApp.</p>
+          <p>O Combo Betânia + Emendadas acontece das 09h às 19h, com transporte em 4x4 + caminhada de ~5 km. O ponto de encontro é combinado na reserva pelo WhatsApp.</p>
         </details>
         <details class="qa">
           <summary>O que está incluso no Combo Betânia + Emendadas?<i><svg><use href="#i-plus"/></svg></i></summary>
-          <p>No privado: água, refrigerante pet, água de coco, cesta de frutas, castanhas e raquetes de frescobol.</p>
+          <p>Combo Betânia + Emendadas: no passeio privado estão inclusos água, refrigerante pet, água de coco, cesta de frutas, castanhas e raquetes de frescobol.</p>
         </details>
         <details class="qa">
-          <summary>O que não está incluso?<i><svg><use href="#i-plus"/></svg></i></summary>
-          <p>Almoço e taxa municipal: R$ 10,00 (válida por 3 dias).</p>
+          <summary>O que não está incluso no Combo Betânia + Emendadas?<i><svg><use href="#i-plus"/></svg></i></summary>
+          <p>Não estão inclusos no Combo Betânia + Emendadas: almoço e taxa municipal de R$ 10,00 (válida por 3 dias).</p>
         </details>
         <details class="qa">
           <summary>Para quem o Combo Betânia + Emendadas é indicado?<i><svg><use href="#i-plus"/></svg></i></summary>
-          <p>Pouco tempo, os dois roteiros principais. Os destaques são betânia e Emendadas no mesmo dia, banho em lagoas cristalinas, descanso nas redes e pôr do sol e mini trekking noturno.</p>
+          <p>Para quem tem pouco tempo em Santo Amaro e quer fazer os dois roteiros principais, Betânia e Emendadas, no mesmo dia.</p>
         </details>
         <details class="qa">
           <summary>Como reservar o Combo Betânia + Emendadas?<i><svg><use href="#i-plus"/></svg></i></summary>
@@ -790,7 +808,7 @@
     </div>
     <div class="tours">
   <a class="tour" href="../../passeios/circuito-betania/" data-open="betania" data-p="dia">
-    <img src="../../img/betania-1-480.webp" srcset="../../img/betania-1-480.webp 480w, ../../img/betania-1-960.webp 960w, ../../img/betania-1-1920.webp 1920w" sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw" alt="Vista aérea do Povoado de Betânia, com o rio e as lagoas entre as dunas" loading="lazy" decoding="async">
+    <img src="../../img/betania-1-480.webp" srcset="../../img/betania-1-480.webp 480w, ../../img/betania-1-960.webp 960w, ../../img/betania-1-1280.webp 1280w, ../../img/betania-1-1920.webp 1920w" sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw" width="960" height="539" alt="Vista aérea do Povoado de Betânia, com o rio e as lagoas entre as dunas" loading="lazy" decoding="async">
     <span class="when"><svg><use href="#i-clock"/></svg>09h às 18h</span>
     <div class="tour-txt">
       <span class="cat">Dia inteiro</span>
@@ -801,7 +819,7 @@
     </div>
   </a>
   <a class="tour" href="../../passeios/circuito-ponta-verde/" data-open="ponta-verde" data-p="dia">
-    <img src="../../img/ponta-verde-1-480.webp" srcset="../../img/ponta-verde-1-480.webp 480w, ../../img/ponta-verde-1-960.webp 960w, ../../img/ponta-verde-1-1920.webp 1920w" sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw" alt="Vista aérea de uma faixa de duna entre lagoas verdes na Ponta Verde" loading="lazy" decoding="async">
+    <img src="../../img/ponta-verde-1-480.webp" srcset="../../img/ponta-verde-1-480.webp 480w, ../../img/ponta-verde-1-960.webp 960w, ../../img/ponta-verde-1-1280.webp 1280w, ../../img/ponta-verde-1-1920.webp 1920w" sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw" width="960" height="1332" alt="Vista aérea de uma faixa de duna entre lagoas verdes na Ponta Verde" loading="lazy" decoding="async">
     <span class="when"><svg><use href="#i-clock"/></svg>09h às 18h</span>
     <div class="tour-txt">
       <span class="cat">Dia inteiro</span>
@@ -812,7 +830,7 @@
     </div>
   </a>
   <a class="tour" href="../../passeios/circuito-rancharia/" data-open="rancharia" data-p="dia">
-    <img src="../../img/aerea-faixa-areia-480.webp" srcset="../../img/aerea-faixa-areia-480.webp 480w, ../../img/aerea-faixa-areia-960.webp 960w, ../../img/aerea-faixa-areia-1920.webp 1920w" sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw" alt="Vista aérea de uma faixa de areia entre lagoas" loading="lazy" decoding="async">
+    <img src="../../img/aerea-faixa-areia-480.webp" srcset="../../img/aerea-faixa-areia-480.webp 480w, ../../img/aerea-faixa-areia-960.webp 960w, ../../img/aerea-faixa-areia-1280.webp 1280w, ../../img/aerea-faixa-areia-1920.webp 1920w" sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw" width="960" height="1710" alt="Vista aérea de uma faixa de areia entre lagoas" loading="lazy" decoding="async">
     <span class="when"><svg><use href="#i-clock"/></svg>09h às 18h</span>
     <div class="tour-txt">
       <span class="cat">Dia inteiro</span>
@@ -823,7 +841,7 @@
     </div>
   </a>
   <a class="tour" href="../../passeios/circuito-emendadas/" data-open="emendadas" data-p="tarde">
-    <img src="../../img/emendadas-1-480.webp" srcset="../../img/emendadas-1-480.webp 480w, ../../img/emendadas-1-960.webp 960w, ../../img/emendadas-1-1920.webp 1920w" sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw" alt="Pôr do sol sobre as lagoas das Emendadas, com duas pessoas na duna" loading="lazy" decoding="async">
+    <img src="../../img/emendadas-1-480.webp" srcset="../../img/emendadas-1-480.webp 480w, ../../img/emendadas-1-960.webp 960w, ../../img/emendadas-1-1280.webp 1280w, ../../img/emendadas-1-1920.webp 1920w" sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw" width="960" height="1280" alt="Pôr do sol sobre as lagoas das Emendadas, com duas pessoas na duna" loading="lazy" decoding="async">
     <span class="when"><svg><use href="#i-clock"/></svg>14h às 19h</span>
     <div class="tour-txt">
       <span class="cat">Tarde e noite</span>
@@ -851,7 +869,7 @@
       </div>
       <div class="phone" aria-hidden="true">
         <div class="screen">
-          <div class="screen-top"><img src="../../img/lencois-mtur-logo-fundo-azul.svg" alt=""><div><b>Lençóis MTur</b><small>98 99241-7329</small></div></div>
+          <div class="screen-top"><img src="../../img/lencois-mtur-logo-fundo-azul.svg" alt="" width="38" height="38" loading="lazy"><div><b>Lençóis MTur</b><small>98 99241-7329</small></div></div>
           <div class="msgs">
             <div class="msg me">Oi! Quero fazer o Circuito Emendadas. Somos 2 pessoas 🙂<time>14:02</time></div>
             <div class="msg">Oi! Que bom ter você com a gente. Qual a data?<time>14:03</time></div>
@@ -869,7 +887,7 @@
   <div class="wrap">
     <div class="foot">
       <div>
-        <img src="../../img/lencois-mtur-logo.svg" alt="Lençóis MTur" width="204" height="86">
+        <img src="../../img/lencois-mtur-logo.svg" alt="Lençóis MTur" width="204" height="86" loading="lazy">
         <p>Passeios pelos Lençóis Maranhenses saindo de Santo Amaro do Maranhão (MA), com o guia nativo Maiton.</p>
       </div>
       <div>

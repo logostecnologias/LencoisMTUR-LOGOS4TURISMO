@@ -24,7 +24,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Caveat:wght@500;700&family=DM+Sans:opsz,wght@9..40,400..700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="../../img/ponta-verde-1-1920.webp" imagesrcset="../../img/ponta-verde-1-960.webp 960w, ../../img/ponta-verde-1-1920.webp 1920w" imagesizes="100vw">
+<link rel="preload" as="image" href="../../img/ponta-verde-1-1280.webp" imagesrcset="../../img/ponta-verde-1-480.webp 480w, ../../img/ponta-verde-1-960.webp 960w, ../../img/ponta-verde-1-1280.webp 1280w, ../../img/ponta-verde-1-1920.webp 1920w" imagesizes="100vw" fetchpriority="high">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -42,10 +42,16 @@
       "about": {
         "@id": "https://lencoismtur.com.br/passeios/circuito-ponta-verde/#passeio"
       },
-      "primaryImageOfPage": "https://lencoismtur.com.br/img/og/circuito-ponta-verde.jpg",
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://lencoismtur.com.br/img/og/circuito-ponta-verde.jpg",
+        "width": 1200,
+        "height": 630
+      },
       "author": {
         "@id": "https://lencoismtur.com.br/#maiton"
       },
+      "datePublished": "2026-11-04",
       "dateModified": "2026-11-04",
       "breadcrumb": {
         "@id": "https://lencoismtur.com.br/passeios/circuito-ponta-verde/#trilha"
@@ -85,7 +91,6 @@
         "https://lencoismtur.com.br/img/ponta-verde-1-1920.webp",
         "https://lencoismtur.com.br/img/ponta-verde-2-1920.webp"
       ],
-      "touristType": "Tranquilidade e privacidade",
       "provider": {
         "@id": "https://lencoismtur.com.br/#agencia"
       },
@@ -95,7 +100,17 @@
           "name": "Por pessoa",
           "price": 190,
           "priceCurrency": "BRL",
-          "url": "https://lencoismtur.com.br/passeios/circuito-ponta-verde/"
+          "url": "https://lencoismtur.com.br/passeios/circuito-ponta-verde/",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": 190,
+            "priceCurrency": "BRL",
+            "referenceQuantity": {
+              "@type": "QuantitativeValue",
+              "value": 1,
+              "unitText": "pessoa"
+            }
+          }
         },
         {
           "@type": "Offer",
@@ -103,6 +118,16 @@
           "price": 1500,
           "priceCurrency": "BRL",
           "url": "https://lencoismtur.com.br/passeios/circuito-ponta-verde/",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": 1500,
+            "priceCurrency": "BRL",
+            "referenceQuantity": {
+              "@type": "QuantitativeValue",
+              "value": 1,
+              "unitText": "grupo"
+            }
+          },
           "eligibleQuantity": {
             "@type": "QuantitativeValue",
             "maxValue": 5,
@@ -144,13 +169,14 @@
     },
     {
       "@type": "FAQPage",
+      "@id": "https://lencoismtur.com.br/passeios/circuito-ponta-verde/#faq",
       "mainEntity": [
         {
           "@type": "Question",
           "name": "Quanto custa o Circuito Ponta Verde?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "R$ 190 por pessoa ou R$ 1.500 no privado para até 5 pessoas."
+            "text": "O Circuito Ponta Verde custa R$ 190 por pessoa ou R$ 1.500 no privado para até 5 pessoas."
           }
         },
         {
@@ -158,7 +184,7 @@
           "name": "Qual o horário do Circuito Ponta Verde?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "09h às 18h. O 4x4 busca você na hospedagem no início do passeio."
+            "text": "O Circuito Ponta Verde acontece das 09h às 18h, com transporte em 4x4 (jardineira). O 4x4 busca você na hospedagem em Santo Amaro no início do passeio."
           }
         },
         {
@@ -166,7 +192,7 @@
           "name": "O que está incluso no Circuito Ponta Verde?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No passeio por pessoa: água e cadeiras e guarda-sol. No privado: água, refrigerante pet, água de coco, cesta de frutas, castanhas e raquetes de frescobol."
+            "text": "Circuito Ponta Verde: no passeio por pessoa estão inclusos água, cadeiras e guarda-sol; no passeio privado estão inclusos água, refrigerante pet, água de coco, cesta de frutas, castanhas e raquetes de frescobol."
           }
         },
         {
@@ -174,7 +200,7 @@
           "name": "Para quem o Circuito Ponta Verde é indicado?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Tranquilidade e privacidade. Os destaques são busca na hospedagem, lagoas pouco frequentadas, aves e animais nativos e pôr do sol no Lago Jangada."
+            "text": "Para quem busca tranquilidade: as lagoas da Ponta Verde ficam numa área mais reservada do Parque Nacional e quase sempre estão vazias ou com pouco movimento."
           }
         },
         {
@@ -621,6 +647,7 @@
   .tp-byline{margin-top:1.4rem;display:flex;flex-wrap:wrap;align-items:baseline;gap:.4rem .7rem;color:var(--muted);font-size:.9rem;font-weight:600}
   .tp-byline .hand{font-size:1.9rem;color:var(--deep);line-height:1}
   .tp-body .story p{margin-top:1rem;font-size:1.04rem;color:#34505F;line-height:1.75;text-wrap:pretty}
+  .tp-answer{margin-top:1rem;font-size:1.08rem;color:var(--text);line-height:1.7;text-wrap:pretty}
   .tp-note{margin-top:.9rem;font-size:.92rem;color:var(--muted)}
   .tp-pic{margin:1.75rem 0 0;border-radius:var(--r-lg);overflow:hidden;aspect-ratio:16/10}
   .tp-pic img{width:100%;height:100%;object-fit:cover}
@@ -697,14 +724,14 @@
 
 <main>
 <section class="tp-hero">
-  <img src="../../img/ponta-verde-1-1920.webp" srcset="../../img/ponta-verde-1-960.webp 960w, ../../img/ponta-verde-1-1920.webp 1920w" sizes="100vw" alt="Vista aérea de uma faixa de duna entre lagoas verdes na Ponta Verde" fetchpriority="high">
+  <img src="../../img/ponta-verde-1-1280.webp" srcset="../../img/ponta-verde-1-480.webp 480w, ../../img/ponta-verde-1-960.webp 960w, ../../img/ponta-verde-1-1280.webp 1280w, ../../img/ponta-verde-1-1920.webp 1920w" sizes="100vw" width="960" height="1332" alt="Vista aérea de uma faixa de duna entre lagoas verdes na Ponta Verde" fetchpriority="high">
   <div class="tp-hero-in">
     <nav class="crumbs" aria-label="Você está em">
       <ol><li><a href="../../">Início</a></li><li><a href="../../#passeios">Passeios</a></li><li aria-current="page">Circuito Ponta Verde</li></ol>
     </nav>
     <span class="tp-cat">Dia inteiro · Santo Amaro do Maranhão</span>
     <h1>Circuito Ponta Verde</h1>
-    <p class="tp-lead">O Circuito Ponta Verde é um passeio de dia inteiro pelos Lençóis Maranhenses, saindo de Santo Amaro do Maranhão. Horário: 09h às 18h. Transporte: 4x4 (jardineira). Valor: R$ 190 por pessoa ou R$ 1.500 no privado para até 5 pessoas. Lagoas quase sempre vazias numa área reservada do Parque e pôr do sol sobre o Lago Jangada.</p>
+    <p class="tp-lead">Lagoas quase sempre vazias numa área reservada do Parque e pôr do sol sobre o Lago Jangada.</p>
     <div class="hero-ctas">
       <a href="https://wa.me/5598992417329?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20reservar%20o%20Circuito%20Ponta%20Verde%20com%20a%20Len%C3%A7%C3%B3is%20MTur.%20Data%3A%20___%20%C2%B7%20Pessoas%3A%20___%20%C2%B7%20Por%20pessoa%20ou%20privado%3A%20___" class="btn btn-wa" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Reservar pelo WhatsApp</a>
       <a href="#valores" class="btn btn-ghost">Ver valores <svg><use href="#i-arrow"/></svg></a>
@@ -716,6 +743,7 @@
   <div class="wrap tp-main">
     <article class="tp-body">
       <h2>Resumo do passeio</h2>
+      <p class="tp-answer">O Circuito Ponta Verde é um passeio de dia inteiro pelos Lençóis Maranhenses, saindo de Santo Amaro do Maranhão. Horário: 09h às 18h. Transporte: 4x4 (jardineira). Valor: R$ 190 por pessoa ou R$ 1.500 no privado para até 5 pessoas. Lagoas quase sempre vazias numa área reservada do Parque e pôr do sol sobre o Lago Jangada.</p>
       <div class="facts">
         <div class="fact"><small>Horário</small><b>09h às 18h</b></div>
         <div class="fact"><small>Transporte</small><b>4x4 (jardineira)</b></div>
@@ -735,11 +763,11 @@
           <ul><li><svg><use href="#i-check"/></svg>Água</li><li><svg><use href="#i-check"/></svg>Refrigerante pet</li><li><svg><use href="#i-check"/></svg>Água de coco</li><li><svg><use href="#i-check"/></svg>Cesta de frutas</li><li><svg><use href="#i-check"/></svg>Castanhas</li><li><svg><use href="#i-check"/></svg>Raquetes de frescobol</li></ul>
         </div>
       </div>
-      <p class="tp-note">R$ 190 por pessoa ou R$ 1.500 no privado para até 5 pessoas.</p>
+      <p class="tp-note">O Circuito Ponta Verde custa R$ 190 por pessoa ou R$ 1.500 no privado para até 5 pessoas.</p>
 
       <h2>Como é o roteiro do Circuito Ponta Verde?</h2>
       <div class="story"><p>O passeio começa com o 4x4 (jardineira) buscando você na hospedagem. Seguimos por uma trilha em área de vegetação até entrar nas dunas, com paisagens exuberantes de areia e lagoas. No caminho, é comum avistar aves e animais nativos da região.</p><p>A Ponta Verde fica em uma área mais reservada do Parque Nacional, ideal para quem busca tranquilidade e exclusividade. Suas lagoas são pouco frequentadas, o que garante um visual incrível e muito mais privacidade: quase sempre estão vazias ou com pouco movimento.</p><p>O roteiro inclui uma parada para almoço e descanso na comunidade. Depois visitamos mais uma lagoa e fechamos o dia com um pôr do sol espetacular com vista para o Lago Jangada.</p></div>
-      <figure class="tp-pic"><img src="../../img/ponta-verde-2-480.webp" srcset="../../img/ponta-verde-2-480.webp 480w, ../../img/ponta-verde-2-960.webp 960w, ../../img/ponta-verde-2-1920.webp 1920w" sizes="(min-width:1000px) 780px, 100vw" alt="Guia fazendo selfie com o grupo comemorando no alto da duna" loading="lazy" decoding="async"></figure>
+      <figure class="tp-pic"><img src="../../img/ponta-verde-2-480.webp" srcset="../../img/ponta-verde-2-480.webp 480w, ../../img/ponta-verde-2-960.webp 960w, ../../img/ponta-verde-2-1280.webp 1280w, ../../img/ponta-verde-2-1920.webp 1920w" sizes="(min-width:1000px) 780px, 100vw" width="960" height="1280" alt="Guia fazendo selfie com o grupo comemorando no alto da duna" loading="lazy" decoding="async"></figure>
 
       <h2>Destaques</h2>
       <ul class="ticks "><li><svg><use href="#i-check"/></svg>Busca na hospedagem</li><li><svg><use href="#i-check"/></svg>Lagoas pouco frequentadas</li><li><svg><use href="#i-check"/></svg>Aves e animais nativos</li><li><svg><use href="#i-check"/></svg>Pôr do sol no Lago Jangada</li></ul>
@@ -749,15 +777,15 @@
       <div class="tp-faq">
         <details class="qa">
           <summary>Qual o horário do Circuito Ponta Verde?<i><svg><use href="#i-plus"/></svg></i></summary>
-          <p>09h às 18h. O 4x4 busca você na hospedagem no início do passeio.</p>
+          <p>O Circuito Ponta Verde acontece das 09h às 18h, com transporte em 4x4 (jardineira). O 4x4 busca você na hospedagem em Santo Amaro no início do passeio.</p>
         </details>
         <details class="qa">
           <summary>O que está incluso no Circuito Ponta Verde?<i><svg><use href="#i-plus"/></svg></i></summary>
-          <p>No passeio por pessoa: água e cadeiras e guarda-sol. No privado: água, refrigerante pet, água de coco, cesta de frutas, castanhas e raquetes de frescobol.</p>
+          <p>Circuito Ponta Verde: no passeio por pessoa estão inclusos água, cadeiras e guarda-sol; no passeio privado estão inclusos água, refrigerante pet, água de coco, cesta de frutas, castanhas e raquetes de frescobol.</p>
         </details>
         <details class="qa">
           <summary>Para quem o Circuito Ponta Verde é indicado?<i><svg><use href="#i-plus"/></svg></i></summary>
-          <p>Tranquilidade e privacidade. Os destaques são busca na hospedagem, lagoas pouco frequentadas, aves e animais nativos e pôr do sol no Lago Jangada.</p>
+          <p>Para quem busca tranquilidade: as lagoas da Ponta Verde ficam numa área mais reservada do Parque Nacional e quase sempre estão vazias ou com pouco movimento.</p>
         </details>
         <details class="qa">
           <summary>Como reservar o Circuito Ponta Verde?<i><svg><use href="#i-plus"/></svg></i></summary>
@@ -788,7 +816,7 @@
     </div>
     <div class="tours">
   <a class="tour" href="../../passeios/circuito-betania/" data-open="betania" data-p="dia">
-    <img src="../../img/betania-1-480.webp" srcset="../../img/betania-1-480.webp 480w, ../../img/betania-1-960.webp 960w, ../../img/betania-1-1920.webp 1920w" sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw" alt="Vista aérea do Povoado de Betânia, com o rio e as lagoas entre as dunas" loading="lazy" decoding="async">
+    <img src="../../img/betania-1-480.webp" srcset="../../img/betania-1-480.webp 480w, ../../img/betania-1-960.webp 960w, ../../img/betania-1-1280.webp 1280w, ../../img/betania-1-1920.webp 1920w" sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw" width="960" height="539" alt="Vista aérea do Povoado de Betânia, com o rio e as lagoas entre as dunas" loading="lazy" decoding="async">
     <span class="when"><svg><use href="#i-clock"/></svg>09h às 18h</span>
     <div class="tour-txt">
       <span class="cat">Dia inteiro</span>
@@ -799,7 +827,7 @@
     </div>
   </a>
   <a class="tour" href="../../passeios/circuito-rancharia/" data-open="rancharia" data-p="dia">
-    <img src="../../img/aerea-faixa-areia-480.webp" srcset="../../img/aerea-faixa-areia-480.webp 480w, ../../img/aerea-faixa-areia-960.webp 960w, ../../img/aerea-faixa-areia-1920.webp 1920w" sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw" alt="Vista aérea de uma faixa de areia entre lagoas" loading="lazy" decoding="async">
+    <img src="../../img/aerea-faixa-areia-480.webp" srcset="../../img/aerea-faixa-areia-480.webp 480w, ../../img/aerea-faixa-areia-960.webp 960w, ../../img/aerea-faixa-areia-1280.webp 1280w, ../../img/aerea-faixa-areia-1920.webp 1920w" sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw" width="960" height="1710" alt="Vista aérea de uma faixa de areia entre lagoas" loading="lazy" decoding="async">
     <span class="when"><svg><use href="#i-clock"/></svg>09h às 18h</span>
     <div class="tour-txt">
       <span class="cat">Dia inteiro</span>
@@ -810,7 +838,7 @@
     </div>
   </a>
   <a class="tour" href="../../passeios/combo-betania-emendadas/" data-open="combo" data-p="dia">
-    <img src="../../img/combo-1-480.webp" srcset="../../img/combo-1-480.webp 480w, ../../img/combo-1-960.webp 960w, ../../img/combo-1-1920.webp 1920w" sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw" alt="Visitantes fazendo fotos na beira de uma grande lagoa entre as dunas" loading="lazy" decoding="async">
+    <img src="../../img/combo-1-480.webp" srcset="../../img/combo-1-480.webp 480w, ../../img/combo-1-960.webp 960w, ../../img/combo-1-1280.webp 1280w, ../../img/combo-1-1920.webp 1920w" sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw" width="960" height="1280" alt="Visitantes fazendo fotos na beira de uma grande lagoa entre as dunas" loading="lazy" decoding="async">
     <span class="when"><svg><use href="#i-clock"/></svg>09h às 19h</span>
     <div class="tour-txt">
       <span class="cat">Dia inteiro · combo</span>
@@ -821,7 +849,7 @@
     </div>
   </a>
   <a class="tour" href="../../passeios/circuito-emendadas/" data-open="emendadas" data-p="tarde">
-    <img src="../../img/emendadas-1-480.webp" srcset="../../img/emendadas-1-480.webp 480w, ../../img/emendadas-1-960.webp 960w, ../../img/emendadas-1-1920.webp 1920w" sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw" alt="Pôr do sol sobre as lagoas das Emendadas, com duas pessoas na duna" loading="lazy" decoding="async">
+    <img src="../../img/emendadas-1-480.webp" srcset="../../img/emendadas-1-480.webp 480w, ../../img/emendadas-1-960.webp 960w, ../../img/emendadas-1-1280.webp 1280w, ../../img/emendadas-1-1920.webp 1920w" sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw" width="960" height="1280" alt="Pôr do sol sobre as lagoas das Emendadas, com duas pessoas na duna" loading="lazy" decoding="async">
     <span class="when"><svg><use href="#i-clock"/></svg>14h às 19h</span>
     <div class="tour-txt">
       <span class="cat">Tarde e noite</span>
@@ -849,7 +877,7 @@
       </div>
       <div class="phone" aria-hidden="true">
         <div class="screen">
-          <div class="screen-top"><img src="../../img/lencois-mtur-logo-fundo-azul.svg" alt=""><div><b>Lençóis MTur</b><small>98 99241-7329</small></div></div>
+          <div class="screen-top"><img src="../../img/lencois-mtur-logo-fundo-azul.svg" alt="" width="38" height="38" loading="lazy"><div><b>Lençóis MTur</b><small>98 99241-7329</small></div></div>
           <div class="msgs">
             <div class="msg me">Oi! Quero fazer o Circuito Emendadas. Somos 2 pessoas 🙂<time>14:02</time></div>
             <div class="msg">Oi! Que bom ter você com a gente. Qual a data?<time>14:03</time></div>
@@ -867,7 +895,7 @@
   <div class="wrap">
     <div class="foot">
       <div>
-        <img src="../../img/lencois-mtur-logo.svg" alt="Lençóis MTur" width="204" height="86">
+        <img src="../../img/lencois-mtur-logo.svg" alt="Lençóis MTur" width="204" height="86" loading="lazy">
         <p>Passeios pelos Lençóis Maranhenses saindo de Santo Amaro do Maranhão (MA), com o guia nativo Maiton.</p>
       </div>
       <div>

@@ -16,7 +16,8 @@ import vm from "node:vm";
 import { fileURLToPath } from "node:url";
 
 const SITE = "https://lencoismtur.com.br";
-const HOJE = new Date().toISOString().slice(0, 10);
+// data da última mudança real de conteúdo: troque à mão quando mudar roteiro, preço ou texto
+const ATUALIZADO = "2026-11-04";
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const INDEX = path.join(ROOT, "index.html");
 
@@ -28,25 +29,49 @@ const { WHATSAPP, MSG_PADRAO, PASSEIOS, BENTO } = vm.runInNewContext(`${bloco};(
 const waHref = (msg) => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg || MSG_PADRAO)}`;
 
 // como cada passeio é chamado numa frase ("o Circuito Betânia é um passeio de dia inteiro")
+// onde: substitui "pelos Lençóis Maranhenses, saindo de Santo Amaro" quando o passeio é fora das dunas
+// indicado: resposta completa para "para quem é indicado?", só com fatos que já estão no site
 const FRASE = {
-  betania: { tipo: "de dia inteiro", busca: true },
-  emendadas: { tipo: "de tarde e noite" },
-  andorinhas: { nome: "Circuito Andorinhas e Gaivota", tipo: "de meio período, de manhã ou à tarde" },
-  "ponta-verde": { tipo: "de dia inteiro", busca: true },
-  america: { tipo: "de barco, de meio período" },
-  rancharia: { tipo: "de dia inteiro" },
-  guaras: { tipo: "de barco no fim de tarde", fem: true },
-  estrelas: { tipo: "noturno", fem: true },
-  combo: { tipo: "de dia inteiro que junta os dois principais roteiros de Santo Amaro" },
+  betania: { tipo: "de dia inteiro", busca: true,
+    indicado: "Para quem quer um dia inteiro de lagoas saindo de Santo Amaro: trilha curta pelas dunas, banho em três lagoas, almoço no Povoado de Betânia e descanso em redes sobre o Rio Alegre." },
+  emendadas: { tipo: "de tarde e noite",
+    indicado: "Para quem quer ver o pôr do sol do alto de uma duna e voltar caminhando à noite sob as estrelas, numa área de preservação onde veículos não entram." },
+  andorinhas: { nome: "Circuito Andorinhas e Gaivota", tipo: "de meio período, de manhã ou à tarde",
+    indicado: "Para quem tem só uma manhã ou uma tarde em Santo Amaro e quer aventura: são 2 ou 3 lagoas com rali de 4x4 pelas dunas, e dá para fazer de quadriciclo." },
+  "ponta-verde": { tipo: "de dia inteiro", busca: true,
+    indicado: "Para quem busca tranquilidade: as lagoas da Ponta Verde ficam numa área mais reservada do Parque Nacional e quase sempre estão vazias ou com pouco movimento." },
+  america: { tipo: "de barco, de meio período",
+    indicado: "Para quem quer um passeio tranquilo depois das aventuras nas dunas: o trajeto é de voadeira pelo encontro do Rio Alegre com o Lago Jangada e termina na Lagoa do América, com sombra e pouco movimento." },
+  rancharia: { tipo: "de dia inteiro",
+    indicado: "Para quem quer fugir do fluxo turístico principal: a Rancharia é mais distante e pouco frequentada, e a Lagoa da Rancharia é uma das maiores do Parque Nacional." },
+  guaras: { tipo: "de barco no fim de tarde", fem: true, selo: "bora ver os guarás!",
+    onde: "em Primeira Cruz, cidade vizinha a 15 minutos de Santo Amaro do Maranhão, fora das dunas dos Lençóis",
+    indicado: "Para quem quer um passeio diferente das dunas: a revoada dos guarás no manguezal de Primeira Cruz, com o céu vermelho e o pôr do sol." },
+  estrelas: { tipo: "noturno", fem: true,
+    indicado: "Para quem quer ver os Lençóis Maranhenses à noite, com o céu estrelado sobre as dunas de Santo Amaro." },
+  combo: { tipo: "de dia inteiro que junta os dois principais roteiros de Santo Amaro",
+    indicado: "Para quem tem pouco tempo em Santo Amaro e quer fazer os dois roteiros principais, Betânia e Emendadas, no mesmo dia." },
 };
 for (const p of PASSEIOS) {
   const f = FRASE[p.id] || {};
   p.nomeCompleto = f.nome || p.nome;
   p.tipo = f.tipo || "";
+  p.onde = f.onde || "pelos Lençóis Maranhenses, saindo de Santo Amaro do Maranhão";
+  p.indicado = f.indicado || `${p.ideal}.`;
+  p.selo = f.selo || "bora pras dunas!";
   p.busca = !!f.busca;
   p.o = f.fem ? "a" : "o";
   p.do = f.fem ? "da" : "do";
   p.url = `${SITE}/passeios/${p.slug}/`;
+}
+
+// largura x altura real de cada .webp (cabeçalho VP8/VP8L/VP8X), para width/height nas <img>
+function tamanho(arquivo) {
+  const b = fs.readFileSync(path.join(ROOT, "img", arquivo));
+  const tipo = b.toString("ascii", 12, 16);
+  if (tipo === "VP8X") return [1 + b.readUIntLE(24, 3), 1 + b.readUIntLE(27, 3)];
+  if (tipo === "VP8L") { const v = b.readUInt32LE(21); return [1 + (v & 0x3fff), 1 + ((v >> 14) & 0x3fff)]; }
+  return [b.readUInt16LE(26) & 0x3fff, b.readUInt16LE(28) & 0x3fff];
 }
 
 // ------------------------------------------------------------- helpers
@@ -54,18 +79,22 @@ const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&l
 const strip = (s) => s.replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
 const brl = (n) => `R$ ${n.toLocaleString("pt-BR")}`;
 const cap = (s) => s.charAt(0).toUpperCase() + s.slice(1);
-const lista = (xs) => {
-  const l = xs.map((x) => x.charAt(0).toLowerCase() + x.slice(1));
-  return l.length < 2 ? l.join("") : `${l.slice(0, -1).join(", ")} e ${l.at(-1)}`;
-};
+// "a, b e c"; se o último item já tem " e " ("cadeiras e guarda-sol"), fica só com vírgulas
+const juntar = (l) => l.length < 2 ? l.join("") : / e /.test(l.at(-1)) ? l.join(", ") : `${l.slice(0, -1).join(", ")} e ${l.at(-1)}`;
+// itens do meio da frase em minúscula, menos nomes próprios ("Betânia", "Via Láctea", "Lagoa da Rancharia")
+const PROPRIO = /^(Betânia|Emendadas|Via Láctea|Lagoa d|Lago |Rio |Primeira Cruz|Santo Amaro|Ponta Verde|Rancharia)/;
+const lista = (xs) => juntar(xs.map((x) => PROPRIO.test(x) ? x : x.charAt(0).toLowerCase() + x.slice(1)));
 const jsonld = (obj) => `<script type="application/ld+json">\n${JSON.stringify(obj, null, 2).replace(/<\//g, "<\\/")}\n</script>`;
 const trocar = (src, nome, conteudo) => {
   const re = new RegExp(`(<!--gen:${nome}-->)[\\s\\S]*?(<!--/gen:${nome}-->)`);
   if (!re.test(src)) throw new Error(`marcador gen:${nome} não encontrado`);
   return src.replace(re, `$1${conteudo}$2`);
 };
+const LARGURAS = [480, 960, 1280, 1920];
+const srcset = (base, pre = "") => LARGURAS.map((w) => `${pre}img/${base}-${w}.webp ${w}w`).join(", ");
+const dims = (base) => { const [w, h] = tamanho(`${base}-960.webp`); return `width="${w}" height="${h}"`; };
 const pic = (base, alt, sizes, pre = "") =>
-  `<img src="${pre}img/${base}-480.webp" srcset="${pre}img/${base}-480.webp 480w, ${pre}img/${base}-960.webp 960w, ${pre}img/${base}-1920.webp 1920w" sizes="${sizes}" alt="${esc(alt)}" loading="lazy" decoding="async">`;
+  `<img src="${pre}img/${base}-480.webp" srcset="${srcset(base, pre)}" sizes="${sizes}" ${dims(base)} alt="${esc(alt)}" loading="lazy" decoding="async">`;
 
 // "R$ 180 por pessoa ou R$ 1.300 no privado para até 5 pessoas"
 const precoTexto = ({ preco: q }) => [
@@ -74,7 +103,7 @@ const precoTexto = ({ preco: q }) => [
 ].filter(Boolean).join(" ou ");
 
 const resposta = (p) =>
-  `${cap(p.o)} ${p.nomeCompleto} é um passeio ${p.tipo} pelos Lençóis Maranhenses, saindo de Santo Amaro do Maranhão. ` +
+  `${cap(p.o)} ${p.nomeCompleto} é um passeio ${p.tipo} ${p.onde}. ` +
   `Horário: ${p.horarios || p.horario}. Transporte: ${p.transporte}. Valor: ${precoTexto(p)}. ${p.curta}`;
 
 const msgReserva = (p) =>
@@ -116,7 +145,7 @@ const agencia = {
     "Faz 9 roteiros em 4x4, barco e quadriciclo: Circuito Betânia, Emendadas, Andorinhas e Gaivota, Ponta Verde, América, Rancharia, " +
     "Revoada dos Guarás, Contemplação das Estrelas e o Combo Betânia + Emendadas.",
   telephone: "+55-98-99241-7329",
-  priceRange: `${brl(Math.min(...PASSEIOS.map((p) => p.preco.pessoa || p.preco.privado)))} a ${brl(Math.max(...PASSEIOS.map((p) => p.preco.privado || 0)))}`,
+  priceRange: `${brl(Math.min(...PASSEIOS.filter((p) => p.preco.pessoa).map((p) => p.preco.pessoa)))} a ${brl(Math.max(...PASSEIOS.filter((p) => p.preco.pessoa).map((p) => p.preco.pessoa)))} por pessoa`,
   currenciesAccepted: "BRL",
   address: { "@type": "PostalAddress", addressLocality: "Santo Amaro do Maranhão", addressRegion: "MA", addressCountry: "BR" },
   areaServed: [
@@ -144,18 +173,22 @@ const viagem = (p) => ({
   url: p.url,
   description: resposta(p),
   image: p.fotos.map(([f]) => `${SITE}/img/${f}-1920.webp`),
-  touristType: p.ideal,
   provider: { "@id": AGENCIA },
   offers: [
-    p.preco.pessoa && { "@type": "Offer", name: "Por pessoa", price: p.preco.pessoa, priceCurrency: "BRL", url: p.url },
+    p.preco.pessoa && {
+      "@type": "Offer", name: "Por pessoa", price: p.preco.pessoa, priceCurrency: "BRL", url: p.url,
+      priceSpecification: { "@type": "UnitPriceSpecification", price: p.preco.pessoa, priceCurrency: "BRL", referenceQuantity: { "@type": "QuantitativeValue", value: 1, unitText: "pessoa" } },
+    },
     p.preco.privado && {
       "@type": "Offer", name: p.preco.ate ? `Privado, até ${p.preco.ate} pessoas` : "Privado", price: p.preco.privado, priceCurrency: "BRL", url: p.url,
+      priceSpecification: { "@type": "UnitPriceSpecification", price: p.preco.privado, priceCurrency: "BRL", referenceQuantity: { "@type": "QuantitativeValue", value: 1, unitText: "grupo" } },
       ...(p.preco.ate && { eligibleQuantity: { "@type": "QuantitativeValue", maxValue: p.preco.ate, unitText: "pessoas" } }),
     },
   ].filter(Boolean),
 });
-const faqSchema = (qas) => ({
+const faqSchema = (qas, id) => ({
   "@type": "FAQPage",
+  "@id": id,
   mainEntity: qas.map(([q, a]) => ({ "@type": "Question", name: strip(q), acceptedAnswer: { "@type": "Answer", text: strip(a) } })),
 });
 
@@ -178,8 +211,8 @@ const bento = BENTO.map(([b, legenda, f], i) =>
 const faqPasseios = `
       <details class="qa">
         <summary>Quais passeios saem de Santo Amaro do Maranhão?<i><svg><use href="#i-plus"/></svg></i></summary>
-        <p>A Lençóis MTur faz ${PASSEIOS.length} passeios saindo de Santo Amaro do Maranhão: ${PASSEIOS.map((p) =>
-          `<a href="passeios/${p.slug}/">${p.nomeCompleto}</a> (${p.categoria.split(" · ")[0].toLowerCase()}, ${p.preco.pessoa ? `${brl(p.preco.pessoa)} por pessoa` : `${brl(p.preco.privado)} privado`})`).join(", ").replace(/, ([^,]*)$/, " e $1")}.</p>
+        <p>A Lençóis MTur faz ${PASSEIOS.length} passeios saindo de Santo Amaro do Maranhão: ${juntar(PASSEIOS.map((p) =>
+          `<a href="passeios/${p.slug}/">${p.nomeCompleto}</a> (${p.categoria.split(" · ")[0].toLowerCase()}, ${p.preco.pessoa ? `${brl(p.preco.pessoa)} por pessoa` : `${brl(p.preco.privado)} privado`})`))}.</p>
       </details>`;
 
 html = trocar(html, "tours", PASSEIOS.map((p, i) => card(p, i, "")).join("") + "\n    ");
@@ -197,11 +230,14 @@ html = trocar(html, "schema", "\n" + jsonld({
   "@context": "https://schema.org",
   "@graph": [
     { "@type": "WebSite", "@id": `${SITE}/#site`, url: `${SITE}/`, name: "Lençóis MTur", inLanguage: "pt-BR", publisher: { "@id": AGENCIA } },
-    { "@type": "WebPage", "@id": `${SITE}/#pagina`, url: `${SITE}/`, name: strip(html.match(/<title>([\s\S]*?)<\/title>/)[1]), isPartOf: { "@id": `${SITE}/#site` }, about: { "@id": AGENCIA }, inLanguage: "pt-BR", dateModified: HOJE },
-    { ...agencia, makesOffer: PASSEIOS.map((p) => ({ "@type": "Offer", itemOffered: { "@id": `${p.url}#passeio` }, price: p.preco.pessoa || p.preco.privado, priceCurrency: "BRL", url: p.url })) },
+    { "@type": "WebPage", "@id": `${SITE}/#pagina`, url: `${SITE}/`, name: strip(html.match(/<title>([\s\S]*?)<\/title>/)[1]), isPartOf: { "@id": `${SITE}/#site` }, about: { "@id": AGENCIA },
+      primaryImageOfPage: { "@type": "ImageObject", url: `${SITE}/img/og/home.jpg`, width: 1200, height: 630 }, inLanguage: "pt-BR", dateModified: ATUALIZADO },
+    // os preços completos ficam no TouristTrip de cada página de passeio, onde aparecem no texto
+    { ...agencia, makesOffer: PASSEIOS.map((p) => ({ "@type": "Offer", itemOffered: { "@type": "TouristTrip", "@id": `${p.url}#passeio`, name: p.nomeCompleto, url: p.url } })) },
     maiton,
-    ...PASSEIOS.map(viagem),
-    { ...faqSchema(qasHome), "@id": `${SITE}/#faq` },
+    { "@type": "ItemList", "@id": `${SITE}/#passeios`, name: "Passeios saindo de Santo Amaro do Maranhão",
+      itemListElement: PASSEIOS.map((p, i) => ({ "@type": "ListItem", position: i + 1, name: p.nomeCompleto, url: p.url })) },
+    faqSchema(qasHome, `${SITE}/#faq`),
   ],
 }) + "\n");
 fs.writeFileSync(INDEX, html);
@@ -236,6 +272,7 @@ const CSS_PAGINA = `
   .tp-byline{margin-top:1.4rem;display:flex;flex-wrap:wrap;align-items:baseline;gap:.4rem .7rem;color:var(--muted);font-size:.9rem;font-weight:600}
   .tp-byline .hand{font-size:1.9rem;color:var(--deep);line-height:1}
   .tp-body .story p{margin-top:1rem;font-size:1.04rem;color:#34505F;line-height:1.75;text-wrap:pretty}
+  .tp-answer{margin-top:1rem;font-size:1.08rem;color:var(--text);line-height:1.7;text-wrap:pretty}
   .tp-note{margin-top:.9rem;font-size:.92rem;color:var(--muted)}
   .tp-pic{margin:1.75rem 0 0;border-radius:var(--r-lg);overflow:hidden;aspect-ratio:16/10}
   .tp-pic img{width:100%;height:100%;object-fit:cover}
@@ -297,7 +334,7 @@ const rodape = (pre) => `
   <div class="wrap">
     <div class="foot">
       <div>
-        <img src="${pre}img/lencois-mtur-logo.svg" alt="Lençóis MTur" width="204" height="86">
+        <img src="${pre}img/lencois-mtur-logo.svg" alt="Lençóis MTur" width="204" height="86" loading="lazy">
         <p>Passeios pelos Lençóis Maranhenses saindo de Santo Amaro do Maranhão (MA), com o guia nativo Maiton.</p>
       </div>
       <div>
@@ -319,7 +356,7 @@ const rodape = (pre) => `
       </div>
     </div>
     <div class="legal">
-      <p>© ${HOJE.slice(0, 4)} Lençóis MTur</p>
+      <p>© ${ATUALIZADO.slice(0, 4)} Lençóis MTur</p>
       <p>Site por <a href="https://logostecnologias.com" target="_blank" rel="noopener">Logos Tecnologias</a></p>
     </div>
   </div>
@@ -352,18 +389,29 @@ const priceCard = (rotulo, valor, unidade, inclui, cls = "") => `
           ${inclui ? `<ul>${inclui.map((x) => `<li><svg><use href="#i-check"/></svg>${x}</li>`).join("")}</ul>` : ""}
         </div>`;
 
+// horário em frase: "das 09h às 18h", "de manhã, das 09h às 12h, ou à tarde, das 14h às 18h", "a partir das 16h"
+function quando(p) {
+  const h = p.horarios || p.horario;
+  if (h.startsWith("Manhã:")) return h.replace("Manhã:", "de manhã, das").replace(" · Tarde:", ", ou à tarde, das");
+  if (h.startsWith("A partir")) return "a" + h.slice(1);
+  if (h.includes(" · ")) return h.replace(/^(\S+) · (.*)$/, "a partir das $1, com duração de $2");
+  return `das ${h}`;
+}
+
 function faqDoPasseio(p) {
   const q = p.preco;
   const qas = [];
+  const no = p.o === "a" ? "na" : "no";
   qas.push([`Qual o horário ${p.do} ${p.nomeCompleto}?`,
-    `${p.horarios || p.horario}. ${p.busca ? "O 4x4 busca você na hospedagem no início do passeio." : "O ponto de encontro é combinado na reserva pelo WhatsApp."}`]);
+    `${cap(p.o)} ${p.nomeCompleto} acontece ${quando(p)}, com transporte em ${p.transporte.charAt(0).toLowerCase() + p.transporte.slice(1)}. ` +
+    (p.busca ? "O 4x4 busca você na hospedagem em Santo Amaro no início do passeio." : "O ponto de encontro é combinado na reserva pelo WhatsApp.")]);
   const inclui = [
-    q.pessoaInclui && `No passeio por pessoa: ${lista(q.pessoaInclui)}.`,
-    q.privadoInclui && `No privado: ${lista(q.privadoInclui)}.`,
+    q.pessoaInclui && `no passeio por pessoa estão inclusos ${lista(q.pessoaInclui)}`,
+    q.privadoInclui && `no passeio privado estão inclusos ${lista(q.privadoInclui)}`,
   ].filter(Boolean);
-  if (inclui.length) qas.push([`O que está incluso ${p.o === "a" ? "na" : "no"} ${p.nomeCompleto}?`, inclui.join(" ")]);
-  if (p.naoIncluso.length) qas.push([`O que não está incluso?`, `${cap(lista(p.naoIncluso))}.`]);
-  qas.push([`Para quem ${p.o} ${p.nomeCompleto} é indicad${p.o}?`, `${p.ideal}. ${p.destaques.length ? `Os destaques são ${lista(p.destaques)}.` : ""}`]);
+  if (inclui.length) qas.push([`O que está incluso ${no} ${p.nomeCompleto}?`, `${cap(p.nomeCompleto)}: ${inclui.join("; ")}.`]);
+  if (p.naoIncluso.length) qas.push([`O que não está incluso ${no} ${p.nomeCompleto}?`, `Não estão inclusos ${no} ${p.nomeCompleto}: ${lista(p.naoIncluso.map((x) => x.replace(/: R\$/, " de R$")))}.`]);
+  qas.push([`Para quem ${p.o} ${p.nomeCompleto} é indicad${p.o}?`, p.indicado]);
   qas.push([`Como reservar ${p.o} ${p.nomeCompleto}?`,
     `Pelo WhatsApp (98) 99241-7329. Mande o nome do passeio, a data e quantas pessoas vão${q.pessoa && q.privado ? ", e se prefere por pessoa ou privado" : ""}. A Lençóis MTur responde com o valor, o horário e o ponto de encontro.`]);
   return qas;
@@ -372,7 +420,7 @@ function faqDoPasseio(p) {
 function pagina(p) {
   const pre = "../../";
   const qas = faqDoPasseio(p);
-  const precoQ = [`Quanto custa ${p.o} ${p.nomeCompleto}?`, `${cap(precoTexto(p))}.${p.naoIncluso.some((x) => /taxa/i.test(x)) ? " A taxa municipal de Santo Amaro, de R$ 10,00 por pessoa e válida por 3 dias, é cobrada à parte." : ""}`];
+  const precoQ = [`Quanto custa ${p.o} ${p.nomeCompleto}?`, `${cap(p.o)} ${p.nomeCompleto} custa ${precoTexto(p)}.${p.naoIncluso.some((x) => /taxa/i.test(x)) ? " A taxa municipal de Santo Amaro, de R$ 10,00 por pessoa e válida por 3 dias, é cobrada à parte." : ""}`];
   const outros = [...PASSEIOS.filter((x) => x.id !== p.id && x.periodo === p.periodo), ...PASSEIOS.filter((x) => x.id !== p.id && x.periodo !== p.periodo)].slice(0, 4);
   const titulo = `${p.nomeCompleto} em Santo Amaro, Lençóis Maranhenses`;
   let desc = `${p.curta} ${p.horarios || p.horario}. ${cap(precoTexto(p))}. Reserve pelo WhatsApp.`;
@@ -382,8 +430,8 @@ function pagina(p) {
     "@context": "https://schema.org",
     "@graph": [
       { "@type": "WebPage", "@id": `${p.url}#pagina`, url: p.url, name: titulo, description: desc, inLanguage: "pt-BR",
-        isPartOf: { "@id": `${SITE}/#site` }, about: { "@id": `${p.url}#passeio` }, primaryImageOfPage: `${SITE}/img/og/${p.slug}.jpg`,
-        author: { "@id": MAITON }, dateModified: HOJE, breadcrumb: { "@id": `${p.url}#trilha` } },
+        isPartOf: { "@id": `${SITE}/#site` }, about: { "@id": `${p.url}#passeio` }, primaryImageOfPage: { "@type": "ImageObject", url: `${SITE}/img/og/${p.slug}.jpg`, width: 1200, height: 630 },
+        author: { "@id": MAITON }, datePublished: "2026-11-04", dateModified: ATUALIZADO, breadcrumb: { "@id": `${p.url}#trilha` } },
       { "@type": "BreadcrumbList", "@id": `${p.url}#trilha`, itemListElement: [
         { "@type": "ListItem", position: 1, name: "Início", item: `${SITE}/` },
         { "@type": "ListItem", position: 2, name: "Passeios", item: `${SITE}/#passeios` },
@@ -392,7 +440,7 @@ function pagina(p) {
       viagem(p),
       { "@type": ["TravelAgency", "LocalBusiness"], "@id": AGENCIA, name: agencia.name, url: agencia.url, telephone: agencia.telephone, address: agencia.address, logo: agencia.logo },
       maiton,
-      faqSchema([precoQ, ...qas]),
+      faqSchema([precoQ, ...qas], `${p.url}#faq`),
     ],
   };
 
@@ -422,7 +470,7 @@ function pagina(p) {
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Caveat:wght@500;700&family=DM+Sans:opsz,wght@9..40,400..700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="${pre}img/${p.fotos[0][0]}-1920.webp" imagesrcset="${pre}img/${p.fotos[0][0]}-960.webp 960w, ${pre}img/${p.fotos[0][0]}-1920.webp 1920w" imagesizes="100vw">
+<link rel="preload" as="image" href="${pre}img/${p.fotos[0][0]}-1280.webp" imagesrcset="${srcset(p.fotos[0][0], pre)}" imagesizes="100vw" fetchpriority="high">
 ${jsonld(schema)}
 <style>${estilo}${CSS_PAGINA}</style>
 </head>
@@ -433,14 +481,14 @@ ${topo(pre)}
 
 <main>
 <section class="tp-hero">
-  <img src="${pre}img/${p.fotos[0][0]}-1920.webp" srcset="${pre}img/${p.fotos[0][0]}-960.webp 960w, ${pre}img/${p.fotos[0][0]}-1920.webp 1920w" sizes="100vw" alt="${esc(p.fotos[0][1])}" fetchpriority="high">
+  <img src="${pre}img/${p.fotos[0][0]}-1280.webp" srcset="${srcset(p.fotos[0][0], pre)}" sizes="100vw" ${dims(p.fotos[0][0])} alt="${esc(p.fotos[0][1])}" fetchpriority="high">
   <div class="tp-hero-in">
     <nav class="crumbs" aria-label="Você está em">
       <ol><li><a href="${pre}">Início</a></li><li><a href="${pre}#passeios">Passeios</a></li><li aria-current="page">${p.nome}</li></ol>
     </nav>
     <span class="tp-cat">${p.categoria} · Santo Amaro do Maranhão</span>
     <h1>${p.nomeCompleto}</h1>
-    <p class="tp-lead">${resposta(p)}</p>
+    <p class="tp-lead">${p.curta}</p>
     <div class="hero-ctas">
       <a href="${esc(waHref(msgReserva(p)))}" class="btn btn-wa" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Reservar pelo WhatsApp</a>
       <a href="#valores" class="btn btn-ghost">Ver valores <svg><use href="#i-arrow"/></svg></a>
@@ -451,14 +499,15 @@ ${topo(pre)}
 <section class="sec">
   <div class="wrap tp-main">
     <article class="tp-body">
-      <h2>Resumo ${p.do} passeio</h2>
+      <h2>Resumo do passeio</h2>
+      <p class="tp-answer">${resposta(p)}</p>
       <div class="facts">
         <div class="fact"><small>Horário</small><b>${p.horarios || p.horario}</b></div>
         <div class="fact"><small>Transporte</small><b>${p.transporte}</b></div>
         <div class="fact"><small>Ideal para</small><b>${p.ideal}</b></div>
       </div>
       ${p.obs ? `<p class="callout">${p.obs}</p>` : ""}
-      <p class="tp-byline"><span class="hand">Maiton</span> guia nativo de Santo Amaro desde 2018 · roteiro atualizado em ${new Date(HOJE + "T12:00").toLocaleDateString("pt-BR", { month: "long", year: "numeric" })}</p>
+      <p class="tp-byline"><span class="hand">Maiton</span> guia nativo de Santo Amaro desde 2018 · roteiro atualizado em ${new Date(ATUALIZADO + "T12:00").toLocaleDateString("pt-BR", { month: "long", year: "numeric" })}</p>
 
       <h2 id="valores">${precoQ[0]}</h2>
       <div class="prices ${q.pessoa && q.privado ? "two" : ""}">${[
@@ -486,7 +535,7 @@ ${topo(pre)}
     </article>
 
     <aside class="book" aria-label="Reservar">
-      <span class="hand">bora pras dunas!</span>
+      <span class="hand">${p.selo}</span>
       <p class="from">${q.pessoa ? "a partir de" : "passeio privado"}</p>
       <p class="val">${brl(q.pessoa || q.privado)} <small>${q.pessoa ? "por pessoa" : q.ate ? `até ${q.ate} pessoas` : "o grupo"}</small></p>
       <dl>
@@ -528,17 +577,64 @@ for (const p of PASSEIOS) {
   fs.writeFileSync(path.join(dir, "index.html"), pagina(p));
 }
 
+// 404: página enxuta, com CSS próprio. Links absolutos porque ela pode ser servida em qualquer caminho.
+const icone = sprite.match(/<symbol id="i-wa"[\s\S]*?<\/symbol>/)[0].replace(/<symbol id="i-wa" (viewBox="[^"]*")>([\s\S]*)<\/symbol>/, '<svg $1 aria-hidden="true">$2</svg>');
+fs.writeFileSync(path.join(ROOT, "404.html"), `<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Página não encontrada | Lençóis MTur</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0FA3A3">
+<link rel="icon" href="/img/lencois-mtur-simbolo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Caveat:wght@700&family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100svh;display:grid;place-items:center;padding:32px 20px;background:#E5F4F2;color:#0E2A3A;font:16.5px/1.6 "DM Sans",system-ui,sans-serif}
+  main{width:100%;max-width:640px}
+  img{display:block;height:40px;width:auto}
+  .hand{display:block;margin-top:48px;font:700 1.8rem/1 Caveat,cursive;color:#C94A1E}
+  h1{margin:.4rem 0 0;font:800 clamp(2.6rem,9vw,4.4rem)/.95 "Bricolage Grotesque",system-ui,sans-serif;letter-spacing:-.045em;color:#03314B}
+  p{margin:1rem 0 0;color:#557080}
+  .ctas{margin-top:1.75rem;display:flex;flex-wrap:wrap;gap:.7rem}
+  a.btn{display:inline-flex;align-items:center;gap:.55rem;padding:1rem 1.35rem;border-radius:14px;font-weight:700;font-size:.95rem;text-decoration:none;color:#fff}
+  .sun{background:#F26B3A}.wa{background:#25D366}
+  .btn svg{width:1.15rem;height:1.15rem}
+  ul{margin:2.5rem 0 0;padding:1.25rem 0 0;border-top:1.5px solid #CDEBE7;list-style:none;display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;font-size:.92rem}
+  ul a{color:#087A7D;font-weight:700}
+  @media (max-width:520px){.ctas{display:grid}a.btn{justify-content:center}}
+</style>
+</head>
+<body>
+<main>
+  <a href="/" aria-label="Lençóis MTur, início"><img src="/img/lencois-mtur-logo-horizontal.svg" alt="Lençóis MTur" width="151" height="38"></a>
+  <span class="hand">ops, essa duna não existe</span>
+  <h1>Página não encontrada.</h1>
+  <p>O endereço pode ter mudado. Veja os passeios saindo de Santo Amaro do Maranhão ou fale com a gente pelo WhatsApp.</p>
+  <div class="ctas">
+    <a class="btn sun" href="/#passeios">Ver os ${PASSEIOS.length} passeios</a>
+    <a class="btn wa" href="${esc(waHref())}" target="_blank" rel="noopener">${icone}Chamar no WhatsApp</a>
+  </div>
+  <ul>${PASSEIOS.map((p) => `<li><a href="/passeios/${p.slug}/">${p.nome.replace("Circuito ", "")}</a></li>`).join("")}</ul>
+</main>
+</body>
+</html>
+`);
+
 // ------------------------------------------------------------- sitemap, robots, llms
 const imgTag = (f) => `\n    <image:image><image:loc>${SITE}/img/${f}-1920.webp</image:loc></image:image>`;
 fs.writeFileSync(path.join(ROOT, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>${SITE}/</loc>
-    <lastmod>${HOJE}</lastmod>${["aerea-lagoas-dunas", ...BENTO.map(([b]) => b)].filter((v, i, a) => a.indexOf(v) === i).map(imgTag).join("")}
+    <lastmod>${ATUALIZADO}</lastmod>${["aerea-lagoas-dunas", ...BENTO.map(([b]) => b)].filter((v, i, a) => a.indexOf(v) === i).map(imgTag).join("")}
   </url>
 ${PASSEIOS.map((p) => `  <url>
     <loc>${p.url}</loc>
-    <lastmod>${HOJE}</lastmod>${p.fotos.map(([f]) => imgTag(f)).join("")}
+    <lastmod>${ATUALIZADO}</lastmod>${p.fotos.map(([f]) => imgTag(f)).join("")}
   </url>`).join("\n")}
 </urlset>
 `);

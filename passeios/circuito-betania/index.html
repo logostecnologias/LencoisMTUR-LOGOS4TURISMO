@@ -24,7 +24,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Caveat:wght@500;700&family=DM+Sans:opsz,wght@9..40,400..700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="../../img/betania-1-1920.webp" imagesrcset="../../img/betania-1-960.webp 960w, ../../img/betania-1-1920.webp 1920w" imagesizes="100vw">
+<link rel="preload" as="image" href="../../img/betania-1-1280.webp" imagesrcset="../../img/betania-1-480.webp 480w, ../../img/betania-1-960.webp 960w, ../../img/betania-1-1280.webp 1280w, ../../img/betania-1-1920.webp 1920w" imagesizes="100vw" fetchpriority="high">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -42,10 +42,16 @@
       "about": {
         "@id": "https://lencoismtur.com.br/passeios/circuito-betania/#passeio"
       },
-      "primaryImageOfPage": "https://lencoismtur.com.br/img/og/circuito-betania.jpg",
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://lencoismtur.com.br/img/og/circuito-betania.jpg",
+        "width": 1200,
+        "height": 630
+      },
       "author": {
         "@id": "https://lencoismtur.com.br/#maiton"
       },
+      "datePublished": "2026-11-04",
       "dateModified": "2026-11-04",
       "breadcrumb": {
         "@id": "https://lencoismtur.com.br/passeios/circuito-betania/#trilha"
@@ -85,7 +91,6 @@
         "https://lencoismtur.com.br/img/betania-1-1920.webp",
         "https://lencoismtur.com.br/img/betania-2-1920.webp"
       ],
-      "touristType": "Um dia completo de lagoas",
       "provider": {
         "@id": "https://lencoismtur.com.br/#agencia"
       },
@@ -95,7 +100,17 @@
           "name": "Por pessoa",
           "price": 180,
           "priceCurrency": "BRL",
-          "url": "https://lencoismtur.com.br/passeios/circuito-betania/"
+          "url": "https://lencoismtur.com.br/passeios/circuito-betania/",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": 180,
+            "priceCurrency": "BRL",
+            "referenceQuantity": {
+              "@type": "QuantitativeValue",
+              "value": 1,
+              "unitText": "pessoa"
+            }
+          }
         },
         {
           "@type": "Offer",
@@ -103,6 +118,16 @@
           "price": 1400,
           "priceCurrency": "BRL",
           "url": "https://lencoismtur.com.br/passeios/circuito-betania/",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": 1400,
+            "priceCurrency": "BRL",
+            "referenceQuantity": {
+              "@type": "QuantitativeValue",
+              "value": 1,
+              "unitText": "grupo"
+            }
+          },
           "eligibleQuantity": {
             "@type": "QuantitativeValue",
             "maxValue": 5,
@@ -144,13 +169,14 @@
     },
     {
       "@type": "FAQPage",
+      "@id": "https://lencoismtur.com.br/passeios/circuito-betania/#faq",
       "mainEntity": [
         {
           "@type": "Question",
           "name": "Quanto custa o Circuito Betânia?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "R$ 180 por pessoa ou R$ 1.400 no privado para até 5 pessoas. A taxa municipal de Santo Amaro, de R$ 10,00 por pessoa e válida por 3 dias, é cobrada à parte."
+            "text": "O Circuito Betânia custa R$ 180 por pessoa ou R$ 1.400 no privado para até 5 pessoas. A taxa municipal de Santo Amaro, de R$ 10,00 por pessoa e válida por 3 dias, é cobrada à parte."
           }
         },
         {
@@ -158,7 +184,7 @@
           "name": "Qual o horário do Circuito Betânia?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "09h às 18h. O 4x4 busca você na hospedagem no início do passeio."
+            "text": "O Circuito Betânia acontece das 09h às 18h, com transporte em 4x4 + trilha de 10 min. O 4x4 busca você na hospedagem em Santo Amaro no início do passeio."
           }
         },
         {
@@ -166,15 +192,15 @@
           "name": "O que está incluso no Circuito Betânia?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No passeio por pessoa: água e cadeiras e guarda-sol. No privado: água, refrigerante pet, água de coco, cesta de frutas, castanhas e raquetes de frescobol."
+            "text": "Circuito Betânia: no passeio por pessoa estão inclusos água, cadeiras e guarda-sol; no passeio privado estão inclusos água, refrigerante pet, água de coco, cesta de frutas, castanhas e raquetes de frescobol."
           }
         },
         {
           "@type": "Question",
-          "name": "O que não está incluso?",
+          "name": "O que não está incluso no Circuito Betânia?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Almoço, taxa municipal: R$ 10,00 (válida por 3 dias) e taxa da travessia: R$ 10,00 (dependendo da época)."
+            "text": "Não estão inclusos no Circuito Betânia: almoço, taxa municipal de R$ 10,00 (válida por 3 dias) e taxa da travessia de R$ 10,00 (dependendo da época)."
           }
         },
         {
@@ -182,7 +208,7 @@
           "name": "Para quem o Circuito Betânia é indicado?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Um dia completo de lagoas. Os destaques são busca na hospedagem em 4x4, banho em três lagoas, redes sobre o Rio Alegre e pôr do sol nas dunas."
+            "text": "Para quem quer um dia inteiro de lagoas saindo de Santo Amaro: trilha curta pelas dunas, banho em três lagoas, almoço no Povoado de Betânia e descanso em redes sobre o Rio Alegre."
           }
         },
         {
@@ -629,6 +655,7 @@
   .tp-byline{margin-top:1.4rem;display:flex;flex-wrap:wrap;align-items:baseline;gap:.4rem .7rem;color:var(--muted);font-size:.9rem;font-weight:600}
   .tp-byline .hand{font-size:1.9rem;color:var(--deep);line-height:1}
   .tp-body .story p{margin-top:1rem;font-size:1.04rem;color:#34505F;line-height:1.75;text-wrap:pretty}
+  .tp-answer{margin-top:1rem;font-size:1.08rem;color:var(--text);line-height:1.7;text-wrap:pretty}
   .tp-note{margin-top:.9rem;font-size:.92rem;color:var(--muted)}
   .tp-pic{margin:1.75rem 0 0;border-radius:var(--r-lg);overflow:hidden;aspect-ratio:16/10}
   .tp-pic img{width:100%;height:100%;object-fit:cover}
@@ -705,14 +732,14 @@
 
 <main>
 <section class="tp-hero">
-  <img src="../../img/betania-1-1920.webp" srcset="../../img/betania-1-960.webp 960w, ../../img/betania-1-1920.webp 1920w" sizes="100vw" alt="Vista aérea do Povoado de Betânia, com o rio e as lagoas entre as dunas" fetchpriority="high">
+  <img src="../../img/betania-1-1280.webp" srcset="../../img/betania-1-480.webp 480w, ../../img/betania-1-960.webp 960w, ../../img/betania-1-1280.webp 1280w, ../../img/betania-1-1920.webp 1920w" sizes="100vw" width="960" height="539" alt="Vista aérea do Povoado de Betânia, com o rio e as lagoas entre as dunas" fetchpriority="high">
   <div class="tp-hero-in">
     <nav class="crumbs" aria-label="Você está em">
       <ol><li><a href="../../">Início</a></li><li><a href="../../#passeios">Passeios</a></li><li aria-current="page">Circuito Betânia</li></ol>
     </nav>
     <span class="tp-cat">Dia inteiro · Santo Amaro do Maranhão</span>
     <h1>Circuito Betânia</h1>
-    <p class="tp-lead">O Circuito Betânia é um passeio de dia inteiro pelos Lençóis Maranhenses, saindo de Santo Amaro do Maranhão. Horário: 09h às 18h. Transporte: 4x4 + trilha de 10 min. Valor: R$ 180 por pessoa ou R$ 1.400 no privado para até 5 pessoas. Trilha pelas dunas, banho em lagoas, almoço no Povoado de Betânia e redes sobre o Rio Alegre.</p>
+    <p class="tp-lead">Trilha pelas dunas, banho em lagoas, almoço no Povoado de Betânia e redes sobre o Rio Alegre.</p>
     <div class="hero-ctas">
       <a href="https://wa.me/5598992417329?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20reservar%20o%20Circuito%20Bet%C3%A2nia%20com%20a%20Len%C3%A7%C3%B3is%20MTur.%20Data%3A%20___%20%C2%B7%20Pessoas%3A%20___%20%C2%B7%20Por%20pessoa%20ou%20privado%3A%20___" class="btn btn-wa" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Reservar pelo WhatsApp</a>
       <a href="#valores" class="btn btn-ghost">Ver valores <svg><use href="#i-arrow"/></svg></a>
@@ -724,6 +751,7 @@
   <div class="wrap tp-main">
     <article class="tp-body">
       <h2>Resumo do passeio</h2>
+      <p class="tp-answer">O Circuito Betânia é um passeio de dia inteiro pelos Lençóis Maranhenses, saindo de Santo Amaro do Maranhão. Horário: 09h às 18h. Transporte: 4x4 + trilha de 10 min. Valor: R$ 180 por pessoa ou R$ 1.400 no privado para até 5 pessoas. Trilha pelas dunas, banho em lagoas, almoço no Povoado de Betânia e redes sobre o Rio Alegre.</p>
       <div class="facts">
         <div class="fact"><small>Horário</small><b>09h às 18h</b></div>
         <div class="fact"><small>Transporte</small><b>4x4 + trilha de 10 min</b></div>
@@ -743,11 +771,11 @@
           <ul><li><svg><use href="#i-check"/></svg>Água</li><li><svg><use href="#i-check"/></svg>Refrigerante pet</li><li><svg><use href="#i-check"/></svg>Água de coco</li><li><svg><use href="#i-check"/></svg>Cesta de frutas</li><li><svg><use href="#i-check"/></svg>Castanhas</li><li><svg><use href="#i-check"/></svg>Raquetes de frescobol</li></ul>
         </div>
       </div>
-      <p class="tp-note">R$ 180 por pessoa ou R$ 1.400 no privado para até 5 pessoas. A taxa municipal de Santo Amaro, de R$ 10,00 por pessoa e válida por 3 dias, é cobrada à parte.</p>
+      <p class="tp-note">O Circuito Betânia custa R$ 180 por pessoa ou R$ 1.400 no privado para até 5 pessoas. A taxa municipal de Santo Amaro, de R$ 10,00 por pessoa e válida por 3 dias, é cobrada à parte.</p>
 
       <h2>Como é o roteiro do Circuito Betânia?</h2>
       <div class="story"><p>O passeio começa com o veículo 4x4 buscando você na hospedagem a partir das 09h. Para chegar às lagoas de Betânia, fazemos uma trilha de 10 minutos pelas dunas, com muita aventura, paisagens paradisíacas de várias lagoas e uma imensidão de areia.</p><p>Pela manhã, paramos para fotos e banho em duas lagoas. Depois seguimos para o almoço no charmoso Povoado de Betânia e, após a refeição, uma pausa para descanso em redes sobre as águas do Rio Alegre, um momento relaxante e único.</p><p>Retornamos à tarde com mais uma parada em outra lagoa, fechando o dia com um pôr do sol inesquecível.</p></div>
-      <figure class="tp-pic"><img src="../../img/betania-2-480.webp" srcset="../../img/betania-2-480.webp 480w, ../../img/betania-2-960.webp 960w, ../../img/betania-2-1920.webp 1920w" sizes="(min-width:1000px) 780px, 100vw" alt="Pessoas tomando banho em uma lagoa azul-turquesa entre as dunas" loading="lazy" decoding="async"></figure>
+      <figure class="tp-pic"><img src="../../img/betania-2-480.webp" srcset="../../img/betania-2-480.webp 480w, ../../img/betania-2-960.webp 960w, ../../img/betania-2-1280.webp 1280w, ../../img/betania-2-1920.webp 1920w" sizes="(min-width:1000px) 780px, 100vw" width="960" height="933" alt="Pessoas tomando banho em uma lagoa azul-turquesa entre as dunas" loading="lazy" decoding="async"></figure>
 
       <h2>Destaques</h2>
       <ul class="ticks "><li><svg><use href="#i-check"/></svg>Busca na hospedagem em 4x4</li><li><svg><use href="#i-check"/></svg>Banho em três lagoas</li><li><svg><use href="#i-check"/></svg>Redes sobre o Rio Alegre</li><li><svg><use href="#i-check"/></svg>Pôr do sol nas dunas</li></ul>
@@ -758,19 +786,19 @@
       <div class="tp-faq">
         <details class="qa">
           <summary>Qual o horário do Circuito Betânia?<i><svg><use href="#i-plus"/></svg></i></summary>
-          <p>09h às 18h. O 4x4 busca você na hospedagem no início do passeio.</p>
+          <p>O Circuito Betânia acontece das 09h às 18h, com transporte em 4x4 + trilha de 10 min. O 4x4 busca você na hospedagem em Santo Amaro no início do passeio.</p>
         </details>
         <details class="qa">
           <summary>O que está incluso no Circuito Betânia?<i><svg><use href="#i-plus"/></svg></i></summary>
-          <p>No passeio por pessoa: água e cadeiras e guarda-sol. No privado: água, refrigerante pet, água de coco, cesta de frutas, castanhas e raquetes de frescobol.</p>
+          <p>Circuito Betânia: no passeio por pessoa estão inclusos água, cadeiras e guarda-sol; no passeio privado estão inclusos água, refrigerante pet, água de coco, cesta de frutas, castanhas e raquetes de frescobol.</p>
         </details>
         <details class="qa">
-          <summary>O que não está incluso?<i><svg><use href="#i-plus"/></svg></i></summary>
-          <p>Almoço, taxa municipal: R$ 10,00 (válida por 3 dias) e taxa da travessia: R$ 10,00 (dependendo da época).</p>
+          <summary>O que não está incluso no Circuito Betânia?<i><svg><use href="#i-plus"/></svg></i></summary>
+          <p>Não estão inclusos no Circuito Betânia: almoço, taxa municipal de R$ 10,00 (válida por 3 dias) e taxa da travessia de R$ 10,00 (dependendo da época).</p>
         </details>
         <details class="qa">
           <summary>Para quem o Circuito Betânia é indicado?<i><svg><use href="#i-plus"/></svg></i></summary>
-          <p>Um dia completo de lagoas. Os destaques são busca na hospedagem em 4x4, banho em três lagoas, redes sobre o Rio Alegre e pôr do sol nas dunas.</p>
+          <p>Para quem quer um dia inteiro de lagoas saindo de Santo Amaro: trilha curta pelas dunas, banho em três lagoas, almoço no Povoado de Betânia e descanso em redes sobre o Rio Alegre.</p>
         </details>
         <details class="qa">
           <summary>Como reservar o Circuito Betânia?<i><svg><use href="#i-plus"/></svg></i></summary>
@@ -801,7 +829,7 @@
     </div>
     <div class="tours">
   <a class="tour" href="../../passeios/circuito-ponta-verde/" data-open="ponta-verde" data-p="dia">
-    <img src="../../img/ponta-verde-1-480.webp" srcset="../../img/ponta-verde-1-480.webp 480w, ../../img/ponta-verde-1-960.webp 960w, ../../img/ponta-verde-1-1920.webp 1920w" sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw" alt="Vista aérea de uma faixa de duna entre lagoas verdes na Ponta Verde" loading="lazy" decoding="async">
+    <img src="../../img/ponta-verde-1-480.webp" srcset="../../img/ponta-verde-1-480.webp 480w, ../../img/ponta-verde-1-960.webp 960w, ../../img/ponta-verde-1-1280.webp 1280w, ../../img/ponta-verde-1-1920.webp 1920w" sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw" width="960" height="1332" alt="Vista aérea de uma faixa de duna entre lagoas verdes na Ponta Verde" loading="lazy" decoding="async">
     <span class="when"><svg><use href="#i-clock"/></svg>09h às 18h</span>
     <div class="tour-txt">
       <span class="cat">Dia inteiro</span>
@@ -812,7 +840,7 @@
     </div>
   </a>
   <a class="tour" href="../../passeios/circuito-rancharia/" data-open="rancharia" data-p="dia">
-    <img src="../../img/aerea-faixa-areia-480.webp" srcset="../../img/aerea-faixa-areia-480.webp 480w, ../../img/aerea-faixa-areia-960.webp 960w, ../../img/aerea-faixa-areia-1920.webp 1920w" sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw" alt="Vista aérea de uma faixa de areia entre lagoas" loading="lazy" decoding="async">
+    <img src="../../img/aerea-faixa-areia-480.webp" srcset="../../img/aerea-faixa-areia-480.webp 480w, ../../img/aerea-faixa-areia-960.webp 960w, ../../img/aerea-faixa-areia-1280.webp 1280w, ../../img/aerea-faixa-areia-1920.webp 1920w" sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw" width="960" height="1710" alt="Vista aérea de uma faixa de areia entre lagoas" loading="lazy" decoding="async">
     <span class="when"><svg><use href="#i-clock"/></svg>09h às 18h</span>
     <div class="tour-txt">
       <span class="cat">Dia inteiro</span>
@@ -823,7 +851,7 @@
     </div>
   </a>
   <a class="tour" href="../../passeios/combo-betania-emendadas/" data-open="combo" data-p="dia">
-    <img src="../../img/combo-1-480.webp" srcset="../../img/combo-1-480.webp 480w, ../../img/combo-1-960.webp 960w, ../../img/combo-1-1920.webp 1920w" sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw" alt="Visitantes fazendo fotos na beira de uma grande lagoa entre as dunas" loading="lazy" decoding="async">
+    <img src="../../img/combo-1-480.webp" srcset="../../img/combo-1-480.webp 480w, ../../img/combo-1-960.webp 960w, ../../img/combo-1-1280.webp 1280w, ../../img/combo-1-1920.webp 1920w" sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw" width="960" height="1280" alt="Visitantes fazendo fotos na beira de uma grande lagoa entre as dunas" loading="lazy" decoding="async">
     <span class="when"><svg><use href="#i-clock"/></svg>09h às 19h</span>
     <div class="tour-txt">
       <span class="cat">Dia inteiro · combo</span>
@@ -834,7 +862,7 @@
     </div>
   </a>
   <a class="tour" href="../../passeios/circuito-emendadas/" data-open="emendadas" data-p="tarde">
-    <img src="../../img/emendadas-1-480.webp" srcset="../../img/emendadas-1-480.webp 480w, ../../img/emendadas-1-960.webp 960w, ../../img/emendadas-1-1920.webp 1920w" sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw" alt="Pôr do sol sobre as lagoas das Emendadas, com duas pessoas na duna" loading="lazy" decoding="async">
+    <img src="../../img/emendadas-1-480.webp" srcset="../../img/emendadas-1-480.webp 480w, ../../img/emendadas-1-960.webp 960w, ../../img/emendadas-1-1280.webp 1280w, ../../img/emendadas-1-1920.webp 1920w" sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw" width="960" height="1280" alt="Pôr do sol sobre as lagoas das Emendadas, com duas pessoas na duna" loading="lazy" decoding="async">
     <span class="when"><svg><use href="#i-clock"/></svg>14h às 19h</span>
     <div class="tour-txt">
       <span class="cat">Tarde e noite</span>
@@ -862,7 +890,7 @@
       </div>
       <div class="phone" aria-hidden="true">
         <div class="screen">
-          <div class="screen-top"><img src="../../img/lencois-mtur-logo-fundo-azul.svg" alt=""><div><b>Lençóis MTur</b><small>98 99241-7329</small></div></div>
+          <div class="screen-top"><img src="../../img/lencois-mtur-logo-fundo-azul.svg" alt="" width="38" height="38" loading="lazy"><div><b>Lençóis MTur</b><small>98 99241-7329</small></div></div>
           <div class="msgs">
             <div class="msg me">Oi! Quero fazer o Circuito Emendadas. Somos 2 pessoas 🙂<time>14:02</time></div>
             <div class="msg">Oi! Que bom ter você com a gente. Qual a data?<time>14:03</time></div>
@@ -880,7 +908,7 @@
   <div class="wrap">
     <div class="foot">
       <div>
-        <img src="../../img/lencois-mtur-logo.svg" alt="Lençóis MTur" width="204" height="86">
+        <img src="../../img/lencois-mtur-logo.svg" alt="Lençóis MTur" width="204" height="86" loading="lazy">
         <p>Passeios pelos Lençóis Maranhenses saindo de Santo Amaro do Maranhão (MA), com o guia nativo Maiton.</p>
       </div>
       <div>

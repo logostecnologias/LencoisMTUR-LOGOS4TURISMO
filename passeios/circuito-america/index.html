@@ -24,7 +24,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Caveat:wght@500;700&family=DM+Sans:opsz,wght@9..40,400..700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="../../img/aerea-guarda-sol-1920.webp" imagesrcset="../../img/aerea-guarda-sol-960.webp 960w, ../../img/aerea-guarda-sol-1920.webp 1920w" imagesizes="100vw">
+<link rel="preload" as="image" href="../../img/aerea-guarda-sol-1280.webp" imagesrcset="../../img/aerea-guarda-sol-480.webp 480w, ../../img/aerea-guarda-sol-960.webp 960w, ../../img/aerea-guarda-sol-1280.webp 1280w, ../../img/aerea-guarda-sol-1920.webp 1920w" imagesizes="100vw" fetchpriority="high">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -42,10 +42,16 @@
       "about": {
         "@id": "https://lencoismtur.com.br/passeios/circuito-america/#passeio"
       },
-      "primaryImageOfPage": "https://lencoismtur.com.br/img/og/circuito-america.jpg",
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://lencoismtur.com.br/img/og/circuito-america.jpg",
+        "width": 1200,
+        "height": 630
+      },
       "author": {
         "@id": "https://lencoismtur.com.br/#maiton"
       },
+      "datePublished": "2026-11-04",
       "dateModified": "2026-11-04",
       "breadcrumb": {
         "@id": "https://lencoismtur.com.br/passeios/circuito-america/#trilha"
@@ -85,7 +91,6 @@
         "https://lencoismtur.com.br/img/aerea-guarda-sol-1920.webp",
         "https://lencoismtur.com.br/img/america-2-1920.webp"
       ],
-      "touristType": "Relaxar depois das aventuras",
       "provider": {
         "@id": "https://lencoismtur.com.br/#agencia"
       },
@@ -95,7 +100,17 @@
           "name": "Por pessoa",
           "price": 130,
           "priceCurrency": "BRL",
-          "url": "https://lencoismtur.com.br/passeios/circuito-america/"
+          "url": "https://lencoismtur.com.br/passeios/circuito-america/",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": 130,
+            "priceCurrency": "BRL",
+            "referenceQuantity": {
+              "@type": "QuantitativeValue",
+              "value": 1,
+              "unitText": "pessoa"
+            }
+          }
         },
         {
           "@type": "Offer",
@@ -103,6 +118,16 @@
           "price": 800,
           "priceCurrency": "BRL",
           "url": "https://lencoismtur.com.br/passeios/circuito-america/",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": 800,
+            "priceCurrency": "BRL",
+            "referenceQuantity": {
+              "@type": "QuantitativeValue",
+              "value": 1,
+              "unitText": "grupo"
+            }
+          },
           "eligibleQuantity": {
             "@type": "QuantitativeValue",
             "maxValue": 5,
@@ -144,13 +169,14 @@
     },
     {
       "@type": "FAQPage",
+      "@id": "https://lencoismtur.com.br/passeios/circuito-america/#faq",
       "mainEntity": [
         {
           "@type": "Question",
           "name": "Quanto custa o Circuito América?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "R$ 130 por pessoa ou R$ 800 no privado para até 5 pessoas. A taxa municipal de Santo Amaro, de R$ 10,00 por pessoa e válida por 3 dias, é cobrada à parte."
+            "text": "O Circuito América custa R$ 130 por pessoa ou R$ 800 no privado para até 5 pessoas. A taxa municipal de Santo Amaro, de R$ 10,00 por pessoa e válida por 3 dias, é cobrada à parte."
           }
         },
         {
@@ -158,7 +184,7 @@
           "name": "Qual o horário do Circuito América?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Manhã: 09h às 12h · Tarde: 14h às 17h. O ponto de encontro é combinado na reserva pelo WhatsApp."
+            "text": "O Circuito América acontece de manhã, das 09h às 12h, ou à tarde, das 14h às 17h, com transporte em voadeira (barco). O ponto de encontro é combinado na reserva pelo WhatsApp."
           }
         },
         {
@@ -166,15 +192,15 @@
           "name": "O que está incluso no Circuito América?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No passeio por pessoa: água e cadeiras e guarda-sol. No privado: água, água de coco e refrigerante pet."
+            "text": "Circuito América: no passeio por pessoa estão inclusos água, cadeiras e guarda-sol; no passeio privado estão inclusos água, água de coco e refrigerante pet."
           }
         },
         {
           "@type": "Question",
-          "name": "O que não está incluso?",
+          "name": "O que não está incluso no Circuito América?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Taxa municipal: R$ 10,00."
+            "text": "Não estão inclusos no Circuito América: taxa municipal de R$ 10,00."
           }
         },
         {
@@ -182,7 +208,7 @@
           "name": "Para quem o Circuito América é indicado?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Relaxar depois das aventuras. Os destaques são trajeto de 30 min de voadeira, encontro do Rio Alegre com o Lago Jangada, lagoa com sombra e pouco movimento."
+            "text": "Para quem quer um passeio tranquilo depois das aventuras nas dunas: o trajeto é de voadeira pelo encontro do Rio Alegre com o Lago Jangada e termina na Lagoa do América, com sombra e pouco movimento."
           }
         },
         {
@@ -629,6 +655,7 @@
   .tp-byline{margin-top:1.4rem;display:flex;flex-wrap:wrap;align-items:baseline;gap:.4rem .7rem;color:var(--muted);font-size:.9rem;font-weight:600}
   .tp-byline .hand{font-size:1.9rem;color:var(--deep);line-height:1}
   .tp-body .story p{margin-top:1rem;font-size:1.04rem;color:#34505F;line-height:1.75;text-wrap:pretty}
+  .tp-answer{margin-top:1rem;font-size:1.08rem;color:var(--text);line-height:1.7;text-wrap:pretty}
   .tp-note{margin-top:.9rem;font-size:.92rem;color:var(--muted)}
   .tp-pic{margin:1.75rem 0 0;border-radius:var(--r-lg);overflow:hidden;aspect-ratio:16/10}
   .tp-pic img{width:100%;height:100%;object-fit:cover}
@@ -705,14 +732,14 @@
 
 <main>
 <section class="tp-hero">
-  <img src="../../img/aerea-guarda-sol-1920.webp" srcset="../../img/aerea-guarda-sol-960.webp 960w, ../../img/aerea-guarda-sol-1920.webp 1920w" sizes="100vw" alt="Vista aérea de um guarda-sol na beira da lagoa" fetchpriority="high">
+  <img src="../../img/aerea-guarda-sol-1280.webp" srcset="../../img/aerea-guarda-sol-480.webp 480w, ../../img/aerea-guarda-sol-960.webp 960w, ../../img/aerea-guarda-sol-1280.webp 1280w, ../../img/aerea-guarda-sol-1920.webp 1920w" sizes="100vw" width="960" height="539" alt="Vista aérea de um guarda-sol na beira da lagoa" fetchpriority="high">
   <div class="tp-hero-in">
     <nav class="crumbs" aria-label="Você está em">
       <ol><li><a href="../../">Início</a></li><li><a href="../../#passeios">Passeios</a></li><li aria-current="page">Circuito América</li></ol>
     </nav>
     <span class="tp-cat">Meio período · barco · Santo Amaro do Maranhão</span>
     <h1>Circuito América</h1>
-    <p class="tp-lead">O Circuito América é um passeio de barco, de meio período pelos Lençóis Maranhenses, saindo de Santo Amaro do Maranhão. Horário: Manhã: 09h às 12h · Tarde: 14h às 17h. Transporte: Voadeira (barco). Valor: R$ 130 por pessoa ou R$ 800 no privado para até 5 pessoas. Voadeira pelo encontro do Rio Alegre com o Lago Jangada até a Lagoa do América, cheia de sombra.</p>
+    <p class="tp-lead">Voadeira pelo encontro do Rio Alegre com o Lago Jangada até a Lagoa do América, cheia de sombra.</p>
     <div class="hero-ctas">
       <a href="https://wa.me/5598992417329?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20reservar%20o%20Circuito%20Am%C3%A9rica%20com%20a%20Len%C3%A7%C3%B3is%20MTur.%20Data%3A%20___%20%C2%B7%20Pessoas%3A%20___%20%C2%B7%20Por%20pessoa%20ou%20privado%3A%20___" class="btn btn-wa" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Reservar pelo WhatsApp</a>
       <a href="#valores" class="btn btn-ghost">Ver valores <svg><use href="#i-arrow"/></svg></a>
@@ -724,6 +751,7 @@
   <div class="wrap tp-main">
     <article class="tp-body">
       <h2>Resumo do passeio</h2>
+      <p class="tp-answer">O Circuito América é um passeio de barco, de meio período pelos Lençóis Maranhenses, saindo de Santo Amaro do Maranhão. Horário: Manhã: 09h às 12h · Tarde: 14h às 17h. Transporte: Voadeira (barco). Valor: R$ 130 por pessoa ou R$ 800 no privado para até 5 pessoas. Voadeira pelo encontro do Rio Alegre com o Lago Jangada até a Lagoa do América, cheia de sombra.</p>
       <div class="facts">
         <div class="fact"><small>Horário</small><b>Manhã: 09h às 12h · Tarde: 14h às 17h</b></div>
         <div class="fact"><small>Transporte</small><b>Voadeira (barco)</b></div>
@@ -743,11 +771,11 @@
           <ul><li><svg><use href="#i-check"/></svg>Água</li><li><svg><use href="#i-check"/></svg>Água de coco</li><li><svg><use href="#i-check"/></svg>Refrigerante pet</li></ul>
         </div>
       </div>
-      <p class="tp-note">R$ 130 por pessoa ou R$ 800 no privado para até 5 pessoas. A taxa municipal de Santo Amaro, de R$ 10,00 por pessoa e válida por 3 dias, é cobrada à parte.</p>
+      <p class="tp-note">O Circuito América custa R$ 130 por pessoa ou R$ 800 no privado para até 5 pessoas. A taxa municipal de Santo Amaro, de R$ 10,00 por pessoa e válida por 3 dias, é cobrada à parte.</p>
 
       <h2>Como é o roteiro do Circuito América?</h2>
       <div class="story"><p>O roteiro do América é ótimo para quem quer relaxar depois de tantas aventuras e busca um diferencial, já que o trajeto é feito de voadeira (barco). É um passeio super tranquilo e relaxante!</p><p>O circuito começa com um trajeto de voadeira pelo encontro do Rio Alegre com o Lago Jangada de Santo Amaro. O percurso dura apenas 30 minutos e mostra paisagens deslumbrantes e diferentes das dunas. Ao final, paramos na Lagoa do América, um lugar com muita sombra e sossego.</p><p>Perfeito para quem quer curtir uma vibe de tranquilidade, já que a lagoa não é tão movimentada.</p></div>
-      <figure class="tp-pic"><img src="../../img/america-2-480.webp" srcset="../../img/america-2-480.webp 480w, ../../img/america-2-960.webp 960w, ../../img/america-2-1920.webp 1920w" sizes="(min-width:1000px) 780px, 100vw" alt="Grupo de braços erguidos na beira da Lagoa do América" loading="lazy" decoding="async"></figure>
+      <figure class="tp-pic"><img src="../../img/america-2-480.webp" srcset="../../img/america-2-480.webp 480w, ../../img/america-2-960.webp 960w, ../../img/america-2-1280.webp 1280w, ../../img/america-2-1920.webp 1920w" sizes="(min-width:1000px) 780px, 100vw" width="960" height="640" alt="Grupo de braços erguidos na beira da Lagoa do América" loading="lazy" decoding="async"></figure>
 
       <h2>Destaques</h2>
       <ul class="ticks "><li><svg><use href="#i-check"/></svg>Trajeto de 30 min de voadeira</li><li><svg><use href="#i-check"/></svg>Encontro do Rio Alegre com o Lago Jangada</li><li><svg><use href="#i-check"/></svg>Lagoa com sombra</li><li><svg><use href="#i-check"/></svg>Pouco movimento</li></ul>
@@ -758,19 +786,19 @@
       <div class="tp-faq">
         <details class="qa">
           <summary>Qual o horário do Circuito América?<i><svg><use href="#i-plus"/></svg></i></summary>
-          <p>Manhã: 09h às 12h · Tarde: 14h às 17h. O ponto de encontro é combinado na reserva pelo WhatsApp.</p>
+          <p>O Circuito América acontece de manhã, das 09h às 12h, ou à tarde, das 14h às 17h, com transporte em voadeira (barco). O ponto de encontro é combinado na reserva pelo WhatsApp.</p>
         </details>
         <details class="qa">
           <summary>O que está incluso no Circuito América?<i><svg><use href="#i-plus"/></svg></i></summary>
-          <p>No passeio por pessoa: água e cadeiras e guarda-sol. No privado: água, água de coco e refrigerante pet.</p>
+          <p>Circuito América: no passeio por pessoa estão inclusos água, cadeiras e guarda-sol; no passeio privado estão inclusos água, água de coco e refrigerante pet.</p>
         </details>
         <details class="qa">
-          <summary>O que não está incluso?<i><svg><use href="#i-plus"/></svg></i></summary>
-          <p>Taxa municipal: R$ 10,00.</p>
+          <summary>O que não está incluso no Circuito América?<i><svg><use href="#i-plus"/></svg></i></summary>
+          <p>Não estão inclusos no Circuito América: taxa municipal de R$ 10,00.</p>
         </details>
         <details class="qa">
           <summary>Para quem o Circuito América é indicado?<i><svg><use href="#i-plus"/></svg></i></summary>
-          <p>Relaxar depois das aventuras. Os destaques são trajeto de 30 min de voadeira, encontro do Rio Alegre com o Lago Jangada, lagoa com sombra e pouco movimento.</p>
+          <p>Para quem quer um passeio tranquilo depois das aventuras nas dunas: o trajeto é de voadeira pelo encontro do Rio Alegre com o Lago Jangada e termina na Lagoa do América, com sombra e pouco movimento.</p>
         </details>
         <details class="qa">
           <summary>Como reservar o Circuito América?<i><svg><use href="#i-plus"/></svg></i></summary>
@@ -801,7 +829,7 @@
     </div>
     <div class="tours">
   <a class="tour" href="../../passeios/circuito-andorinhas-e-gaivota/" data-open="andorinhas" data-p="meio">
-    <img src="../../img/placa-andorinhas-gaivota-480.webp" srcset="../../img/placa-andorinhas-gaivota-480.webp 480w, ../../img/placa-andorinhas-gaivota-960.webp 960w, ../../img/placa-andorinhas-gaivota-1920.webp 1920w" sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw" alt="Placa indicando as lagoas da Andorinha, da Gaivota e do Recanto" loading="lazy" decoding="async">
+    <img src="../../img/placa-andorinhas-gaivota-480.webp" srcset="../../img/placa-andorinhas-gaivota-480.webp 480w, ../../img/placa-andorinhas-gaivota-960.webp 960w, ../../img/placa-andorinhas-gaivota-1280.webp 1280w, ../../img/placa-andorinhas-gaivota-1920.webp 1920w" sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw" width="960" height="1440" alt="Placa indicando as lagoas da Andorinha, da Gaivota e do Recanto" loading="lazy" decoding="async">
     <span class="when"><svg><use href="#i-clock"/></svg>Manhã ou tarde</span>
     <div class="tour-txt">
       <span class="cat">Meio período</span>
@@ -812,7 +840,7 @@
     </div>
   </a>
   <a class="tour" href="../../passeios/circuito-betania/" data-open="betania" data-p="dia">
-    <img src="../../img/betania-1-480.webp" srcset="../../img/betania-1-480.webp 480w, ../../img/betania-1-960.webp 960w, ../../img/betania-1-1920.webp 1920w" sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw" alt="Vista aérea do Povoado de Betânia, com o rio e as lagoas entre as dunas" loading="lazy" decoding="async">
+    <img src="../../img/betania-1-480.webp" srcset="../../img/betania-1-480.webp 480w, ../../img/betania-1-960.webp 960w, ../../img/betania-1-1280.webp 1280w, ../../img/betania-1-1920.webp 1920w" sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw" width="960" height="539" alt="Vista aérea do Povoado de Betânia, com o rio e as lagoas entre as dunas" loading="lazy" decoding="async">
     <span class="when"><svg><use href="#i-clock"/></svg>09h às 18h</span>
     <div class="tour-txt">
       <span class="cat">Dia inteiro</span>
@@ -823,7 +851,7 @@
     </div>
   </a>
   <a class="tour" href="../../passeios/circuito-emendadas/" data-open="emendadas" data-p="tarde">
-    <img src="../../img/emendadas-1-480.webp" srcset="../../img/emendadas-1-480.webp 480w, ../../img/emendadas-1-960.webp 960w, ../../img/emendadas-1-1920.webp 1920w" sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw" alt="Pôr do sol sobre as lagoas das Emendadas, com duas pessoas na duna" loading="lazy" decoding="async">
+    <img src="../../img/emendadas-1-480.webp" srcset="../../img/emendadas-1-480.webp 480w, ../../img/emendadas-1-960.webp 960w, ../../img/emendadas-1-1280.webp 1280w, ../../img/emendadas-1-1920.webp 1920w" sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw" width="960" height="1280" alt="Pôr do sol sobre as lagoas das Emendadas, com duas pessoas na duna" loading="lazy" decoding="async">
     <span class="when"><svg><use href="#i-clock"/></svg>14h às 19h</span>
     <div class="tour-txt">
       <span class="cat">Tarde e noite</span>
@@ -834,7 +862,7 @@
     </div>
   </a>
   <a class="tour" href="../../passeios/circuito-ponta-verde/" data-open="ponta-verde" data-p="dia">
-    <img src="../../img/ponta-verde-1-480.webp" srcset="../../img/ponta-verde-1-480.webp 480w, ../../img/ponta-verde-1-960.webp 960w, ../../img/ponta-verde-1-1920.webp 1920w" sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw" alt="Vista aérea de uma faixa de duna entre lagoas verdes na Ponta Verde" loading="lazy" decoding="async">
+    <img src="../../img/ponta-verde-1-480.webp" srcset="../../img/ponta-verde-1-480.webp 480w, ../../img/ponta-verde-1-960.webp 960w, ../../img/ponta-verde-1-1280.webp 1280w, ../../img/ponta-verde-1-1920.webp 1920w" sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw" width="960" height="1332" alt="Vista aérea de uma faixa de duna entre lagoas verdes na Ponta Verde" loading="lazy" decoding="async">
     <span class="when"><svg><use href="#i-clock"/></svg>09h às 18h</span>
     <div class="tour-txt">
       <span class="cat">Dia inteiro</span>
@@ -862,7 +890,7 @@
       </div>
       <div class="phone" aria-hidden="true">
         <div class="screen">
-          <div class="screen-top"><img src="../../img/lencois-mtur-logo-fundo-azul.svg" alt=""><div><b>Lençóis MTur</b><small>98 99241-7329</small></div></div>
+          <div class="screen-top"><img src="../../img/lencois-mtur-logo-fundo-azul.svg" alt="" width="38" height="38" loading="lazy"><div><b>Lençóis MTur</b><small>98 99241-7329</small></div></div>
           <div class="msgs">
             <div class="msg me">Oi! Quero fazer o Circuito Emendadas. Somos 2 pessoas 🙂<time>14:02</time></div>
             <div class="msg">Oi! Que bom ter você com a gente. Qual a data?<time>14:03</time></div>
@@ -880,7 +908,7 @@
   <div class="wrap">
     <div class="foot">
       <div>
-        <img src="../../img/lencois-mtur-logo.svg" alt="Lençóis MTur" width="204" height="86">
+        <img src="../../img/lencois-mtur-logo.svg" alt="Lençóis MTur" width="204" height="86" loading="lazy">
         <p>Passeios pelos Lençóis Maranhenses saindo de Santo Amaro do Maranhão (MA), com o guia nativo Maiton.</p>
       </div>
       <div>
